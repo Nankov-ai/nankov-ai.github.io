@@ -270,9 +270,15 @@
     }
 
     /* ── FILTERS ── */
-    .filters { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .filters {
+      display: flex; gap: .4rem; flex-wrap: nowrap;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; margin-bottom: 2.5rem;
+      padding-bottom: .25rem;
+    }
+    .filters::-webkit-scrollbar { display: none; }
     .filter-btn {
-      padding: .4rem 1.1rem;
+      padding: .4rem 1.1rem; flex-shrink: 0;
       font-family: 'DM Mono', monospace; font-size: .68rem;
       letter-spacing: .1em; text-transform: uppercase;
       border: 1px solid var(--border2); background: transparent;
@@ -323,7 +329,7 @@
     }
     .card-num {
       font-size: .6rem; letter-spacing: .12em;
-      color: var(--border2); font-weight: 500;
+      color: var(--stone); font-weight: 500;
     }
     .card-status {
       display: flex; align-items: center; gap: .4rem;
@@ -884,22 +890,22 @@
       </div>
       <div class="pillars">
       <div class="pillar">
-        <div class="pillar-icon">⬡</div>
+        <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00c896" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         <div class="pillar-title">Sem fricção técnica</div>
         <p class="pillar-desc">Apps que funcionam no browser, sem instalações, sem dependências externas.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-icon">◈</div>
+        <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00c896" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
         <div class="pillar-title">IA integrada</div>
         <p class="pillar-desc">Gemini API em soluções de produção reais, não em demos de laboratório.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-icon">◎</div>
+        <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00c896" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <div class="pillar-title">Publicação imediata</div>
         <p class="pillar-desc">Tudo publicado e acessível — online ou na plataforma interna da empresa, <strong>sem risco de ataques externos</strong>.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-icon">▣</div>
+        <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00c896" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
         <div class="pillar-title">Código limpo</div>
         <p class="pillar-desc">Stack moderno, arquitectura clara, sem vendor lock-in desnecessário.</p>
       </div>
