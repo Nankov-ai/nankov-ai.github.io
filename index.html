@@ -396,27 +396,28 @@
     .cta-card {
       background: var(--signal);
       border-radius: 2px;
-      padding: 2.5rem 2rem;
+      padding: 2.5rem 2rem 2rem;
       display: flex; flex-direction: column;
-      align-items: flex-start; justify-content: space-between;
+      align-items: center; justify-content: center;
+      text-align: center;
       min-height: 320px;
+      gap: 1.25rem;
       position: relative; overflow: hidden;
     }
     .cta-card::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 110% 110%, rgba(0,0,0,.15) 0%, transparent 60%);
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,255,255,.18) 0%, transparent 70%);
       pointer-events: none;
     }
     .cta-rocket {
-      font-size: 2rem; line-height: 1;
-      margin-top: 1.5rem;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,.2));
+      font-size: 2.8rem; line-height: 1;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,.25));
     }
     .cta-card-sub {
-      font-size: .88rem; color: rgba(14,14,14,.82);
-      line-height: 1.75; margin-bottom: 0; flex: 1;
-      font-weight: 500;
+      font-size: .84rem; color: rgba(14,14,14,.78);
+      line-height: 1.75; font-weight: 400;
+      max-width: 28ch;
     }
     .cta-card-btn {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -425,9 +426,10 @@
       font-size: .72rem; font-weight: 500;
       letter-spacing: .08em; text-transform: uppercase;
       text-decoration: none;
-      padding: .75rem 1.5rem;
+      padding: .85rem 2rem;
       border: none; cursor: pointer;
       transition: background .2s, color .2s;
+      margin-top: .5rem;
     }
     .cta-card-btn:hover { background: #1a1a1a; color: #00e0a8; }
 
@@ -896,10 +898,8 @@
 
     <!-- CTA card -->
     <div class="cta-card">
-      <div>
-        <p class="cta-card-sub">Após ter visto os nossos projectos — se realiza tarefas monótonas e repetitivas que acha que podem ser automatizadas, exponha-nos a sua reflexão.</p>
-        <div class="cta-rocket">🚀</div>
-      </div>
+      <div class="cta-rocket">🚀</div>
+      <p class="cta-card-sub">Realiza tarefas monótonas e repetitivas que podem ser automatizadas? Exponha-nos a sua reflexão.</p>
       <a href="mailto:nodeflow.pt@gmail.com" class="cta-card-btn">
         Fale connosco
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
