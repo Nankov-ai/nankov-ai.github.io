@@ -392,6 +392,51 @@
     .app-card[data-cats~="educacao"] .tag.cat       { background: rgba(192,132,252,.1); color: #c084fc; border-color: rgba(192,132,252,.2); }
     .app-card[data-cats~="saude"] .tag.cat          { background: rgba(248,113,113,.1); color: #f87171; border-color: rgba(248,113,113,.2); }
 
+    /* ── CTA CARD ── */
+    .cta-card {
+      background: var(--signal);
+      border-radius: 2px;
+      padding: 2.5rem 2rem;
+      display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: space-between;
+      min-height: 320px;
+      position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 110% 110%, rgba(0,0,0,.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-rocket {
+      font-size: 2.4rem; line-height: 1;
+      margin-bottom: 1.25rem;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,.2));
+    }
+    .cta-card-title {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+      font-weight: 500; color: var(--ink);
+      letter-spacing: -.02em; line-height: 1.2;
+      margin-bottom: .75rem;
+    }
+    .cta-card-sub {
+      font-size: .82rem; color: rgba(14,14,14,.7);
+      line-height: 1.65; margin-bottom: 2rem; flex: 1;
+    }
+    .cta-card-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--ink); color: var(--signal);
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      text-decoration: none;
+      padding: .75rem 1.5rem;
+      border: none; cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .cta-card-btn:hover { background: #1a1a1a; color: #00e0a8; }
+
     .card-arrow {
       display: inline-flex; align-items: center; gap: .4rem;
       padding: .45rem 1.1rem;
@@ -853,6 +898,19 @@
         </div>
         <a class="card-arrow" href="https://nankov-ai.github.io/NeoOtto.github.io/" target="_blank" rel="noopener">Ver app →</a>
       </div>
+    </div>
+
+    <!-- CTA card -->
+    <div class="cta-card">
+      <div>
+        <div class="cta-rocket">🚀</div>
+        <div class="cta-card-title">A sua ideia<br>aqui.</div>
+        <p class="cta-card-sub">Diga-nos o que precisa.<br>Vamos analisar e desenvolver.</p>
+      </div>
+      <a href="mailto:nodeflow.pt@gmail.com" class="cta-card-btn">
+        Falar connosco
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
 
   </div>
