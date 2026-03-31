@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# VS Code
+.vscode/
+
+# MCP config
+.mcp.json
+
+# Brand assets (local only)
+nodeflow_icon_marca.png
+nodeflow_icon.svg
+nodeflow_logo_email.png
+nodeflow_identidade_marca.md
+nodeflow_brand_kit_v3.svg
+
+# Personal files
+*.jpg
+*.png
+*.lnk
+*.bat
+
+# Strategy docs (local only)
+oportunidades_estrategicas.md
+"Ideias a explorar/"
+"Matriz Estratégica de Domínios e Técnicas.jpg"
+
+# Claude memory
+.claude/
+
+# Package files (not needed for static site)
+package.json
+package-lock.json
+settings.local.json
