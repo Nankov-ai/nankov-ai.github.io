@@ -442,17 +442,57 @@
       transition: background .2s, border-color .2s;
     }
     .card-arrow:hover { background: rgba(0,200,150,.1); border-color: var(--signal); }
+    .card-contact-wrap {
+      position: relative;
+      margin-top: .75rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: .75rem;
+    }
     .card-contact-link {
       display: block;
-      margin-top: .75rem;
-      padding: .5rem 0;
       font-size: .75rem;
       color: var(--stone);
       text-decoration: none;
-      border-top: 1px solid rgba(255,255,255,.06);
+      cursor: pointer;
       transition: color .2s;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+      text-align: left;
     }
     .card-contact-link:hover { color: var(--signal); }
+    .email-picker {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 0;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 6px;
+      overflow: hidden;
+      z-index: 50;
+      min-width: 190px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    }
+    .email-picker.open { display: block; }
+    .email-picker a, .email-picker button {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      width: 100%;
+      padding: .6rem 1rem;
+      font-size: .78rem;
+      color: var(--paper);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
+      transition: background .15s;
+    }
+    .email-picker a:hover, .email-picker button:hover { background: rgba(255,255,255,.06); color: var(--signal); }
     span.card-arrow {
       border: none; background: none; padding: 0;
       color: var(--stone); cursor: default;
@@ -1118,18 +1158,60 @@
     }
   });
 
-  // Botão "Fale connosco" contextual por card
+  // Botão "Fale connosco" contextual por card com picker de email
   document.querySelectorAll('.app-card').forEach(card => {
     const name = card.querySelector('.card-name').textContent.trim();
     const subject = encodeURIComponent(`Interesse em ${name} — Nodeflow`);
     const body = encodeURIComponent(
       `Olá Nodeflow,\n\nTenho interesse na solução "${name}".\n\nO meu processo atual:\n[descreva aqui]\n\nO que pretendo automatizar ou melhorar:\n[descreva aqui]\n\nEmpresa / Sector:\n[opcional]\n\nObrigado`
     );
-    const link = document.createElement('a');
-    link.href = `mailto:nodeflow.pt@gmail.com?subject=${subject}&body=${body}`;
-    link.className = 'card-contact-link';
-    link.textContent = '✉ Fale connosco sobre esta solução';
-    card.appendChild(link);
+    const to = 'nodeflow.pt@gmail.com';
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${to}&su=${subject}&body=${body}`;
+    const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${subject}&body=${body}`;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'card-contact-wrap';
+
+    const btn = document.createElement('button');
+    btn.className = 'card-contact-link';
+    btn.textContent = '✉ Fale connosco sobre esta solução';
+
+    const picker = document.createElement('div');
+    picker.className = 'email-picker';
+    picker.innerHTML = `
+      <a href="${gmailUrl}" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Gmail
+      </a>
+      <a href="${outlookUrl}" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Outlook
+      </a>
+      <button class="copy-email" data-email="${to}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Copiar email
+      </button>`;
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
+      picker.classList.toggle('open');
+    });
+
+    picker.querySelector('.copy-email').addEventListener('click', () => {
+      navigator.clipboard.writeText(to).then(() => {
+        picker.querySelector('.copy-email').textContent = '✓ Copiado!';
+        setTimeout(() => picker.classList.remove('open'), 1200);
+      });
+    });
+
+    wrap.appendChild(picker);
+    wrap.appendChild(btn);
+    card.appendChild(wrap);
+  });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.email-picker.open').forEach(p => p.classList.remove('open'));
   });
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
