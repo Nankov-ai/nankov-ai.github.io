@@ -442,6 +442,17 @@
       transition: background .2s, border-color .2s;
     }
     .card-arrow:hover { background: rgba(0,200,150,.1); border-color: var(--signal); }
+    .card-contact-link {
+      display: block;
+      margin-top: .75rem;
+      padding: .5rem 0;
+      font-size: .75rem;
+      color: var(--stone);
+      text-decoration: none;
+      border-top: 1px solid rgba(255,255,255,.06);
+      transition: color .2s;
+    }
+    .card-contact-link:hover { color: var(--signal); }
     span.card-arrow {
       border: none; background: none; padding: 0;
       color: var(--stone); cursor: default;
@@ -1105,6 +1116,20 @@
     } else {
       backToTop.classList.remove('visible');
     }
+  });
+
+  // Botão "Fale connosco" contextual por card
+  document.querySelectorAll('.app-card').forEach(card => {
+    const name = card.querySelector('.card-name').textContent.trim();
+    const subject = encodeURIComponent(`Interesse em ${name} — Nodeflow`);
+    const body = encodeURIComponent(
+      `Olá Nodeflow,\n\nTenho interesse na solução "${name}".\n\nO meu processo atual:\n[descreva aqui]\n\nO que pretendo automatizar ou melhorar:\n[descreva aqui]\n\nEmpresa / Sector:\n[opcional]\n\nObrigado`
+    );
+    const link = document.createElement('a');
+    link.href = `mailto:nodeflow.pt@gmail.com?subject=${subject}&body=${body}`;
+    link.className = 'card-contact-link';
+    link.textContent = '✉ Fale connosco sobre esta solução';
+    card.appendChild(link);
   });
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
