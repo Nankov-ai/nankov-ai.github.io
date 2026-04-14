@@ -493,6 +493,8 @@
       transition: background .15s;
     }
     .email-picker a:hover, .email-picker button:hover { background: rgba(255,255,255,.06); color: var(--signal); }
+    .nav-picker { bottom: auto; top: calc(100% + 6px); right: 0; left: auto; }
+    .cta-picker { bottom: auto; top: calc(100% + 6px); left: 0; }
     span.card-arrow {
       border: none; background: none; padding: 0;
       color: var(--stone); cursor: default;
@@ -680,7 +682,10 @@
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <a href="mailto:nodeflow.pt@gmail.com" class="nav-cta">Fale connosco</a>
+  <div class="nav-cta-wrap" style="position:relative;">
+    <button class="nav-cta global-contact-btn">Fale connosco</button>
+    <div class="email-picker nav-picker"></div>
+  </div>
 </div>
 </nav>
 
@@ -1006,10 +1011,13 @@
     <div class="cta-card">
       <div class="cta-rocket">🚀</div>
       <p class="cta-card-sub">Realiza tarefas monótonas e repetitivas que podem ser automatizadas? Exponha-nos a sua ideia.</p>
-      <a href="mailto:nodeflow.pt@gmail.com" class="cta-card-btn">
-        Fale connosco
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <div style="position:relative;display:inline-block;">
+        <button class="cta-card-btn global-contact-btn">
+          Fale connosco
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="email-picker cta-picker"></div>
+      </div>
     </div>
 
   </div>
@@ -1208,6 +1216,42 @@
     wrap.appendChild(picker);
     wrap.appendChild(btn);
     card.appendChild(wrap);
+  });
+
+  // Picker para botões globais (nav + CTA card)
+  const to = 'nodeflow.pt@gmail.com';
+  const subject = encodeURIComponent('Contacto — Nodeflow');
+  const body = encodeURIComponent('Olá Nodeflow,\n\nGostaria de falar convosco sobre:\n[descreva aqui]\n\nObrigado');
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${to}&su=${subject}&body=${body}`;
+  const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${subject}&body=${body}`;
+  const pickerHTML = `
+    <a href="${gmailUrl}" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Gmail
+    </a>
+    <a href="${outlookUrl}" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Outlook
+    </a>
+    <button class="copy-email" data-email="${to}">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      Copiar email
+    </button>`;
+
+  document.querySelectorAll('.global-contact-btn').forEach(btn => {
+    const picker = btn.parentElement.querySelector('.email-picker');
+    picker.innerHTML = pickerHTML;
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
+      picker.classList.toggle('open');
+    });
+    picker.querySelector('.copy-email').addEventListener('click', () => {
+      navigator.clipboard.writeText(to).then(() => {
+        picker.querySelector('.copy-email').textContent = '✓ Copiado!';
+        setTimeout(() => picker.classList.remove('open'), 1200);
+      });
+    });
   });
 
   document.addEventListener('click', () => {
