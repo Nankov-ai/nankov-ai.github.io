@@ -1,4 +1,4 @@
-# Nodeflow · Dashboard de Portfolio · Contexto para Claude Code
+# Nodeflow · Website de Portfolio · Contexto para Claude Code
 
 ## Quem sou eu
 
@@ -8,14 +8,12 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ---
 
-## O que quero construir
+## Estado actual do projecto
 
-Um **dashboard de portfolio** da Nodeflow que:
-
-1. Apresenta as apps que já desenvolvi de forma clara e profissional
-2. Funciona como prova de conceito para potenciais clientes
-3. Reflecte a identidade visual da marca (ver abaixo)
-4. Pode evoluir para o website oficial da Nodeflow
+**Site live:** `https://nankov-ai.github.io`  
+**Repositório:** `https://github.com/Nankov-ai/nankov-ai.github.io`  
+**Branch:** `main` — deploy automático via GitHub Pages  
+**Stack do site:** HTML + CSS + JS · single-file (`index.html`)
 
 ---
 
@@ -36,104 +34,143 @@ Um **dashboard de portfolio** da Nodeflow que:
 - Wordmark / headings: DM Mono (Google Fonts) — weights 300/400/500
 - Slogan / corpo emocional: Fraunces Italic Light 300 (Google Fonts)
 
-**Logótipo:** Grid modular 2×2 — ver `nodeflow_icon_marca.svg`  
-**Brand kit completo:** ver `nodeflow_brand_kit_v3.svg`
-
+**Logótipo:** Grid modular 2×2 — inline SVG no `index.html`  
 **Tom:** Técnico, preciso, sem ruído. Minimalista e sóbrio.
 
 ---
 
-## Apps a apresentar no portfolio
+## Apps no portfolio (14 cards)
 
-### 1 · Portal de Notas de Despesa
+### 01 · Portal de Notas de Despesa
 - **Stack:** HTML / CSS / JavaScript / pdf-lib
+- **Link:** `https://nankov-ai.github.io/Nota-Despesa/`
 - **O que faz:** Formulário de despesas com assinatura digital, geração de PDF, exportação CSV, integração Gmail. 33 centros de custo. Single-file.
 - **Cliente-alvo:** PMEs e multinacionais com processo de reembolso manual
-- **Status:** Pronto. Em pitch interno na Norauto.
+- **Status:** Operacional · Pitch activo na Norauto
 
-### 2 · Painel de Crescimento Pessoal (Alpha2026)
-- **Stack:** HTML / JavaScript / Gemini API
-- **O que faz:** Briefing diário com Gemini, registo de decisões estruturado, tracker KPIs semanal, STT em PT, export .md/.txt
-- **Cliente-alvo:** Gestores, founders, profissionais de alta performance
-- **Status:** Operacional. Uso pessoal activo.
-
-### 3 · VisionAI+
+### 02 · VisionAI+
 - **Stack:** React 18 + TypeScript + Vite + Tailwind + Firebase Auth + Gemini API + Google Cloud Run
+- **Link:** `https://app-norautovisionai-dev-325763202780.europe-west1.run.app/`
 - **O que faz:** Interface RAG bilíngue PT/FR, 6+ casos de uso operacionais (stock, logística, e-commerce), validador de ideias, arquitectura proxy segura
 - **Versão:** v2.9.5
 - **Cliente-alvo:** Multinacionais com operação em PT/FR sem equipa técnica de dados
 - **Status:** Versão Norauto congelada. Reformulação white-label em curso.
 
-### 4 · Logic Gate Trainer
+### 03 · Nodeflow O2C Reader
+- **Stack:** Node.js + Express + Gemini API + pdf.js + RAG local
+- **Link:** `https://nodeflow-o2c.onrender.com/` (Render free tier — ~30s arranque)
+- **Repositório:** `https://github.com/Nankov-ai/hiperfrio-o2c-rag`
+- **O que faz:** Sistema RAG para análise de documentos O2C. Lê PDFs de encomendas, cruza com catálogo e SLA locais, sugere peças, gera ordens de trabalho, integra com ERP PHC, voz-para-texto.
+- **Cliente-alvo:** Empresas de distribuição com processo O2C manual
+- **Status:** v2.1 operacional · White-label sem referências a cliente
+
+### 04 · Análise de Crédito Habitação
+- **Stack:** React 18 + TypeScript + Gemini API + Recharts + jsPDF + pdf.js
+- **Link:** `https://nankov-ai.github.io/Analise-Credito-Habitacao/`
+- **O que faz:** Comparação visual de propostas de crédito (TAN, TAEG, seguros, custos), leitura de PDFs, chat IA, exportação de relatório PDF. API key inserida pelo utilizador na UI.
+- **Cliente-alvo:** Famílias, brokers imobiliários, consultores financeiros
+- **Status:** Operacional
+
+### 05 · Alpha2026
+- **Stack:** HTML / JavaScript / Gemini API
+- **Link:** `https://nankov-ai.github.io/2026-Alpha/`
+- **O que faz:** Briefing diário com Gemini, registo de decisões estruturado, tracker KPIs semanal, STT em PT, export .md/.txt
+- **Cliente-alvo:** Gestores, founders, profissionais de alta performance
+- **Status:** Operacional · Uso pessoal activo
+
+### 06 · Logic Gate Trainer
 - **Stack:** React 18 + TypeScript + Gemini API + React Router
+- **Link:** `https://nankov-ai.github.io/Treinador_de_Logica/`
 - **O que faz:** Exercícios de portas lógicas gerados por Gemini, sistema de jogo com streak/scoreboard/histórico, hints com IA, confetti
 - **Cliente-alvo:** Plataformas e-learning, escolas técnicas, formação em TI
-- **Status:** Operacional. Deployed em GitHub Pages.
+- **Status:** Operacional
 
-### 5 · Análise de Propostas de Crédito Habitação
-- **Stack:** React 18 + TypeScript + Gemini API + Recharts + jsPDF + pdf.js
-- **O que faz:** Comparação visual de propostas de crédito (TAN, TAEG, seguros, custos), leitura de PDFs, chat IA, exportação de relatório PDF
-- **Cliente-alvo:** Famílias, brokers imobiliários, consultores financeiros
-- **Status:** Operacional.
-
-### 6 · Treino e Diagnóstico Ocular (Visão+)
+### 07 · Treino e Diagnóstico Ocular
 - **Stack:** React 18 + TypeScript + localStorage
+- **Link:** `https://nankov-ai.github.io/Treino-Ocular/`
 - **O que faz:** 6 exercícios visuais guiados, diagnóstico ocular (acuidade, Amsler, questionário), regra 20-20-20, histórico de diagnósticos
 - **Cliente-alvo:** Clínicas de oftalmologia, ópticas, plataformas de saúde digital
-- **Status:** Operacional.
+- **Status:** Operacional
 
-### 7 · Gestor de Quotas AZP
+### 08 · Gestor de Quotas
 - **Stack:** React 18 + TypeScript + Gemini API
+- **Link:** `https://nankov-ai.github.io/Gestor-de-Quotas/`
 - **O que faz:** Gestão de quotas de associados com IA integrada
 - **Cliente-alvo:** Associações desportivas, culturais, profissionais
-- **Status:** Em desenvolvimento / modo teste.
+- **Status:** Operacional · modo teste
 
-### 8 · Hiperfrio O2C Reader (RAG)
-- **Stack:** Node.js + Express + Gemini API + pdf.js + RAG local
-- **O que faz:** Sistema RAG para análise de documentos O2C (Order-to-Cash). Lê PDFs de encomendas, cruza com memória local (preços, catálogo, compatibilidade, SLA), sugere peças, gera ordens de trabalho, integração com ERP PHC, voz-para-texto.
-- **Cliente-alvo:** Empresas de distribuição com processo O2C manual. Cliente actual: Hiperfrio.
-- **Status:** v2.1 operacional. Deploy-ready (Render).
-
-### 9 · Envio de Emails em Massa (Automagic)
+### 09 · Automagic · Envio de Emails
 - **Stack:** Python (smtplib) + Google Apps Script + HTML
-- **O que faz:** Envio automatizado de emails em massa com mail merge. Lê lista de destinatários (CSV/TXT), envia via Gmail SMTP, suporta anexos. Disponível como app web e executável standalone (.exe).
-- **Cliente-alvo:** PMEs, associações e equipas comerciais sem orçamento para plataformas pagas (Mailchimp, etc.)
-- **Status:** Operacional. Versão web + versão executável.
+- **Link:** `https://nankov-ai.github.io/Envio-de-emails-em-massa---Script/`
+- **O que faz:** Envio automatizado de emails personalizados em massa. Mail merge via Gmail SMTP. Lê CSV/TXT, suporta anexos. App web + executável .exe.
+- **Cliente-alvo:** PMEs e equipas comerciais sem orçamento para Mailchimp
+- **Status:** Operacional
 
 ### 10 · Vocaliz
 - **Stack:** HTML / CSS / JavaScript (Web Speech API)
-- **O que faz:** Leitor de texto em voz alta (TTS). Suporta texto colado, upload de ficheiros (txt, md, csv, html, srt, pdf, docx, xlsx), detecção de tabelas, controlo de voz/velocidade/pitch, barra de progresso.
-- **Cliente-alvo:** Utilizadores com dificuldades de leitura, profissionais que consomem conteúdo em movimento, plataformas de acessibilidade
-- **Status:** Operacional. Logótipo Nodeflow incluído.
+- **Link:** `https://nankov-ai.github.io/Vocaliz/`
+- **O que faz:** Leitor TTS com suporte a 8 formatos (txt, md, csv, html, srt, pdf, docx, xlsx), detecção de tabelas, controlo de voz/velocidade/pitch, barra de progresso.
+- **Cliente-alvo:** Utilizadores com dificuldades de leitura, profissionais em movimento, plataformas de acessibilidade
+- **Status:** Operacional
+
+### 11 · NeoOtto
+- **Stack:** HTML / CSS / JavaScript / ChatGPT
+- **Link:** `https://nankov-ai.github.io/NeoOtto.github.io/`
+- **O que faz:** Agente de IA especializado em identificar oportunidades de negócio. Diagnóstico de contexto, benchmark de mercado, recomendações práticas em linguagem executiva.
+- **Cliente-alvo:** Gestores e empresas que querem perceber onde a IA pode gerar impacto real
+- **Status:** Operacional
+
+### 12 · HealHour
+- **Stack:** HTML / CSS / JavaScript · PWA
+- **Link:** `https://nankov-ai.github.io/Healing-jejum/`
+- **Repositório:** `https://github.com/Nankov-ai/Healing-jejum`
+- **O que faz:** PWA de tracking de jejum intermitente. Anel de progresso em tempo real, fases metabólicas, protocolos configuráveis (16h, 18h, 24h), histórico. Instalável no telemóvel.
+- **Cliente-alvo:** Pessoas que praticam jejum intermitente sem apps pagas
+- **Status:** Operacional
+
+### 13 · OutOfBox
+- **Stack:** Next.js + TypeScript + Prisma + IA
+- **Link:** `https://outofbox.onrender.com` (Render free tier — ~30s arranque)
+- **O que faz:** Coach de mentalidade com IA. Transforma pensamentos limitantes em perguntas de crescimento. Cada desafio é ressignificado como oportunidade.
+- **Cliente-alvo:** Profissionais e líderes que querem desenvolver mentalidade de crescimento
+- **Status:** Operacional
+
+### 14 · English Adventure
+- **Stack:** HTML / CSS / JavaScript
+- **Link:** `https://nankov-ai.github.io/English-Adventure/`
+- **O que faz:** App de aprendizagem de inglês para crianças com 4 jogos interactivos: Match, Quiz, Unscramble e Complete the Sentence. Vocabulário de partes do corpo, pontuação em tempo real, sistema de hints.
+- **Cliente-alvo:** Escolas, professores de inglês e plataformas de ensino para crianças
+- **Status:** Operacional
 
 ---
 
-## Decisões de stack
+## Decisões técnicas tomadas
 
-**Stack escolhido para o site:** HTML + CSS + JS single-file
-- Sem dependências, sem build tools
-- Deploy imediato (GitHub Pages / Netlify)
-- Animações via CSS transitions (sem Framer Motion)
-- Pronto para mostrar a clientes e no LinkedIn
+### Site (index.html)
+- **Single-file** HTML + CSS + JS — sem build tools, sem dependências
+- **Deploy:** GitHub Pages via repo `nankov-ai.github.io` (branch `main`)
+- **Tipografia:** DM Mono + Fraunces via Google Fonts
+- **Animações:** CSS transitions apenas (sem Framer Motion)
+- **Responsivo:** mobile-first, max-width 1280px com clamp padding
+- **Back-to-top:** botão discreto 30px, aparece ao scroll, desaparece após 1.5s inactividade e perto do footer
 
----
+### Cards do portfolio
+- **Formato:** Desafio → Resultado (não só features técnicas)
+- **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar) via `mailto:` com subject e body pré-preenchidos com o nome da app
 
-## O que o dashboard deve ter (requisitos mínimos)
+### Contacto
+- **Email picker** em todos os botões "Fale connosco" do site (nav, hero, CTA card, secção contacto, cada card)
+- **Sem formulários externos** — usa Gmail e Outlook web directamente
+- **Email:** `nodeflow.pt@gmail.com`
 
-- [ ] Hero com nome, slogan e identidade visual da Nodeflow
-- [ ] Cards de cada app com: nome, descrição curta, stack, status, cliente-alvo
-- [ ] Filtro por categoria (B2B / educação / saúde / finanças / produtividade)
-- [ ] Design fiel à identidade da marca (paleta + tipografia acima)
-- [ ] Responsivo (mobile + desktop)
-- [ ] Pronto para mostrar a um potencial cliente
-
-## Extras desejáveis (não obrigatórios na v1)
-
-- [ ] Animações subtis de entrada
-- [ ] Modal ou drawer com detalhe de cada app
-- [ ] Secção "Sobre a Nodeflow" com posicionamento
-- [ ] Formulário de contacto
-- [ ] Deploy fácil (Vercel / GitHub Pages)
+### Secções do site
+1. Hero (slogan + CTA)
+2. Stats (14 apps / 8 com IA / 5 só automação / 5 sectores)
+3. Portfolio (14 cards + CTA card verde)
+4. Como trabalhamos (Diagnóstico → Construção → Entrega)
+5. Sobre a Nodeflow (texto + 4 pillars)
+6. Contacto
+7. Footer
 
 ---
 
@@ -141,12 +178,30 @@ Um **dashboard de portfolio** da Nodeflow que:
 
 | Ficheiro | Descrição |
 |---|---|
+| `index.html` | Site completo — HTML + CSS + JS single-file |
 | `CLAUDE.md` | Este ficheiro — contexto completo para o Claude Code |
-| `nodeflow_identidade_marca.md` | Documento vivo de identidade de marca com todas as decisões |
-| `nodeflow_brand_kit_v3.svg` | Brand kit visual completo |
-| `nodeflow_icon_marca.svg` | Ícone Nodeflow em todas as variantes |
-| `Matriz Estratégica de Domínios e Técnicas.jpg` | Framework de Capacidades de IA v1.0 (Fábio Andreosi) |
-| `.mcp.json` | Configuração MCP — servidor NotebookLM activo |
+| `diagrams.md` | Diagramas Mermaid do projecto (portfolio, processo, arquitectura, roadmap) |
+
+---
+
+## Roadmap
+
+### Fase 1 · Concluída
+- [x] Secção "Como trabalhamos"
+- [x] Cards com formato Desafio → Resultado
+- [x] Email picker contextual em todos os CTAs
+
+### Fase 2 · A fazer
+- [ ] Secção de modelos de colaboração (o que ofereces e como contratar)
+- [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo
+
+### Fase 3 · Futuro
+- [ ] Dashboard de leads (lead → proposta → cliente)
+- [ ] Login + demos privadas para clientes específicos
+- [ ] Painel de métricas interno
+
+### Fase 4 · Novo produto
+- [ ] Agente de marketing/folhetos para retalho
 
 ---
 
@@ -155,5 +210,5 @@ Um **dashboard de portfolio** da Nodeflow que:
 - Fala comigo em **português de Portugal**
 - Quando tiveres dúvidas sobre decisões de produto ou marca, pergunta — não assumas
 - Prefiro código limpo e bem estruturado a código rápido e sujo
-- Documenta as decisões técnicas relevantes neste ficheiro ou num `DECISIONS.md` separado
 - Commita com mensagens claras em inglês (convenção: `feat:`, `fix:`, `refactor:`, `docs:`)
+- Não adicionar features não pedidas, não criar ficheiros desnecessários
