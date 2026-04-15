@@ -1105,7 +1105,11 @@
         <div style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--signal);text-transform:uppercase;">MVP Rápido</div>
         <p style="font-size:1rem;font-weight:500;color:var(--paper);line-height:1.4;">Da ideia ao lançamento em dias.</p>
         <p style="font-size:.85rem;color:var(--stone);line-height:1.6;flex:1;">Tens um processo manual que queres automatizar. Definimos o escopo, construímos e entregamos. Sem reuniões intermináveis.</p>
-        <div style="font-size:.78rem;color:var(--stone);border-top:1px solid var(--border);padding-top:.75rem;">Ideal para: PMEs · Provas de conceito · Processos internos</div>
+        <div style="font-size:.78rem;color:var(--stone);border-top:1px solid var(--border);padding-top:.75rem;margin-top:auto;">Ideal para: PMEs · Provas de conceito · Processos internos</div>
+        <div style="position:relative;">
+          <button class="collab-contact-btn global-collab-btn" data-modelo="MVP Rápido" style="width:100%;padding:.6rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:5px;color:var(--stone);font-size:.78rem;font-family:inherit;cursor:pointer;transition:all .2s;text-align:center;">✉ Fale connosco</button>
+          <div class="email-picker cta-picker collab-picker"></div>
+        </div>
       </div>
 
       <div style="background:var(--bg-card);border:1px solid rgba(0,200,150,.3);border-radius:8px;padding:2rem;display:flex;flex-direction:column;gap:1rem;position:relative;">
@@ -1114,7 +1118,11 @@
         <div style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--signal);text-transform:uppercase;">Projecto à Medida</div>
         <p style="font-size:1rem;font-weight:500;color:var(--paper);line-height:1.4;">Solução construída do zero para o teu processo.</p>
         <p style="font-size:.85rem;color:var(--stone);line-height:1.6;flex:1;">Diagnóstico completo, desenvolvimento iterativo com feedback real e entrega em produção. A solução fica tua, sem dependências.</p>
-        <div style="font-size:.78rem;color:var(--stone);border-top:1px solid var(--border);padding-top:.75rem;">Ideal para: Processos complexos · Integrações · B2B</div>
+        <div style="font-size:.78rem;color:var(--stone);border-top:1px solid var(--border);padding-top:.75rem;margin-top:auto;">Ideal para: Processos complexos · Integrações · B2B</div>
+        <div style="position:relative;">
+          <button class="collab-contact-btn global-collab-btn" data-modelo="Projecto à Medida" style="width:100%;padding:.6rem;background:rgba(0,200,150,.08);border:1px solid rgba(0,200,150,.3);border-radius:5px;color:var(--signal);font-size:.78rem;font-family:inherit;cursor:pointer;transition:all .2s;text-align:center;">✉ Fale connosco</button>
+          <div class="email-picker cta-picker collab-picker"></div>
+        </div>
       </div>
 
       <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;display:flex;flex-direction:column;gap:1rem;">
@@ -1122,7 +1130,11 @@
         <div style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--signal);text-transform:uppercase;">White-label</div>
         <p style="font-size:1rem;font-weight:500;color:var(--paper);line-height:1.4;">Uma solução do portfolio adaptada à tua marca.</p>
         <p style="font-size:.85rem;color:var(--stone);line-height:1.6;flex:1;">Já construímos algo parecido com o que precisas. Adaptamos a identidade visual, o contexto e as integrações, sem começar do zero.</p>
-        <div style="font-size:.78rem;color:var(--stone);border-top:1px solid var(--border);padding-top:.75rem;">Ideal para: Retalho · Associações · Multinacionais</div>
+        <div style="font-size:.78rem;color:var(--stone);border-top:1px solid var(--border);padding-top:.75rem;margin-top:auto;">Ideal para: Retalho · Associações · Multinacionais</div>
+        <div style="position:relative;">
+          <button class="collab-contact-btn global-collab-btn" data-modelo="White-label" style="width:100%;padding:.6rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:5px;color:var(--stone);font-size:.78rem;font-family:inherit;cursor:pointer;transition:all .2s;text-align:center;">✉ Fale connosco</button>
+          <div class="email-picker cta-picker collab-picker"></div>
+        </div>
       </div>
 
     </div>
@@ -1287,6 +1299,41 @@
     wrap.appendChild(picker);
     wrap.appendChild(btn);
     card.appendChild(wrap);
+  });
+
+  // Picker para botões de modelos de colaboração
+  document.querySelectorAll('.global-collab-btn').forEach(btn => {
+    const modelo = btn.dataset.modelo;
+    const toAddr = 'nodeflow.pt@gmail.com';
+    const subj = encodeURIComponent(`Interesse em ${modelo} — Nodeflow`);
+    const bod = encodeURIComponent(`Olá Nodeflow,\n\nTenho interesse no modelo "${modelo}".\n\nO meu contexto:\n[descreva aqui]\n\nObrigado`);
+    const gUrl = `https://mail.google.com/mail/?view=cm&to=${toAddr}&su=${subj}&body=${bod}`;
+    const oUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${toAddr}&subject=${subj}&body=${bod}`;
+    const picker = btn.nextElementSibling;
+    picker.innerHTML = `
+      <a href="${gUrl}" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Gmail
+      </a>
+      <a href="${oUrl}" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Outlook
+      </a>
+      <button class="copy-email" data-email="${toAddr}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Copiar email
+      </button>`;
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
+      picker.classList.toggle('open');
+    });
+    picker.querySelector('.copy-email').addEventListener('click', () => {
+      navigator.clipboard.writeText(toAddr).then(() => {
+        picker.querySelector('.copy-email').textContent = '✓ Copiado!';
+        setTimeout(() => picker.classList.remove('open'), 1200);
+      });
+    });
   });
 
   // Picker para botões globais (nav + CTA card)
