@@ -173,12 +173,13 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ### Secções do site
 1. Hero (slogan + CTA)
-2. Stats (14 apps / 8 com IA / 5 só automação / 5 sectores)
-3. Portfolio (14 cards + CTA card verde)
+2. Stats (15 apps / 9 com IA / 5 só automação / 5 sectores)
+3. Portfolio (15 cards + CTA card verde)
 4. Como trabalhamos (Diagnóstico → Construção → Entrega)
-5. Sobre a Nodeflow (texto + 4 pillars)
-6. Contacto
-7. Footer
+5. Modelos de colaboração (MVP Rápido · Projecto à Medida · White-label)
+6. Sobre a Nodeflow (texto + 4 pillars)
+7. Contacto
+8. Footer
 
 ---
 
@@ -200,7 +201,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Email picker contextual em todos os CTAs
 
 ### Fase 2 · A fazer
-- [ ] Secção de modelos de colaboração (o que ofereces e como contratar)
+- [x] Secção de modelos de colaboração (MVP Rápido · Projecto à Medida · White-label)
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo
 
 ### Fase 3 · Futuro
