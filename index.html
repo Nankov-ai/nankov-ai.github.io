@@ -314,6 +314,19 @@
     }
     .app-card:hover { background: #112848; }
     .app-card:hover::before { opacity: 1; }
+    .app-card.featured {
+      border: 1px solid rgba(0,200,150,.45);
+      box-shadow: 0 0 24px rgba(0,200,150,.12), inset 0 0 40px rgba(0,200,150,.04);
+    }
+    .app-card.featured::before {
+      background: var(--signal);
+      opacity: 1;
+      height: 2px;
+      box-shadow: 0 0 10px rgba(0,200,150,.6);
+    }
+    .app-card.featured:hover {
+      box-shadow: 0 0 36px rgba(0,200,150,.2), inset 0 0 40px rgba(0,200,150,.06);
+    }
     .app-card.hidden { display: none; }
 
     /* Category accent colours */
@@ -1007,7 +1020,7 @@
       </div>
     </div>
 
-    <div class="app-card" data-cats="produtividade b2b">
+    <div class="app-card featured" data-cats="produtividade b2b">
       <div class="card-top">
         <span class="card-num">15</span>
         <span class="card-status"><span class="status-dot dev"></span>Em desenvolvimento · Lançamento em breve</span>
