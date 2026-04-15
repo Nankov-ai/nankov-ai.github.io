@@ -620,6 +620,36 @@
     }
     .footer-links a:hover { color: var(--signal); }
 
+    /* ── PRIVACY MODAL ── */
+    .privacy-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(14,14,14,.85); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .privacy-overlay.open { display: flex; }
+    .privacy-modal {
+      background: #161616; border: 1px solid var(--border);
+      border-radius: 6px; max-width: 560px; width: 100%;
+      padding: 2rem 2rem 1.5rem; position: relative;
+    }
+    .privacy-modal h2 {
+      font-family: 'DM Mono', monospace; font-weight: 500;
+      font-size: .85rem; letter-spacing: .1em; color: var(--paper);
+      text-transform: uppercase; margin-bottom: 1.25rem;
+    }
+    .privacy-modal p {
+      font-size: .78rem; color: var(--stone); line-height: 1.7;
+      margin-bottom: .85rem;
+    }
+    .privacy-modal p strong { color: var(--paper); }
+    .privacy-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; color: var(--stone);
+      font-size: 1.1rem; cursor: pointer; line-height: 1;
+      transition: color .2s;
+    }
+    .privacy-close:hover { color: var(--signal); }
+
     /* ── BACK TO TOP ── */
     .back-to-top {
       position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 99;
@@ -1212,10 +1242,24 @@
   <div class="footer-links">
     <a href="#portfolio">Portfolio</a>
     <a href="#sobre">Sobre</a>
+    <a href="#" id="privacyLink">Privacidade</a>
     <a href="mailto:nodeflow.pt@gmail.com">Email</a>
   </div>
 </div>
 </footer>
+
+<!-- ── PRIVACY MODAL ── -->
+<div class="privacy-overlay" id="privacyOverlay">
+  <div class="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <button class="privacy-close" id="privacyClose" aria-label="Fechar">✕</button>
+    <h2 id="privacyTitle">Política de Privacidade</h2>
+    <p><strong>Sem cookies.</strong> Este site não utiliza cookies, trackers ou ferramentas de analytics. Não é guardada nenhuma informação sobre a tua visita.</p>
+    <p><strong>Sem dados de terceiros.</strong> As fontes tipográficas são servidas localmente — o teu endereço IP não é partilhado com serviços externos durante a visita.</p>
+    <p><strong>Contacto voluntário.</strong> Se clicares em "Fale connosco", és redirecionado para o teu cliente de email (Gmail ou Outlook). Nenhum dado é processado pelo nosso servidor — a mensagem vai directamente da tua caixa de saída.</p>
+    <p><strong>Links externos.</strong> O site contém ligações para apps de terceiros (GitHub Pages, Google Gemini, Render). A partir do momento em que sais deste domínio, aplicam-se as políticas de privacidade desses serviços.</p>
+    <p style="margin-bottom:0; font-size:.72rem;">Dúvidas: <a href="mailto:nodeflow.pt@gmail.com" style="color:var(--signal);">nodeflow.pt@gmail.com</a> · Última actualização: Abril 2026</p>
+  </div>
+</div>
 
 <a href="#" class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</a>
 
@@ -1247,6 +1291,15 @@
       backToTop.classList.remove('visible');
     }
   });
+
+  // Modal de privacidade
+  const privacyLink = document.getElementById('privacyLink');
+  const privacyOverlay = document.getElementById('privacyOverlay');
+  const privacyClose = document.getElementById('privacyClose');
+  privacyLink.addEventListener('click', e => { e.preventDefault(); privacyOverlay.classList.add('open'); });
+  privacyClose.addEventListener('click', () => privacyOverlay.classList.remove('open'));
+  privacyOverlay.addEventListener('click', e => { if (e.target === privacyOverlay) privacyOverlay.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') privacyOverlay.classList.remove('open'); });
 
   // Botão "Fale connosco" contextual por card com picker de email
   document.querySelectorAll('.app-card').forEach(card => {
