@@ -142,6 +142,14 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Cliente-alvo:** Escolas, professores de inglês e plataformas de ensino para crianças
 - **Status:** Operacional
 
+### 15 · Voz Afiada
+- **Stack:** Gemini · IA Agent
+- **Link:** `https://gemini.google.com/gem/1aRNCCqYq-TJREAyE_DZerH9gEiVl6REZ?usp=sharing`
+- **O que faz:** Diagnóstico cirúrgico da comunicação verbal — sem filtros. Identifica fillers, fraqueza de autoridade e estrutura ineficiente. Reescreve. Exige.
+- **Cliente-alvo:** Fundadores, comerciais e executivos que negoceiem, apresentem ou liderem
+- **Status:** Em desenvolvimento · Lançamento em breve
+- **Nota estratégica:** Potencial para produto standalone com waitlist — posicionamento diferenciador, sem concorrência directa no segmento de crítico de comunicação
+
 ---
 
 ## Decisões técnicas tomadas
@@ -202,6 +210,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ### Fase 4 · Novo produto
 - [ ] Agente de marketing/folhetos para retalho
+- [ ] Voz Afiada — produto standalone com waitlist (quando lançar)
 
 ---
 
