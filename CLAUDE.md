@@ -43,10 +43,12 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ### 01 · Portal de Notas de Despesa
 - **Stack:** HTML / CSS / JavaScript / pdf-lib
-- **Link:** `https://nankov-ai.github.io/Nota-Despesa/`
+- **Link:** `https://nankov-ai.github.io/nota-despesa-nodeflow`
+- **Repositório:** `https://github.com/Nankov-ai/nota-despesa-nodeflow`
+- **Local:** `c:/projetos/Nodeflow/Nota Despesa Nodeflow/`
 - **O que faz:** Formulário de despesas com assinatura digital, geração de PDF, exportação CSV, integração Gmail. 33 centros de custo. Single-file.
 - **Cliente-alvo:** PMEs e multinacionais com processo de reembolso manual
-- **Status:** Operacional · Pitch activo na Norauto
+- **Status:** Operacional · Versão Nodeflow-branded
 
 ### 02 · VisionAI+
 - **Stack:** React 18 + TypeScript + Vite + Tailwind + Firebase Auth + Gemini API + Google Cloud Run
