@@ -28,18 +28,19 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - Paper: `#f5f4f0` (fundo claro, texto invertido)
 - Signal: `#00c896` (acento verde, destaque, nó activo)
 - Electric: `#1a1aff` (variante azul, uso pontual)
-- Stone: `#9a9690` (texto secundário, labels)
+- Stone: `#aba6a1` (texto secundário, labels — ajustado para WCAG AA ~5.3:1)
 
 **Tipografia:**
-- Wordmark / headings: DM Mono (Google Fonts) — weights 300/400/500
-- Slogan / corpo emocional: Fraunces Italic Light 300 (Google Fonts)
+- Wordmark / headings: DM Mono — weights 300/400/500
+- Slogan / corpo emocional: Fraunces Italic Light 300
+- **Fontes self-hosted** em `fonts/` (woff2) — sem Google Fonts (GDPR)
 
 **Logótipo:** Grid modular 2×2 — inline SVG no `index.html`  
 **Tom:** Técnico, preciso, sem ruído. Minimalista e sóbrio.
 
 ---
 
-## Apps no portfolio (14 cards)
+## Apps no portfolio (16 cards)
 
 ### 01 · Portal de Notas de Despesa
 - **Stack:** HTML / CSS / JavaScript / pdf-lib
@@ -50,101 +51,121 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Cliente-alvo:** PMEs e multinacionais com processo de reembolso manual
 - **Status:** Operacional · Versão Nodeflow-branded
 
-### 02 · VisionAI+
+### 02 · VisionAI+ Demo
+- **Stack:** React + Gemini API + Cloud Run
+- **Link:** `https://visionai-app-769195178908.europe-west1.run.app/`
+- **O que faz:** Demo white-label da plataforma VisionAI+ — análise de imagem e documentos com IA, pronta a adaptar ao contexto de qualquer empresa.
+- **Cliente-alvo:** Empresas que queiram avaliar a plataforma antes de uma implementação à medida
+- **Status:** Demo online
+
+### 03 · NVisionAI+
 - **Stack:** React 18 + TypeScript + Vite + Tailwind + Firebase Auth + Gemini API + Google Cloud Run
 - **Link:** `https://app-norautovisionai-dev-325763202780.europe-west1.run.app/`
+- **Local:** `c:/projetos/6. norauto-visionai+/`
 - **O que faz:** Interface RAG bilíngue PT/FR, 6+ casos de uso operacionais (stock, logística, e-commerce), validador de ideias, arquitectura proxy segura
 - **Versão:** v2.9.5
 - **Cliente-alvo:** Multinacionais com operação em PT/FR sem equipa técnica de dados
 - **Status:** Versão Norauto congelada. Reformulação white-label em curso.
 
-### 03 · Nodeflow O2C Reader
+### 04 · Nodeflow O2C Reader
 - **Stack:** Node.js + Express + Gemini API + pdf.js + RAG local
 - **Link:** `https://nodeflow-o2c.onrender.com/` (Render free tier — ~30s arranque)
 - **Repositório:** `https://github.com/Nankov-ai/hiperfrio-o2c-rag`
+- **Local:** `c:/projetos/4. hiperfrio-o2c-rag/`
 - **O que faz:** Sistema RAG para análise de documentos O2C. Lê PDFs de encomendas, cruza com catálogo e SLA locais, sugere peças, gera ordens de trabalho, integra com ERP PHC, voz-para-texto.
 - **Cliente-alvo:** Empresas de distribuição com processo O2C manual
-- **Status:** v2.1 operacional · White-label sem referências a cliente
+- **Status:** v2.1 operacional · White-label (AIssist)
 
-### 04 · Análise de Crédito Habitação
+### 05 · Análise de Crédito Habitação
 - **Stack:** React 18 + TypeScript + Gemini API + Recharts + jsPDF + pdf.js
 - **Link:** `https://nankov-ai.github.io/Analise-Credito-Habitacao/`
-- **O que faz:** Comparação visual de propostas de crédito (TAN, TAEG, seguros, custos), leitura de PDFs, chat IA, exportação de relatório PDF. API key inserida pelo utilizador na UI.
+- **Local:** `c:/projetos/5. análise-propostas-de-crédito-habitação-final/`
+- **O que faz:** Comparação visual de propostas de crédito em TAN, TAEG, seguros, custos totais. Leitura de PDFs, chat IA, exportação de relatório PDF. API key inserida pelo utilizador na UI.
 - **Cliente-alvo:** Famílias, brokers imobiliários, consultores financeiros
 - **Status:** Operacional
 
-### 05 · Alpha2026
+### 06 · Alpha2026
 - **Stack:** HTML / JavaScript / Gemini API
 - **Link:** `https://nankov-ai.github.io/2026-Alpha/`
+- **Local:** `c:/projetos/8. Alpha2026/`
 - **O que faz:** Briefing diário com Gemini, registo de decisões estruturado, tracker KPIs semanal, STT em PT, export .md/.txt
 - **Cliente-alvo:** Gestores, founders, profissionais de alta performance
 - **Status:** Operacional · Uso pessoal activo
 
-### 06 · Logic Gate Trainer
+### 07 · Logic Gate Trainer
 - **Stack:** React 18 + TypeScript + Gemini API + React Router
 - **Link:** `https://nankov-ai.github.io/Treinador_de_Logica/`
+- **Local:** `c:/projetos/2. logic-gate-trainer/`
 - **O que faz:** Exercícios de portas lógicas gerados por Gemini, sistema de jogo com streak/scoreboard/histórico, hints com IA, confetti
 - **Cliente-alvo:** Plataformas e-learning, escolas técnicas, formação em TI
 - **Status:** Operacional
 
-### 07 · Treino e Diagnóstico Ocular
+### 08 · Treino e Diagnóstico Ocular
 - **Stack:** React 18 + TypeScript + localStorage
 - **Link:** `https://nankov-ai.github.io/Treino-Ocular/`
+- **Local:** `c:/projetos/1. treino-e-diagnóstico-ocular/`
 - **O que faz:** 6 exercícios visuais guiados, diagnóstico ocular (acuidade, Amsler, questionário), regra 20-20-20, histórico de diagnósticos
 - **Cliente-alvo:** Clínicas de oftalmologia, ópticas, plataformas de saúde digital
 - **Status:** Operacional
 
-### 08 · Gestor de Quotas
+### 09 · Gestor de Quotas
 - **Stack:** React 18 + TypeScript + Gemini API
 - **Link:** `https://nankov-ai.github.io/Gestor-de-Quotas/`
+- **Local:** `c:/projetos/3. gestor-de-quotas---azp-(modo-de-teste)/Gestor-de-Quotas/`
 - **O que faz:** Gestão de quotas de associados com IA integrada
 - **Cliente-alvo:** Associações desportivas, culturais, profissionais
 - **Status:** Operacional · modo teste
 
-### 09 · Automagic · Envio de Emails
+### 10 · Automagic · Envio de Emails
 - **Stack:** Python (smtplib) + Google Apps Script + HTML
 - **Link:** `https://nankov-ai.github.io/Envio-de-emails-em-massa---Script/`
+- **Local:** `c:/projetos/9. Envio de emails em massa/`
 - **O que faz:** Envio automatizado de emails personalizados em massa. Mail merge via Gmail SMTP. Lê CSV/TXT, suporta anexos. App web + executável .exe.
 - **Cliente-alvo:** PMEs e equipas comerciais sem orçamento para Mailchimp
 - **Status:** Operacional
 
-### 10 · Vocaliz
+### 11 · Vocaliz
 - **Stack:** HTML / CSS / JavaScript (Web Speech API)
 - **Link:** `https://nankov-ai.github.io/Vocaliz/`
+- **Local:** `c:/projetos/Vocaliz/`
 - **O que faz:** Leitor TTS com suporte a 8 formatos (txt, md, csv, html, srt, pdf, docx, xlsx), detecção de tabelas, controlo de voz/velocidade/pitch, barra de progresso.
 - **Cliente-alvo:** Utilizadores com dificuldades de leitura, profissionais em movimento, plataformas de acessibilidade
 - **Status:** Operacional
 
-### 11 · NeoOtto
+### 12 · NeoOtto
 - **Stack:** HTML / CSS / JavaScript / ChatGPT
 - **Link:** `https://nankov-ai.github.io/NeoOtto.github.io/`
+- **Local:** `c:/projetos/NeoOtto/`
 - **O que faz:** Agente de IA especializado em identificar oportunidades de negócio. Diagnóstico de contexto, benchmark de mercado, recomendações práticas em linguagem executiva.
 - **Cliente-alvo:** Gestores e empresas que querem perceber onde a IA pode gerar impacto real
 - **Status:** Operacional
 
-### 12 · HealHour
+### 13 · HealHour
 - **Stack:** HTML / CSS / JavaScript · PWA
 - **Link:** `https://nankov-ai.github.io/Healing-jejum/`
 - **Repositório:** `https://github.com/Nankov-ai/Healing-jejum`
+- **Local:** `c:/projetos/2H HealHour/`
 - **O que faz:** PWA de tracking de jejum intermitente. Anel de progresso em tempo real, fases metabólicas, protocolos configuráveis (16h, 18h, 24h), histórico. Instalável no telemóvel.
 - **Cliente-alvo:** Pessoas que praticam jejum intermitente sem apps pagas
 - **Status:** Operacional
 
-### 13 · OutOfBox
+### 14 · OutOfBox
 - **Stack:** Next.js + TypeScript + Prisma + IA
 - **Link:** `https://outofbox.onrender.com` (Render free tier — ~30s arranque)
+- **Local:** `c:/projetos/OutOfBox/`
 - **O que faz:** Coach de mentalidade com IA. Transforma pensamentos limitantes em perguntas de crescimento. Cada desafio é ressignificado como oportunidade.
 - **Cliente-alvo:** Profissionais e líderes que querem desenvolver mentalidade de crescimento
 - **Status:** Operacional
 
-### 14 · English Adventure
+### 15 · English Adventure
 - **Stack:** HTML / CSS / JavaScript
 - **Link:** `https://nankov-ai.github.io/English-Adventure/`
+- **Local:** `c:/projetos/English Adventure/`
 - **O que faz:** App de aprendizagem de inglês para crianças com 4 jogos interactivos: Match, Quiz, Unscramble e Complete the Sentence. Vocabulário de partes do corpo, pontuação em tempo real, sistema de hints.
 - **Cliente-alvo:** Escolas, professores de inglês e plataformas de ensino para crianças
 - **Status:** Operacional
 
-### 15 · Voz Afiada
+### 16 · Voz Afiada
 - **Stack:** Gemini · IA Agent
 - **Link:** `https://gemini.google.com/gem/1aRNCCqYq-TJREAyE_DZerH9gEiVl6REZ?usp=sharing`
 - **O que faz:** Diagnóstico cirúrgico da comunicação verbal — sem filtros. Identifica fillers, fraqueza de autoridade e estrutura ineficiente. Reescreve. Exige.
@@ -159,37 +180,55 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 ### Site (index.html)
 - **Single-file** HTML + CSS + JS — sem build tools, sem dependências
 - **Deploy:** GitHub Pages via repo `nankov-ai.github.io` (branch `main`)
-- **Tipografia:** DM Mono + Fraunces via Google Fonts
+- **Tipografia:** DM Mono + Fraunces — **self-hosted** em `fonts/` (woff2), sem Google Fonts
 - **Animações:** CSS transitions apenas (sem Framer Motion)
 - **Responsivo:** mobile-first, max-width 1280px com clamp padding
 - **Back-to-top:** botão discreto 30px, aparece ao scroll, desaparece após 1.5s inactividade e perto do footer
+- **Localhost para preview:** `python -m http.server 3000` em `c:/projetos/Nodeflow/` (parar: `taskkill /f /im python.exe`)
+
+### Hero
+- **Layout duas colunas:** texto à esquerda + painel de métricas à direita (colapsa para coluna única abaixo de 900px)
+- **Painel de métricas:** 3 processos reais com tempos antes/depois + barras animadas + 3 stats (−94% tempo, 0 erros, 16 apps)
+- **CTAs:** "Fale connosco" (primário verde) + "Ver portfolio →" (ghost)
+- **Keyword highlight:** "Mais impacto." em Signal green
 
 ### Cards do portfolio
 - **Formato:** Desafio → Resultado (não só features técnicas)
-- **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar) via `mailto:` com subject e body pré-preenchidos com o nome da app
+- **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar)
+- **Hierarquia visual:** `.strategic` (cards 02, 03, 04, 05) com borda Signal subtil; `.featured` (card 16, Voz Afiada) com glow máximo
+- **Total:** 16 cards + 1 CTA card verde no final
+
+### Privacidade & Segurança (GDPR + AI Act)
+- **Google Fonts removido** — fontes servidas localmente de `fonts/`
+- **`rel="noopener noreferrer"`** em todos os 21+ links externos
+- **Modal de privacidade** no footer (link "Privacidade") — sem cookies, sem analytics, fontes locais
+- **Aviso AI Act Art. 50** adicionado a todas as apps com IA interactiva: NeoOtto, Alpha2026, O2C Reader, Logic Gate Trainer, Gestor de Quotas, Análise de Crédito, OutOfBox, NVisionAI+
+- **Pilar "Privacidade & Segurança"** na secção Sobre (substituiu "Publicação imediata")
+- **Parágrafo de privacidade** no texto da secção Sobre
 
 ### Contacto
-- **Email picker** em todos os botões "Fale connosco" do site (nav, hero, CTA card, secção contacto, cada card)
+- **Email picker** em todos os botões "Fale connosco" do site (nav, hero, CTA card, secção contacto, cada card, modelos de colaboração)
 - **Sem formulários externos** — usa Gmail e Outlook web directamente
 - **Email:** `nodeflow.pt@gmail.com`
 
 ### Secções do site
-1. Hero (slogan + CTA)
-2. Stats (15 apps / 9 com IA / 5 só automação / 5 sectores)
-3. Portfolio (15 cards + CTA card verde)
+1. Hero (duas colunas: slogan/CTAs + painel métricas)
+2. Stats (16 apps / 10 com IA / 5 só automação / 5 sectores)
+3. Portfolio (16 cards + CTA card verde)
 4. Como trabalhamos (Diagnóstico → Construção → Entrega)
 5. Modelos de colaboração (MVP Rápido · Projecto à Medida · White-label)
-6. Sobre a Nodeflow (texto + 4 pillars)
+6. Sobre a Nodeflow (texto + 4 pillars: Execução real, IA integrada, Privacidade & Segurança, Código limpo)
 7. Contacto
-8. Footer
+8. Footer (com link "Privacidade" → modal)
 
 ---
 
 ## Ficheiros nesta pasta
 
-| Ficheiro | Descrição |
+| Ficheiro/Pasta | Descrição |
 |---|---|
 | `index.html` | Site completo — HTML + CSS + JS single-file |
+| `fonts/` | Fontes woff2 self-hosted (DM Mono + Fraunces) + `fonts.css` |
 | `CLAUDE.md` | Este ficheiro — contexto completo para o Claude Code |
 | `diagrams.md` | Diagramas Mermaid do projecto (portfolio, processo, arquitectura, roadmap) |
 
@@ -201,10 +240,16 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Secção "Como trabalhamos"
 - [x] Cards com formato Desafio → Resultado
 - [x] Email picker contextual em todos os CTAs
+- [x] Secção de modelos de colaboração
+- [x] Self-host Google Fonts (GDPR)
+- [x] Política de privacidade (modal no footer)
+- [x] Aviso AI Act Art. 50 em todas as apps com IA
+- [x] Hero duas colunas com painel de métricas
+- [x] Hierarquia visual no portfolio (strategic / featured)
+- [x] Contraste WCAG AA nos textos secundários
 
-### Fase 2 · A fazer
-- [x] Secção de modelos de colaboração (MVP Rápido · Projecto à Medida · White-label)
-- [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo
+### Fase 2 · Em aberto
+- [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
 
 ### Fase 3 · Futuro
 - [ ] Dashboard de leads (lead → proposta → cliente)
@@ -222,5 +267,6 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - Fala comigo em **português de Portugal**
 - Quando tiveres dúvidas sobre decisões de produto ou marca, pergunta — não assumas
 - Prefiro código limpo e bem estruturado a código rápido e sujo
-- Commita com mensagens claras em inglês (convenção: `feat:`, `fix:`, `refactor:`, `docs:`)
+- Commita com mensagens claras em inglês (convenção: `feat:`, `fix:`, `refactor:`, `docs:`, `copy:`)
 - Não adicionar features não pedidas, não criar ficheiros desnecessários
+- Actualiza este ficheiro sempre que houver mudanças relevantes no projecto
