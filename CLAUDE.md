@@ -173,6 +173,16 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Status:** Em desenvolvimento · Lançamento em breve
 - **Nota estratégica:** Potencial para produto standalone com waitlist — posicionamento diferenciador, sem concorrência directa no segmento de crítico de comunicação
 
+### 17 · AudiNote
+- **Stack:** Kotlin + Jetpack Compose + Gemini API + Room + Hilt + Android (Min SDK 31)
+- **Landing page:** `https://nankov-ai.github.io/Ouvinte---AudiNote/`
+- **Local:** `c:/projetos/Ouvinte/` (nome interno: Ouvinte; nome público: AudiNote)
+- **O que faz:** App nativa Android para gravar palestras/reuniões, transcrever com Gemini (diarização de oradores), extrair tópicos, fact-check via Google Custom Search e gerar perguntas inteligentes por orador. Exporta PDF. PIN de acesso. Persistência total em Room DB.
+- **Cliente-alvo:** Profissionais, founders e estudantes que não podem perder o que ouvem
+- **Status:** Beta · Acesso antecipado (APK distribuído manualmente via email)
+- **Nota site:** Card com botão "Quero testar" que abre modal com formulário RGPD-compliant → compõe email para nodeflow.pt@gmail.com com dados do candidato
+- **AI Act:** Art. 50 aplicável — aviso incluído no card e no modal
+
 ---
 
 ## Decisões técnicas tomadas
@@ -188,15 +198,16 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ### Hero
 - **Layout duas colunas:** texto à esquerda + painel de métricas à direita (colapsa para coluna única abaixo de 900px)
-- **Painel de métricas:** 3 processos reais com tempos antes/depois + barras animadas + 3 stats (−94% tempo, 0 erros, 16 apps)
+- **Painel de métricas:** 3 processos reais com tempos antes/depois + barras animadas + 3 stats (−94% tempo, 0 erros, 17 apps)
 - **CTAs:** "Fale connosco" (primário verde) + "Ver portfolio →" (ghost)
 - **Keyword highlight:** "Mais impacto." em Signal green
 
 ### Cards do portfolio
 - **Formato:** Desafio → Resultado (não só features técnicas)
 - **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar)
-- **Hierarquia visual:** `.strategic` (cards 02, 03, 04, 05) com borda Signal subtil; `.featured` (card 16, Voz Afiada) com glow máximo
-- **Total:** 16 cards + 1 CTA card verde no final
+- **Hierarquia visual:** `.strategic` (cards 02, 03, 04, 05) com borda Signal subtil; `.featured` (cards 16 e 17) com glow máximo
+- **Total:** 17 cards + 1 CTA card verde no final
+- **PT/EN:** Switcher no nav e footer; `html[data-lang="en"]` + `.lang-pt`/`.lang-en` show/hide; `localStorage('nf-lang')`
 
 ### Privacidade & Segurança (GDPR + AI Act)
 - **Google Fonts removido** — fontes servidas localmente de `fonts/`

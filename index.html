@@ -795,6 +795,93 @@
       .pillars { grid-template-columns: 1fr; }
     }
 
+    /* ── AUDINATE BETA MODAL ── */
+    .audinate-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(14,14,14,.88); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .audinate-overlay.open { display: flex; }
+    .audinate-modal {
+      background: #161616; border: 1px solid var(--border);
+      border-radius: 6px; max-width: 540px; width: 100%;
+      padding: 2rem 2rem 1.5rem; position: relative;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .audinate-modal h2 {
+      font-family: 'DM Mono', monospace; font-weight: 500;
+      font-size: .85rem; letter-spacing: .1em; color: var(--paper);
+      text-transform: uppercase; margin-bottom: .4rem;
+    }
+    .audinate-modal .modal-sub {
+      font-size: .75rem; color: var(--stone); margin-bottom: 1.5rem; line-height: 1.6;
+    }
+    .audinate-form-row { display: flex; gap: 1rem; }
+    .audinate-field { display: flex; flex-direction: column; gap: .35rem; margin-bottom: .9rem; flex: 1; }
+    .audinate-field label { font-size: .7rem; letter-spacing: .09em; color: var(--stone); text-transform: uppercase; }
+    .audinate-field input,
+    .audinate-field select,
+    .audinate-field textarea {
+      background: #0a0a0a; border: 1px solid var(--border);
+      color: var(--paper); font-family: 'DM Mono', monospace; font-size: .82rem;
+      padding: .55rem .75rem; outline: none; border-radius: 3px;
+      transition: border-color .2s;
+    }
+    .audinate-field input:focus,
+    .audinate-field select:focus,
+    .audinate-field textarea:focus { border-color: var(--signal); }
+    .audinate-field textarea { resize: vertical; min-height: 75px; }
+    .audinate-field select option { background: #0a0a0a; }
+    .audinate-consent {
+      display: flex; gap: .75rem; align-items: flex-start; margin-bottom: 1rem;
+    }
+    .audinate-consent input[type=checkbox] { margin-top: .2rem; flex-shrink: 0; accent-color: var(--signal); }
+    .audinate-consent label { font-size: .72rem; color: var(--stone); line-height: 1.65; }
+    .audinate-consent a { color: var(--signal); }
+    .audinate-age-warn {
+      font-size: .72rem; color: #f5a623; padding: .45rem .7rem;
+      border: 1px solid rgba(245,166,35,.25); border-radius: 3px;
+      margin-bottom: .9rem; display: none;
+    }
+    .audinate-age-warn.visible { display: block; }
+    .audinate-error { font-size: .72rem; color: #ff5555; margin-bottom: .75rem; display: none; }
+    .audinate-error.visible { display: block; }
+    .audinate-submit {
+      width: 100%; padding: .75rem;
+      background: var(--signal); color: var(--ink);
+      font-family: 'DM Mono', monospace; font-weight: 500; font-size: .85rem;
+      border: none; cursor: pointer; letter-spacing: .05em; border-radius: 3px;
+      transition: background .2s;
+    }
+    .audinate-submit:hover { background: var(--signal2); }
+    .audinate-ai-note {
+      font-size: .67rem; color: var(--stone); margin-top: 1rem;
+      border-top: 1px solid var(--border); padding-top: .75rem; line-height: 1.6;
+    }
+    .audinate-success { display: none; text-align: center; padding: .5rem 0; }
+    .audinate-success.visible { display: block; }
+    .audinate-success p { color: var(--signal); font-size: .9rem; margin-bottom: .5rem; font-weight: 500; }
+    .audinate-success small { color: var(--stone); font-size: .75rem; line-height: 1.7; display: block; }
+    button.card-arrow { background: none; cursor: pointer; font-family: 'DM Mono', monospace; }
+    .audinate-open-btn {
+      background: var(--signal) !important; color: var(--ink) !important;
+      border-color: var(--signal) !important; font-weight: 500;
+      padding: .55rem 1.4rem !important; font-size: .8rem !important;
+      letter-spacing: .06em !important;
+    }
+    .audinate-open-btn:hover { background: var(--signal2) !important; border-color: var(--signal2) !important; }
+    .audinate-keys-info {
+      background: rgba(0,200,150,.06); border: 1px solid rgba(0,200,150,.2);
+      border-radius: 4px; padding: .9rem 1rem; margin-bottom: 1.25rem;
+    }
+    .audinate-keys-info p {
+      font-size: .73rem; color: var(--stone); line-height: 1.65; margin-bottom: .6rem;
+    }
+    .audinate-keys-info p:last-child { margin-bottom: 0; }
+    .audinate-keys-info strong { color: var(--paper); font-weight: 500; }
+    .audinate-keys-info a { color: var(--signal); text-decoration: none; }
+    .audinate-keys-info a:hover { text-decoration: underline; }
+
     /* ── LANG SWITCH ── */
     .lang-en { display: none; }
     html[data-lang="en"] .lang-pt { display: none; }
@@ -846,7 +933,7 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-badge"><span class="badge-dot"></span><span class="lang-pt">16 apps em produção</span><span class="lang-en">16 apps in production</span></div>
+      <div class="hero-badge"><span class="badge-dot"></span><span class="lang-pt">17 apps em produção</span><span class="lang-en">17 apps in production</span></div>
       <p class="hero-slogan"><span class="lang-pt">Do processo manual à vantagem competitiva.</span><span class="lang-en">From manual process to competitive advantage.</span></p>
       <h1 class="hero-title"><span class="lang-pt lang-blk">Menos atrito.<br><span class="highlight">Mais impacto.</span></span><span class="lang-en lang-blk">Less friction.<br><span class="highlight">More impact.</span></span></h1>
       <p class="hero-desc">
@@ -897,7 +984,7 @@
             <div class="flow-stat-label"><span class="lang-pt">Erros manuais</span><span class="lang-en">Manual errors</span></div>
           </div>
           <div class="flow-stat">
-            <div class="flow-stat-num">16</div>
+            <div class="flow-stat-num">17</div>
             <div class="flow-stat-label">Apps live</div>
           </div>
         </div>
@@ -912,11 +999,11 @@
 <div class="stats-section">
 <div class="stats">
   <div class="stat">
-    <div class="stat-num">16</div>
+    <div class="stat-num">17</div>
     <div class="stat-label"><span class="lang-pt">Apps em produção</span><span class="lang-en">Apps in production</span></div>
   </div>
   <div class="stat">
-    <div class="stat-num">10</div>
+    <div class="stat-num">11</div>
     <div class="stat-label"><span class="lang-pt">Com IA integrada</span><span class="lang-en">With integrated AI</span></div>
   </div>
   <div class="stat">
@@ -1238,6 +1325,29 @@
       </div>
     </div>
 
+    <!-- Card 17 — AudiNote -->
+    <div class="app-card featured audinate-card" data-cats="produtividade">
+      <div class="card-top">
+        <span class="card-num">17</span>
+        <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Beta · Acesso antecipado</span><span class="lang-en">Beta · Early access</span></span>
+      </div>
+      <div class="card-icon">🎙️</div>
+      <div class="card-name">AudiNote</div>
+      <p class="card-tagline"><span class="lang-pt lang-blk"><strong>Desafio:</strong> Sais de palestras e reuniões com notas incompletas e as perguntas certas por fazer? <strong>Resolução:</strong> Grava o áudio, a IA transcreve e extrai tópicos-chave, verifica factos e no final gera perguntas inteligentes por orador. App disponível para Android.</span><span class="lang-en lang-blk"><strong>Challenge:</strong> Do you leave talks and meetings with incomplete notes and the right questions unasked? <strong>Solution:</strong> Record the audio, AI transcribes and extracts key topics, fact-checks and generates smart questions per speaker. Available for Android.</span></p>
+      <div class="card-client"><span class="lang-pt lang-blk"><strong>Para quem:</strong> Profissionais, founders e estudantes que não podem perder o que ouvem</span><span class="lang-en lang-blk"><strong>For:</strong> Professionals, founders and students who can't afford to miss what they hear</span></div>
+      <div class="card-note" style="font-size:.72rem;color:var(--stone);margin-top:.5rem;"><span class="lang-pt">🤖 App com IA generativa (Gemini) — conteúdo produzido por IA. (AI Act Art. 50)</span><span class="lang-en">🤖 App with generative AI (Gemini) — AI-produced content. (AI Act Art. 50)</span></div>
+      <div class="card-bottom">
+        <div class="stack-tags">
+          <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Gemini API</span><span class="tag">Android</span>
+          <span class="tag cat">Produtividade</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.45rem;width:100%;">
+          <button class="card-arrow audinate-open-btn" style="width:100%;justify-content:center;"><span class="lang-pt">Quero testar →</span><span class="lang-en">I want to test →</span></button>
+          <a class="card-arrow" href="https://nankov-ai.github.io/Ouvinte---AudiNote/" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center;"><span class="lang-pt">Saber mais →</span><span class="lang-en">Learn more →</span></a>
+        </div>
+      </div>
+    </div>
+
     <!-- CTA card -->
     <div class="cta-card">
       <div class="cta-rocket">🚀</div>
@@ -1436,6 +1546,72 @@
   </div>
 </div>
 
+<!-- ── AUDINATE BETA MODAL ── -->
+<div class="audinate-overlay" id="audinateOverlay">
+  <div class="audinate-modal" role="dialog" aria-modal="true">
+    <button class="privacy-close" id="audinateClose" aria-label="Fechar">✕</button>
+    <h2><span class="lang-pt">AudiNote · Pedido de Acesso Beta</span><span class="lang-en">AudiNote · Beta Access Request</span></h2>
+    <p class="modal-sub"><span class="lang-pt">App Android nativa · Gemini API · Acesso limitado aos primeiros 20 beta testers.<br>Preenche o formulário — entraremos em contacto em 48h com o APK e instruções.</span><span class="lang-en">Native Android app · Gemini API · Limited to the first 20 beta testers.<br>Fill in the form — we'll contact you within 48h with the APK and instructions.</span></p>
+
+    <div class="audinate-keys-info">
+      <p><strong><span class="lang-pt">⚙ A app é fornecida sem chaves de API.</span><span class="lang-en">⚙ The app is provided without API keys.</span></strong> <span class="lang-pt">Após instalação, tens de inserir as tuas próprias chaves nas Definições da app. São gratuitas nos planos base de cada serviço.</span><span class="lang-en">After installation, you need to insert your own keys in the app Settings. They are free on the base plan of each service.</span></p>
+      <p><strong>Gemini API Key</strong> — <span class="lang-pt">usada para transcrição do áudio, extracção de tópicos e geração de perguntas.</span><span class="lang-en">used for audio transcription, topic extraction and question generation.</span> <span class="lang-pt">Obter em:</span><span class="lang-en">Get it at:</span> <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">aistudio.google.com/apikey</a></p>
+      <p><strong>Google Search API Key</strong> — <span class="lang-pt">usada para verificar factos mencionados na gravação via pesquisa web.</span><span class="lang-en">used to fact-check mentions from the recording via web search.</span> <span class="lang-pt">Obter em:</span><span class="lang-en">Get it at:</span> <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer">console.cloud.google.com</a></p>
+      <p><strong>Google Search Engine ID</strong> — <span class="lang-pt">identifica o motor de pesquisa personalizado (necessário para a API acima funcionar).</span><span class="lang-en">identifies your custom search engine (required for the API above to work).</span> <span class="lang-pt">Obter em:</span><span class="lang-en">Get it at:</span> <a href="https://programmablesearchengine.google.com/" target="_blank" rel="noopener noreferrer">programmablesearchengine.google.com</a></p>
+    </div>
+
+    <div id="audinateForm">
+      <div class="audinate-form-row">
+        <div class="audinate-field">
+          <label for="an-nome"><span class="lang-pt">Nome *</span><span class="lang-en">Name *</span></label>
+          <input type="text" id="an-nome" autocomplete="name" required />
+        </div>
+        <div class="audinate-field">
+          <label for="an-email">Email *</label>
+          <input type="email" id="an-email" autocomplete="email" required />
+        </div>
+      </div>
+      <div class="audinate-form-row">
+        <div class="audinate-field">
+          <label for="an-idade"><span class="lang-pt">Idade *</span><span class="lang-en">Age *</span></label>
+          <input type="number" id="an-idade" min="10" max="99" required />
+        </div>
+        <div class="audinate-field">
+          <label for="an-android"><span class="lang-pt">Versão Android *</span><span class="lang-en">Android version *</span></label>
+          <select id="an-android" required>
+            <option value="">—</option>
+            <option value="Android 12">Android 12</option>
+            <option value="Android 13">Android 13</option>
+            <option value="Android 14">Android 14</option>
+            <option value="Android 15">Android 15</option>
+            <option value="Android 16">Android 16</option>
+          </select>
+        </div>
+      </div>
+      <div class="audinate-field">
+        <label for="an-uso"><span class="lang-pt">Como usarias a AudiNote? *</span><span class="lang-en">How would you use AudiNote? *</span></label>
+        <textarea id="an-uso" placeholder="Ex: palestras de gestão, reuniões de equipa, aulas universitárias..." required></textarea>
+      </div>
+      <div class="audinate-age-warn" id="anAgeWarn"><span class="lang-pt">Tens menos de 16 anos. De acordo com o RGPD (Art. 8), é necessário o consentimento de um encarregado de educação. Inclui o contacto de um responsável no campo acima.</span><span class="lang-en">You are under 16. Under GDPR (Art. 8), parental consent is required. Include a parent/guardian's contact in the field above.</span></div>
+      <div class="audinate-consent">
+        <input type="checkbox" id="an-consent" />
+        <label for="an-consent"><span class="lang-pt">Aceito que os dados acima sejam partilhados com a Nodeflow exclusivamente para fins de acesso beta à AudiNote. Não serão cedidos a terceiros. Posso solicitar a remoção dos meus dados a qualquer momento via</span><span class="lang-en">I agree that the above data may be shared with Nodeflow solely for AudiNote beta access purposes. It will not be passed to third parties. I can request removal at any time via</span> <a href="mailto:nodeflow.pt@gmail.com">nodeflow.pt@gmail.com</a> (<span class="lang-pt">Política de Privacidade</span><span class="lang-en">Privacy Policy</span>)</label>
+      </div>
+      <div class="audinate-error" id="anError"></div>
+      <button class="audinate-submit" id="anSubmit"><span class="lang-pt">Enviar pedido de acesso →</span><span class="lang-en">Send access request →</span></button>
+    </div>
+
+    <div class="audinate-success" id="audinateSuccess">
+      <p><span class="lang-pt">Pedido enviado com sucesso.</span><span class="lang-en">Request sent successfully.</span></p>
+      <small><span class="lang-pt">O teu cliente de email abriu com o pedido pré-preenchido.<br>Confirma o envio e aguarda o nosso contacto em até 48h.<br>Vais receber o APK e as instruções de instalação.</span><span class="lang-en">Your email client opened with the request pre-filled.<br>Confirm the send and wait for our contact within 48h.<br>You will receive the APK and installation instructions.</span></small>
+    </div>
+
+    <div class="audinate-ai-note">
+      <span class="lang-pt">🤖 <strong style="color:var(--paper);">AI Act Art. 50 (UE 2024/1689):</strong> A AudiNote utiliza IA generativa (Google Gemini) para transcrição, análise e geração de perguntas. O conteúdo produzido é de natureza auxiliar e deve ser verificado pelo utilizador. Esta app não toma decisões automatizadas com efeitos jurídicos ou equivalentes.</span><span class="lang-en">🤖 <strong style="color:var(--paper);">AI Act Art. 50 (EU 2024/1689):</strong> AudiNote uses generative AI (Google Gemini) for transcription, analysis and question generation. The content produced is auxiliary in nature and must be verified by the user. This app does not make automated decisions with legal or equivalent effects.</span>
+    </div>
+  </div>
+</div>
+
 <a href="#" class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</a>
 
 <script>
@@ -1476,8 +1652,63 @@
   privacyOverlay.addEventListener('click', e => { if (e.target === privacyOverlay) privacyOverlay.classList.remove('open'); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') privacyOverlay.classList.remove('open'); });
 
+  // ── AudiNote Beta Modal ──
+  const audinateOverlay = document.getElementById('audinateOverlay');
+  const audinateClose = document.getElementById('audinateClose');
+  const anSubmit = document.getElementById('anSubmit');
+  const anAgeWarn = document.getElementById('anAgeWarn');
+  const anError = document.getElementById('anError');
+  const audinateForm = document.getElementById('audinateForm');
+  const audinateSuccess = document.getElementById('audinateSuccess');
+
+  document.querySelectorAll('.audinate-open-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      audinateOverlay.classList.add('open');
+      audinateForm.style.display = '';
+      audinateSuccess.classList.remove('visible');
+      anError.classList.remove('visible');
+    });
+  });
+  audinateClose.addEventListener('click', () => audinateOverlay.classList.remove('open'));
+  audinateOverlay.addEventListener('click', e => { if (e.target === audinateOverlay) audinateOverlay.classList.remove('open'); });
+
+  document.getElementById('an-idade').addEventListener('input', function() {
+    anAgeWarn.classList.toggle('visible', this.value && parseInt(this.value) < 16);
+  });
+
+  anSubmit.addEventListener('click', () => {
+    const nome = document.getElementById('an-nome').value.trim();
+    const email = document.getElementById('an-email').value.trim();
+    const idade = document.getElementById('an-idade').value.trim();
+    const android = document.getElementById('an-android').value;
+    const uso = document.getElementById('an-uso').value.trim();
+    const consent = document.getElementById('an-consent').checked;
+    const isEN = (localStorage.getItem('nf-lang') || 'pt') === 'en';
+
+    if (!nome || !email || !idade || !android || !uso) {
+      anError.textContent = isEN ? 'Please fill in all required fields.' : 'Preenche todos os campos obrigatórios.';
+      anError.classList.add('visible'); return;
+    }
+    if (!consent) {
+      anError.textContent = isEN ? 'You must accept the consent to continue.' : 'Tens de aceitar o consentimento para continuar.';
+      anError.classList.add('visible'); return;
+    }
+    anError.classList.remove('visible');
+
+    const menor = parseInt(idade) < 16;
+    const toAddr = 'nodeflow.pt@gmail.com';
+    const subject = encodeURIComponent(isEN ? 'AudiNote — Beta Access Request' : 'AudiNote — Pedido de Acesso Beta');
+    const body = encodeURIComponent(isEN
+      ? `AudiNote Beta Access Request\n\nName: ${nome}\nEmail: ${email}\nAge: ${idade}${menor ? ' (PARENTAL CONSENT REQUIRED)' : ''}\nAndroid: ${android}\n\nHow they would use it:\n${uso}\n\n---\nSent via nodeflow.pt`
+      : `Pedido de Acesso Beta — AudiNote\n\nNome: ${nome}\nEmail: ${email}\nIdade: ${idade}${menor ? ' (MENOR DE 16 — CONSENTIMENTO PARENTAL NECESSÁRIO)' : ''}\nAndroid: ${android}\n\nComo usaria a AudiNote:\n${uso}\n\n---\nEnviado via nodeflow.pt`
+    );
+    window.open(`https://mail.google.com/mail/?view=cm&to=${toAddr}&su=${subject}&body=${body}`, '_blank', 'noopener,noreferrer');
+    audinateForm.style.display = 'none';
+    audinateSuccess.classList.add('visible');
+  });
+
   // Botão "Fale connosco" contextual por card com picker de email
-  document.querySelectorAll('.app-card').forEach(card => {
+  document.querySelectorAll('.app-card:not(.audinate-card)').forEach(card => {
     const name = card.querySelector('.card-name').textContent.trim();
     const subject = encodeURIComponent(`Interesse em ${name} — Nodeflow`);
     const body = encodeURIComponent(
