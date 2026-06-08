@@ -40,7 +40,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ---
 
-## Apps no portfolio (16 cards)
+## Apps no portfolio (17 cards)
 
 ### 01 · Portal de Notas de Despesa
 - **Stack:** HTML / CSS / JavaScript / pdf-lib
@@ -204,10 +204,18 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ### Cards do portfolio
 - **Formato:** Desafio → Resultado (não só features técnicas)
-- **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar)
+- **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar) — gerado em JS, excluindo `.audinate-card`
 - **Hierarquia visual:** `.strategic` (cards 02, 03, 04, 05) com borda Signal subtil; `.featured` (cards 16 e 17) com glow máximo
 - **Total:** 17 cards + 1 CTA card verde no final
-- **PT/EN:** Switcher no nav e footer; `html[data-lang="en"]` + `.lang-pt`/`.lang-en` show/hide; `localStorage('nf-lang')`
+
+### PT/EN Bilingue
+- **Switcher:** botões PT/EN no nav e no footer de ambos os sites
+- **Mecanismo:** `html[data-lang="en"]` no elemento `<html>` via `setAttribute`
+- **CSS:** `.lang-en { display:none }` por defeito; `html[data-lang="en"] .lang-pt { display:none }` + `html[data-lang="en"] .lang-en { display:inline }` + `html[data-lang="en"] .lang-en.lang-blk { display:block }`
+- **Atenção (bug resolvido):** usar `.lang-en.lang-blk` e NÃO `.lang-blk` — especificidade igual causaria `.lang-pt` visível em EN
+- **Persistência:** `localStorage('nf-lang')` — valor `'pt'` ou `'en'`
+- **Nomes de produto:** nunca traduzir — "Notas de Despesa", "Análise de Crédito", etc. ficam sempre em PT
+- **Sites cobertos:** `index.html` (Nodeflow) e `c:/projetos/Ouvinte/index.html` (AudiNote landing page)
 
 ### Privacidade & Segurança (GDPR + AI Act)
 - **Google Fonts removido** — fontes servidas localmente de `fonts/`
@@ -224,8 +232,8 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ### Secções do site
 1. Hero (duas colunas: slogan/CTAs + painel métricas)
-2. Stats (16 apps / 10 com IA / 5 só automação / 5 sectores)
-3. Portfolio (16 cards + CTA card verde)
+2. Stats (17 apps / 11 com IA / 5 só automação / 5 sectores)
+3. Portfolio (17 cards + CTA card verde)
 4. Como trabalhamos (Diagnóstico → Construção → Entrega)
 5. Modelos de colaboração (MVP Rápido · Projecto à Medida · White-label)
 6. Sobre a Nodeflow (texto + 4 pillars: Execução real, IA integrada, Privacidade & Segurança, Código limpo)
@@ -258,6 +266,9 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Hero duas colunas com painel de métricas
 - [x] Hierarquia visual no portfolio (strategic / featured)
 - [x] Contraste WCAG AA nos textos secundários
+- [x] Card 17 · AudiNote com modal RGPD-compliant e beta access form
+- [x] Landing page AudiNote (`c:/projetos/Ouvinte/index.html`) publicada em GitHub Pages
+- [x] Site PT/EN bilingue — switcher no nav e footer de ambos os sites
 
 ### Fase 2 · Em aberto
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
