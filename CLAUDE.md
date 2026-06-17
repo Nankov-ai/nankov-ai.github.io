@@ -174,10 +174,12 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Nota estratégica:** Potencial para produto standalone com waitlist — posicionamento diferenciador, sem concorrência directa no segmento de crítico de comunicação
 
 ### 17 · AudiNote
-- **Stack:** Kotlin + Jetpack Compose + Gemini API + Room + Hilt + Android (Min SDK 31)
+- **Stack:** Kotlin + Jetpack Compose + Gemini API (`gemini-3.5-flash`) + Room v3 + Hilt + Android (Min SDK 31)
 - **Landing page:** `https://nankov-ai.github.io/Ouvinte---AudiNote/`
+- **Repositório landing:** `https://github.com/Nankov-ai/Ouvinte---AudiNote`
 - **Local:** `c:/projetos/Ouvinte/` (nome interno: Ouvinte; nome público: AudiNote)
-- **O que faz:** App nativa Android para gravar palestras/reuniões, transcrever com Gemini (diarização de oradores), extrair tópicos, fact-check via Google Custom Search e gerar perguntas inteligentes por orador. Exporta PDF. PIN de acesso. Persistência total em Room DB.
+- **APK:** `APP Android/AudiNote-v1.0.0.apk` (flavor `distribution` — sem chaves, utilizador insere as suas)
+- **O que faz:** App nativa Android para gravar palestras/reuniões com auto-split inteligente (17 MB). Transcreve com Gemini (diarização de oradores), traduz para pt-PT, extrai tópicos, fact-check via Google Custom Search, gera perguntas inteligentes por orador. Pastas de projeto, PDF unificado de pasta, partilha de áudio (.m4a). PIN de acesso. Persistência total em Room DB.
 - **Cliente-alvo:** Profissionais, founders e estudantes que não podem perder o que ouvem
 - **Status:** Beta · Acesso antecipado (APK distribuído manualmente via email)
 - **Nota site:** Card com botão "Quero testar" que abre modal com formulário RGPD-compliant → compõe email para nodeflow.pt@gmail.com com dados do candidato
@@ -250,6 +252,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 | `fonts/` | Fontes woff2 self-hosted (DM Mono + Fraunces) + `fonts.css` |
 | `CLAUDE.md` | Este ficheiro — contexto completo para o Claude Code |
 | `diagrams.md` | Diagramas Mermaid do projecto (portfolio, processo, arquitectura, roadmap) |
+| `.gitignore` | Exclui `Ideias/` e `Nota Despesa Nodeflow/` (ficheiros locais, não publicar) |
 
 ---
 
