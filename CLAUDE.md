@@ -227,6 +227,16 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Pilar "Privacidade & Segurança"** na secção Sobre (substituiu "Publicação imediata")
 - **Parágrafo de privacidade** no texto da secção Sobre
 
+### Favicon & Ícone Mobile
+- **Ficheiro:** `favicon.svg` — logótipo Nodeflow (grid 2×2: topo-esq Paper, topo-dir outline, baixo-esq outline, baixo-dir Signal green), fundo `#0e0e0e`
+- **`<head>`:** `<link rel="icon" type="image/svg+xml" href="favicon.svg">` + `<link rel="apple-touch-icon" href="favicon.svg">`
+- **Problema resolvido:** sem favicon definido, o browser mobile usava o ícone em cache do HealHour (PWA com manifest)
+
+### Datas de actualização nos cards
+- **Mecanismo:** cada card tem `<div class="card-date">` com `<span class="lang-pt">` e `<span class="lang-en">` (formato: `Abr 2026` / `Apr 2026`)
+- **Posição:** JS move `.card-date` para o `.card-top` em runtime → `justify-content: space-between` coloca-o à direita: `01 · ● status · · · · · · · Abr 2026`
+- **Datas usadas:** retiradas do `git log` de cada repositório local (dois sem repo local usam Abr 2026)
+
 ### Contacto
 - **Email picker** em todos os botões "Fale connosco" do site (nav, hero, CTA card, secção contacto, cada card, modelos de colaboração)
 - **Sem formulários externos** — usa Gmail e Outlook web directamente
@@ -250,6 +260,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 |---|---|
 | `index.html` | Site completo — HTML + CSS + JS single-file |
 | `fonts/` | Fontes woff2 self-hosted (DM Mono + Fraunces) + `fonts.css` |
+| `favicon.svg` | Logótipo Nodeflow (grid 2×2) como favicon — corrige ícone mobile |
 | `CLAUDE.md` | Este ficheiro — contexto completo para o Claude Code |
 | `diagrams.md` | Diagramas Mermaid do projecto (portfolio, processo, arquitectura, roadmap) |
 | `.gitignore` | Exclui `Ideias/` e `Nota Despesa Nodeflow/` (ficheiros locais, não publicar) |
@@ -272,6 +283,8 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Card 17 · AudiNote com modal RGPD-compliant e beta access form
 - [x] Landing page AudiNote (`c:/projetos/Ouvinte/index.html`) publicada em GitHub Pages
 - [x] Site PT/EN bilingue — switcher no nav e footer de ambos os sites
+- [x] Favicon `favicon.svg` (grid 2×2 Nodeflow) — corrige ícone mobile (browser usava cache do HealHour)
+- [x] Data de última actualização em todos os 17 cards — posicionada no `card-top` à direita (JS move `.card-date` para o `.card-top` em runtime; `justify-content: space-between` alinha à direita)
 
 ### Fase 2 · Em aberto
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
