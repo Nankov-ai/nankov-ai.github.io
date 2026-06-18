@@ -1083,78 +1083,110 @@
   /* ── CHALLENGE C: memorizar e clicar a sequência de nós ── */
   function challengeC() {
     instr.innerHTML = 'Observa a sequência de nós que acende e <span style="color:#00c896;">repete a ordem</span> a clicar.';
-    area.style.height = '110px';
+    area.style.height = '130px';
 
-    var N = 4, seq = [], input = [], showing = false;
+    var N = 4, seq = [], input = [], showing = false, started = false;
+    var idleTimer = null, retryBtn = null;
     var positions = [
-      {left:'18%',top:'15%'},{left:'62%',top:'15%'},
-      {left:'40%',top:'50%'},
-      {left:'18%',top:'78%'},{left:'62%',top:'78%'}
+      {left:'18%',top:'18%'},{left:'62%',top:'18%'},
+      {left:'40%',top:'52%'},
+      {left:'18%',top:'82%'},{left:'62%',top:'82%'}
     ];
-    // pick N random positions
     var idxs = [0,1,2,3,4].sort(function(){return Math.random()-.5;}).slice(0,N);
 
-    area.innerHTML = '<svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" id="hgc-lines"></svg>';
-    var dots = [];
+    area.innerHTML = '';
+    var ndots = [];
     idxs.forEach(function(pi, i) {
       var p = positions[pi];
       var d = document.createElement('div');
-      d.style.cssText = 'position:absolute;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(245,244,240,.25);background:rgba(245,244,240,.04);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s,box-shadow .15s;transform:translate(-50%,-50%);';
+      d.style.cssText = 'position:absolute;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(245,244,240,.25);background:rgba(245,244,240,.04);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,box-shadow .2s;transform:translate(-50%,-50%);';
       d.style.left = p.left; d.style.top = p.top;
-      d.innerHTML = '<div style="width:9px;height:9px;border-radius:50%;background:rgba(245,244,240,.3);"></div>';
+      d.innerHTML = '<div style="width:10px;height:10px;border-radius:50%;background:rgba(245,244,240,.3);pointer-events:none;"></div>';
       d.dataset.idx = i;
       area.appendChild(d);
-      dots.push(d);
+      ndots.push(d);
     });
 
+    function clearIdle() { if (idleTimer) { clearTimeout(idleTimer); idleTimer = null; } }
+
+    function removeRetryBtn() {
+      if (retryBtn && retryBtn.parentNode) { retryBtn.parentNode.removeChild(retryBtn); retryBtn = null; }
+    }
+
+    function showRetryBtn() {
+      removeRetryBtn();
+      retryBtn = document.createElement('button');
+      retryBtn.textContent = 'Repetir →';
+      retryBtn.style.cssText = 'margin-top:.9rem;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.08em;background:none;border:1px solid rgba(0,200,150,.5);color:#00c896;padding:.4rem 1rem;cursor:pointer;transition:border-color .2s;';
+      retryBtn.onmouseenter = function(){ retryBtn.style.borderColor='#00c896'; };
+      retryBtn.onclick = retryBtn.ontouchend = function(e){ if(e) e.preventDefault(); removeRetryBtn(); showSeq(); };
+      area.appendChild(retryBtn);
+    }
+
     function flash(i, cb) {
-      var d = dots[i];
-      d.style.background = 'rgba(0,200,150,.9)';
+      var d = ndots[i];
+      d.style.background = '#00c896';
       d.style.borderColor = '#00c896';
-      d.style.boxShadow = '0 0 0 8px rgba(0,200,150,.25)';
+      d.style.boxShadow = '0 0 0 9px rgba(0,200,150,.22)';
       setTimeout(function() {
         d.style.background = 'rgba(245,244,240,.04)';
         d.style.borderColor = 'rgba(245,244,240,.25)';
         d.style.boxShadow = '';
-        if (cb) setTimeout(cb, 250);
-      }, 550);
+        if (cb) setTimeout(cb, 300);
+      }, 600);
     }
 
     function showSeq() {
-      showing = true; hint.textContent = 'Observa...'; hint.style.color = '#aba6a1';
-      seq = []; input = [];
-      var len = Math.min(3, N);
-      for (var i=0;i<len;i++) seq.push(Math.floor(Math.random()*N));
-      var step = 0;
+      clearIdle();
+      removeRetryBtn();
+      showing = true; started = false; input = [];
+      hint.textContent = 'Observa...'; hint.style.color = '#aba6a1';
+      // new random sequence each time
+      seq = [];
+      var len = 3;
+      for (var i = 0; i < len; i++) seq.push(Math.floor(Math.random() * N));
+      var s = 0;
       function next() {
-        if (step >= seq.length) { showing = false; hint.textContent = 'A tua vez!'; hint.style.color = '#00c896'; return; }
-        flash(seq[step], function() { step++; next(); });
-      }
-      setTimeout(next, 600);
-    }
-
-    dots.forEach(function(d) {
-      function onClick() {
-        if (showing) return;
-        var i = parseInt(d.dataset.idx);
-        input.push(i);
-        d.style.background = 'rgba(0,200,150,.4)';
-        d.style.borderColor = '#00c896';
-        setTimeout(function() { d.style.background='rgba(245,244,240,.04)'; d.style.borderColor='rgba(245,244,240,.25)'; }, 300);
-
-        if (input[input.length-1] !== seq[input.length-1]) {
-          hint.textContent=''; input=[];
-          fail('Sequência errada — a repetir...');
-          setTimeout(showSeq, 1800);
+        if (s >= seq.length) {
+          showing = false;
+          hint.textContent = 'A tua vez!'; hint.style.color = '#00c896';
+          // auto-replay if idle for 4s
+          idleTimer = setTimeout(function() {
+            if (!started) { hint.textContent = ''; showSeq(); }
+          }, 4000);
           return;
         }
-        if (input.length === seq.length) { succeed(); }
+        flash(seq[s], function() { s++; next(); });
+      }
+      // small delay so user can read "Observa..."
+      setTimeout(next, 800);
+    }
+
+    ndots.forEach(function(d) {
+      function onClick() {
+        if (showing) return;
+        clearIdle();
+        started = true;
+        var i = parseInt(d.dataset.idx);
+        input.push(i);
+        d.style.background = 'rgba(0,200,150,.45)';
+        d.style.borderColor = '#00c896';
+        setTimeout(function() { d.style.background='rgba(245,244,240,.04)'; d.style.borderColor='rgba(245,244,240,.25)'; }, 280);
+
+        if (input[input.length-1] !== seq[input.length-1]) {
+          input = []; started = false;
+          fail('Sequência errada');
+          showRetryBtn();
+          return;
+        }
+        if (input.length === seq.length) { clearIdle(); succeed(); }
       }
       d.addEventListener('click', onClick);
       d.addEventListener('touchend', function(e){ e.preventDefault(); onClick(); });
     });
 
-    showSeq();
+    // initial delay so user reads the instruction first
+    setTimeout(showSeq, 1200);
   }
 
   // run all 3 in sequence: C → A → B (hardest → easiest for AI)
