@@ -148,6 +148,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **O que faz:** PWA de tracking de jejum intermitente. Anel de progresso em tempo real, fases metabólicas, protocolos configuráveis (16h, 18h, 24h), histórico. Instalável no telemóvel.
 - **Cliente-alvo:** Pessoas que praticam jejum intermitente sem apps pagas
 - **Status:** Operacional
+- **Nota:** `manifest.json` e `<title>` renomeados de "Jejum" → "HealHour" (2026-06-18) — o nome antigo aparecia nas notificações e painel de apps do Chrome. Para reflectir a mudança, o utilizador tem de desinstalar e reinstalar a PWA.
 
 ### 14 · OutOfBox
 - **Stack:** Next.js + TypeScript + Prisma + IA
