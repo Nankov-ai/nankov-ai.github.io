@@ -116,13 +116,16 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Cliente-alvo:** Associações desportivas, culturais, profissionais
 - **Status:** Operacional · modo teste
 
-### 10 · Automagic · Envio de Emails
-- **Stack:** Python (smtplib) + Google Apps Script + HTML
-- **Link:** `https://nankov-ai.github.io/Envio-de-emails-em-massa---Script/`
-- **Local:** `c:/projetos/9. Envio de emails em massa/`
-- **O que faz:** Envio automatizado de emails personalizados em massa. Mail merge via Gmail SMTP. Lê CSV/TXT, suporta anexos. App web + executável .exe.
-- **Cliente-alvo:** PMEs e equipas comerciais sem orçamento para Mailchimp
+### 10 · Automagic Mail · Envio com Rastreio
+- **Stack:** Python + Flask + Google Apps Script + HTML
+- **Link:** `https://nankov-ai.github.io/Envio-de-emails-com-registo/`
+- **Repositório:** `https://github.com/Nankov-ai/Envio-de-emails-com-registo`
+- **Local:** `c:/projetos/Envio de emails com registo/`
+- **O que faz:** Portal web que envia dezenas ou centenas de emails de uma só vez, cada um personalizado com o nome, empresa e dados específicos de cada contacto (via CSV). Links UTM automáticos por destinatário para rastreio de cliques no Google Analytics. Pixel de rastreio de aberturas via GAS (limitado — Apple Mail/Gmail bloqueiam). Registo automático de todos os envios em Google Sheets. Suporte a anexos.
+- **Cliente-alvo:** PMEs e equipas comerciais que precisam de rastreio de campanhas sem serviços pagos
 - **Status:** Operacional
+- **Landing page:** `c:/projetos/Envio de emails com registo/index.html` — Nodeflow-branded, sem referências ao cliente. Ficheiros da cliente em `Clientes/Marina Ferreira/`
+- **Nota:** Não mencionar marcas concorrentes (ex: Mailchimp) em nenhum texto do site ou landing page
 
 ### 11 · Vocaliz
 - **Stack:** HTML / CSS / JavaScript (Web Speech API)
@@ -208,8 +211,9 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 ### Cards do portfolio
 - **Formato:** Desafio → Resultado (não só features técnicas)
 - **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar) — gerado em JS, excluindo `.audinate-card`
-- **Hierarquia visual:** `.strategic` (cards 02, 03, 04, 05) com borda Signal subtil; `.featured` (cards 16 e 17) com glow máximo
-- **Total:** 17 cards + 1 CTA card verde no final
+- **Hierarquia visual:** `.strategic` (cards 02, 03, 04, 05, 19) com borda Signal subtil; `.featured` (cards 16 e 17) com glow máximo
+- **Total:** 19 cards + 1 CTA card verde no final
+- **Regra de copy:** nunca mencionar marcas de terceiros (Mailchimp, etc.) — usar "serviços externos", "serviços pagos" ou similar
 
 ### PT/EN Bilingue
 - **Switcher:** botões PT/EN no nav e no footer de ambos os sites
@@ -244,10 +248,20 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Sem formulários externos** — usa Gmail e Outlook web directamente
 - **Email:** `nodeflow.pt@gmail.com`
 
+### Verificação Humana (Human Gate)
+- **Ficheiro:** `index.html` (Nodeflow) — overlay full-screen antes do site carregar
+- **Mecanismo:** `sessionStorage('nf-human')` — não repete na mesma sessão
+- **3 desafios em sequência** (ordem mais difícil para IA primeiro):
+  1. **C — Sequência de nós:** 4 nós no ecrã, 3 acendem em ordem aleatória, utilizador reproduz clicando. Auto-replay ao fim de 4s se inactivo. Botão "Repetir →" após erro com sequência nova.
+  2. **A — Arrastar nó:** drag do ● até ao ○ com trail SVG animado. Reset se soltar fora.
+  3. **B — Deslizar:** slide do thumb até ao fim do track. Reset se soltar a meio.
+- **Progresso:** 3 dots no card acendem progressivamente
+- **Zero dependências externas** — sem reCAPTCHA, hCaptcha, Cloudflare
+
 ### Secções do site
 1. Hero (duas colunas: slogan/CTAs + painel métricas)
-2. Stats (17 apps / 11 com IA / 5 só automação / 5 sectores)
-3. Portfolio (17 cards + CTA card verde)
+2. Stats (19 apps / 12 com IA / 7 só automação / 5 sectores)
+3. Portfolio (19 cards + CTA card verde)
 4. Como trabalhamos (Diagnóstico → Construção → Entrega)
 5. Modelos de colaboração (MVP Rápido · Projecto à Medida · White-label)
 6. Sobre a Nodeflow (texto + 4 pillars: Execução real, IA integrada, Privacidade & Segurança, Código limpo)
@@ -287,6 +301,11 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Site PT/EN bilingue — switcher no nav e footer de ambos os sites
 - [x] Favicon `favicon.svg` (grid 2×2 Nodeflow) — corrige ícone mobile (browser usava cache do HealHour)
 - [x] Data de última actualização em todos os 17 cards — posicionada no `card-top` à direita (JS move `.card-date` para o `.card-top` em runtime; `justify-content: space-between` alinha à direita)
+- [x] Card 18 · LipRead (em desenvolvimento) — botão âmbar "Em breve →"
+- [x] Card 19 · Faturix (strategic) — landing page em `https://nankov-ai.github.io/Agente-local/`
+- [x] Card 07 substituído — Automagic Mail com rastreio UTM, Google Sheets, Flask portal; landing page em `https://nankov-ai.github.io/Envio-de-emails-com-registo/`
+- [x] Stats actualizados para 19 apps · 12 com IA · 7 só automação · 5 sectores
+- [x] Verificação humana (Human Gate) — 3 desafios sequenciais sem dependências externas (sequência de nós → arrastar → deslizar)
 
 ### Fase 2 · Em aberto
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
