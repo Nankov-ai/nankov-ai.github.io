@@ -236,6 +236,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Mecanismo:** cada card tem `<div class="card-date">` com `<span class="lang-pt">` e `<span class="lang-en">` (formato: `Abr 2026` / `Apr 2026`)
 - **Posição:** JS move `.card-date` para o `.card-top` em runtime → `justify-content: space-between` coloca-o à direita: `01 · ● status · · · · · · · Abr 2026`
 - **Datas usadas:** retiradas do `git log` de cada repositório local (dois sem repo local usam Abr 2026)
+- **Vocaliz:** actualizado para Jun 2026 (2026-06-18)
 
 ### Contacto
 - **Email picker** em todos os botões "Fale connosco" do site (nav, hero, CTA card, secção contacto, cada card, modelos de colaboração)
