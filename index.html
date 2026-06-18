@@ -924,6 +924,11 @@
   <div style="border:1px solid rgba(255,255,255,.1);padding:2.5rem 2rem;text-align:center;max-width:340px;width:90%;position:relative;">
     <p style="font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:#aba6a1;margin-bottom:.6rem;">VERIFICAÇÃO</p>
     <p style="font-family:'DM Mono',monospace;font-size:.82rem;color:#f5f4f0;margin-bottom:.35rem;">És humano?</p>
+    <div id="hg-progress" style="display:flex;justify-content:center;gap:.5rem;margin-bottom:1.25rem;">
+      <span class="hg-dot" style="width:7px;height:7px;border-radius:50%;background:rgba(245,244,240,.15);transition:background .3s;"></span>
+      <span class="hg-dot" style="width:7px;height:7px;border-radius:50%;background:rgba(245,244,240,.15);transition:background .3s;"></span>
+      <span class="hg-dot" style="width:7px;height:7px;border-radius:50%;background:rgba(245,244,240,.15);transition:background .3s;"></span>
+    </div>
     <p id="hg-instr" style="font-family:'DM Mono',monospace;font-size:.62rem;color:#aba6a1;margin-bottom:2rem;line-height:1.6;min-height:2.5em;"></p>
     <div id="hg-area" style="position:relative;user-select:none;touch-action:none;"></div>
     <p id="hg-hint" style="font-family:'DM Mono',monospace;font-size:.58rem;color:#aba6a1;margin-top:1.25rem;min-height:1em;transition:color .2s;"></p>
@@ -1152,10 +1157,35 @@
     showSeq();
   }
 
-  // pick random challenge and render
-  var challenges = [challengeA, challengeB, challengeC];
-  var pick = Math.floor(Math.random() * challenges.length);
-  challenges[pick]();
+  // run all 3 in sequence: C → A → B (hardest → easiest for AI)
+  var order = [challengeC, challengeA, challengeB];
+  var step = 0;
+  var dots = document.querySelectorAll('.hg-dot');
+
+  function nextChallenge() {
+    // mark current dot green
+    if (dots[step]) { dots[step].style.background = '#00c896'; }
+    step++;
+    if (step >= order.length) { _finalSucceed(); return; }
+    // brief pause then next
+    hint.textContent = '✓ Continua...';
+    hint.style.color = '#00c896';
+    setTimeout(function() {
+      hint.textContent = '';
+      area.innerHTML = '';
+      area.style.height = 'auto';
+      if (dots[step]) { dots[step].style.background = 'rgba(0,200,150,.35)'; }
+      order[step]();
+    }, 700);
+  }
+
+  // patch succeed to be nextChallenge for intermediate steps
+  var _finalSucceed = succeed;
+  succeed = nextChallenge;
+
+  // activate first dot as current
+  if (dots[0]) { dots[0].style.background = 'rgba(0,200,150,.35)'; }
+  order[0]();
 })();
 </script>
 
