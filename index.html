@@ -906,23 +906,11 @@
 <body>
 
 <!-- ── HUMAN GATE ── -->
-<div id="hgate" style="
-  position:fixed;inset:0;z-index:99999;
-  background:#0e0e0e;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
-  transition:opacity .6s ease,visibility .6s ease;
-">
-  <!-- background grid -->
+<div id="hgate" style="position:fixed;inset:0;z-index:99999;background:#0e0e0e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .6s ease,visibility .6s ease;">
   <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.04;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f5f4f0" stroke-width=".5"/>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#grid)"/>
+    <defs><pattern id="hgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f5f4f0" stroke-width=".5"/></pattern></defs>
+    <rect width="100%" height="100%" fill="url(#hgrid)"/>
   </svg>
-
-  <!-- logo -->
   <div style="display:flex;align-items:center;gap:.75rem;opacity:.6;">
     <svg viewBox="0 0 40 40" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
       <rect width="40" height="40" fill="#0e0e0e"/>
@@ -933,188 +921,241 @@
     </svg>
     <span style="font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.14em;color:#f5f4f0;">NODEFLOW</span>
   </div>
-
-  <!-- challenge card -->
-  <div style="
-    border:1px solid rgba(255,255,255,.1);
-    padding:2.5rem 2rem;
-    text-align:center;
-    max-width:340px;
-    width:90%;
-    position:relative;
-  ">
+  <div style="border:1px solid rgba(255,255,255,.1);padding:2.5rem 2rem;text-align:center;max-width:340px;width:90%;position:relative;">
     <p style="font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:#aba6a1;margin-bottom:.6rem;">VERIFICAÇÃO</p>
     <p style="font-family:'DM Mono',monospace;font-size:.82rem;color:#f5f4f0;margin-bottom:.35rem;">És humano?</p>
-    <p style="font-family:'DM Mono',monospace;font-size:.62rem;color:#aba6a1;margin-bottom:2rem;line-height:1.6;">
-      Arrasta o nó <span style="color:#00c896;">●</span> até à ligação <span style="color:#f5f4f0;">○</span> para continuar.
-    </p>
-
-    <!-- puzzle canvas -->
-    <div id="hgate-puzzle" style="position:relative;height:90px;user-select:none;touch-action:none;">
-
-      <!-- dashed path line (decorative) -->
-      <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;" id="hgate-svg">
-        <line id="hgate-trail" x1="52" y1="45" x2="52" y2="45"
-          stroke="#00c896" stroke-width="1.5" stroke-dasharray="4 4" opacity="0"/>
-        <!-- static dashed guide -->
-        <line x1="60" y1="45" x2="calc(100% - 60px)" y2="45"
-          stroke="rgba(245,244,240,.12)" stroke-width="1" stroke-dasharray="4 6"/>
-      </svg>
-
-      <!-- source node (draggable) -->
-      <div id="hgate-node" style="
-        position:absolute;left:24px;top:50%;transform:translateY(-50%);
-        width:36px;height:36px;border-radius:50%;
-        background:#00c896;cursor:grab;
-        display:flex;align-items:center;justify-content:center;
-        box-shadow:0 0 0 0 rgba(0,200,150,.4);
-        animation:nodepulse 2s infinite;
-        transition:box-shadow .15s;
-        z-index:2;
-      ">
-        <div style="width:10px;height:10px;border-radius:50%;background:#0e0e0e;"></div>
-      </div>
-
-      <!-- target zone -->
-      <div id="hgate-target" style="
-        position:absolute;right:24px;top:50%;transform:translateY(-50%);
-        width:36px;height:36px;border-radius:50%;
-        border:2px dashed rgba(245,244,240,.35);
-        display:flex;align-items:center;justify-content:center;
-        transition:border-color .2s,box-shadow .2s;
-      ">
-        <div style="width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(245,244,240,.4);"></div>
-      </div>
-
-    </div><!-- /puzzle -->
-
-    <p id="hgate-hint" style="font-family:'DM Mono',monospace;font-size:.58rem;color:#aba6a1;margin-top:1.25rem;min-height:1em;transition:color .2s;"></p>
+    <p id="hg-instr" style="font-family:'DM Mono',monospace;font-size:.62rem;color:#aba6a1;margin-bottom:2rem;line-height:1.6;min-height:2.5em;"></p>
+    <div id="hg-area" style="position:relative;user-select:none;touch-action:none;"></div>
+    <p id="hg-hint" style="font-family:'DM Mono',monospace;font-size:.58rem;color:#aba6a1;margin-top:1.25rem;min-height:1em;transition:color .2s;"></p>
   </div>
-
-  <p style="font-family:'DM Mono',monospace;font-size:.55rem;color:rgba(171,166,161,.35);letter-spacing:.08em;">
-    Sem cookies. Sem dados recolhidos.
-  </p>
+  <p style="font-family:'DM Mono',monospace;font-size:.55rem;color:rgba(171,166,161,.35);letter-spacing:.08em;">Sem cookies. Sem dados recolhidos.</p>
 </div>
 
 <style>
-  @keyframes nodepulse {
-    0%,100% { box-shadow:0 0 0 0 rgba(0,200,150,.4); }
-    50%      { box-shadow:0 0 0 10px rgba(0,200,150,0); }
-  }
-  #hgate-node.dragging { cursor:grabbing; animation:none; box-shadow:0 0 0 14px rgba(0,200,150,.15); }
-  #hgate-target.active { border-color:#00c896; box-shadow:0 0 0 6px rgba(0,200,150,.2); }
+  @keyframes nodepulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,200,150,.4)}50%{box-shadow:0 0 0 10px rgba(0,200,150,0)} }
+  @keyframes seqflash  { 0%,100%{background:#00c896;box-shadow:0 0 0 8px rgba(0,200,150,.3)}50%{background:#00c896;box-shadow:0 0 0 0 rgba(0,200,150,0)} }
   #hgate.hidden { opacity:0; visibility:hidden; pointer-events:none; }
 </style>
 
 <script>
 (function() {
-  // skip if already verified this session
   if (sessionStorage.getItem('nf-human') === '1') {
     document.getElementById('hgate').classList.add('hidden');
     return;
   }
 
-  var gate    = document.getElementById('hgate');
-  var node    = document.getElementById('hgate-node');
-  var target  = document.getElementById('hgate-target');
-  var trail   = document.getElementById('hgate-trail');
-  var hint    = document.getElementById('hgate-hint');
-  var svg     = document.getElementById('hgate-svg');
-  var dragging = false;
-  var startX, startY, nodeStartLeft, nodeStartTop;
+  var gate  = document.getElementById('hgate');
+  var area  = document.getElementById('hg-area');
+  var instr = document.getElementById('hg-instr');
+  var hint  = document.getElementById('hg-hint');
 
-  function getCenter(el) {
-    var r = el.getBoundingClientRect();
-    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  function succeed() {
+    hint.textContent = '✓ Verificado';
+    hint.style.color = '#00c896';
+    sessionStorage.setItem('nf-human', '1');
+    setTimeout(function() { gate.classList.add('hidden'); }, 700);
   }
 
-  function getSvgPoint(clientX, clientY) {
-    var r = svg.getBoundingClientRect();
-    return { x: clientX - r.left, y: clientY - r.top };
+  function fail(msg) {
+    hint.textContent = msg || 'Tenta outra vez';
+    hint.style.color = '#aba6a1';
+    setTimeout(function() { hint.textContent = ''; }, 1600);
   }
 
-  function startDrag(cx, cy) {
-    dragging = true;
-    node.classList.add('dragging');
-    var nr = node.getBoundingClientRect();
-    var pr = node.parentElement.getBoundingClientRect();
-    nodeStartLeft = nr.left - pr.left;
-    nodeStartTop  = nr.top  - pr.top;
-    startX = cx; startY = cy;
-    var sp = getSvgPoint(cx, cy);
-    trail.setAttribute('x1', sp.x); trail.setAttribute('y1', sp.y);
-    trail.setAttribute('x2', sp.x); trail.setAttribute('y2', sp.y);
-    trail.setAttribute('opacity', '1');
-  }
+  /* ── CHALLENGE A: arrastar nó até ao alvo ── */
+  function challengeA() {
+    instr.innerHTML = 'Arrasta o nó <span style="color:#00c896;">●</span> até à ligação <span style="color:#f5f4f0;">○</span> para continuar.';
+    area.style.height = '90px';
+    area.innerHTML = `
+      <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;" id="hga-svg">
+        <line id="hga-trail" x1="42" y1="45" x2="42" y2="45" stroke="#00c896" stroke-width="1.5" stroke-dasharray="4 4" opacity="0"/>
+        <line x1="60" y1="45" x2="240" y2="45" stroke="rgba(245,244,240,.1)" stroke-width="1" stroke-dasharray="4 6"/>
+      </svg>
+      <div id="hga-node" style="position:absolute;left:24px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:#00c896;cursor:grab;display:flex;align-items:center;justify-content:center;animation:nodepulse 2s infinite;z-index:2;">
+        <div style="width:10px;height:10px;border-radius:50%;background:#0e0e0e;"></div>
+      </div>
+      <div id="hga-tgt" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:2px dashed rgba(245,244,240,.35);display:flex;align-items:center;justify-content:center;transition:border-color .2s,box-shadow .2s;">
+        <div style="width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(245,244,240,.4);"></div>
+      </div>`;
 
-  function moveDrag(cx, cy) {
-    if (!dragging) return;
-    var dx = cx - startX, dy = cy - startY;
-    var pr = node.parentElement.getBoundingClientRect();
-    var newL = Math.max(0, Math.min(nodeStartLeft + dx, pr.width  - node.offsetWidth));
-    var newT = Math.max(0, Math.min(nodeStartTop  + dy, pr.height - node.offsetHeight));
-    node.style.left = newL + 'px';
-    node.style.top  = newT + 'px';
-    node.style.transform = 'none';
+    var node   = document.getElementById('hga-node');
+    var tgt    = document.getElementById('hga-tgt');
+    var trail  = document.getElementById('hga-trail');
+    var svg    = document.getElementById('hga-svg');
+    var drag   = false, sx, sy, nl, nt;
 
-    var sp = getSvgPoint(cx, cy);
-    trail.setAttribute('x2', sp.x); trail.setAttribute('y2', sp.y);
+    function gc(el) { var r=el.getBoundingClientRect(); return {x:r.left+r.width/2,y:r.top+r.height/2}; }
+    function sp(cx,cy) { var r=svg.getBoundingClientRect(); return {x:cx-r.left,y:cy-r.top}; }
 
-    // check proximity to target
-    var nc = getCenter(node), tc = getCenter(target);
-    var dist = Math.hypot(nc.x - tc.x, nc.y - tc.y);
-    if (dist < 40) {
-      target.classList.add('active');
-      hint.textContent = 'Soltar para confirmar';
-      hint.style.color = '#00c896';
-    } else {
-      target.classList.remove('active');
-      hint.textContent = '';
-      hint.style.color = '#aba6a1';
+    function onStart(cx,cy) {
+      drag=true; node.style.animation='none'; node.style.cursor='grabbing';
+      var nr=node.getBoundingClientRect(), pr=area.getBoundingClientRect();
+      nl=nr.left-pr.left; nt=nr.top-pr.top; sx=cx; sy=cy;
+      var p=sp(cx,cy); trail.setAttribute('x1',p.x); trail.setAttribute('y1',p.y); trail.setAttribute('x2',p.x); trail.setAttribute('y2',p.y); trail.setAttribute('opacity','1');
     }
-  }
-
-  function endDrag(cx, cy) {
-    if (!dragging) return;
-    dragging = false;
-    node.classList.remove('dragging');
-    trail.setAttribute('opacity', '0');
-
-    var nc = getCenter(node), tc = getCenter(target);
-    var dist = Math.hypot(nc.x - tc.x, nc.y - tc.y);
-
-    if (dist < 40) {
-      // success
-      target.classList.remove('active');
-      target.style.borderColor = '#00c896';
-      target.style.background  = 'rgba(0,200,150,.15)';
-      node.style.background    = '#00c896';
-      node.style.boxShadow     = '0 0 0 16px rgba(0,200,150,0)';
-      hint.textContent = '✓ Verificado';
-      hint.style.color = '#00c896';
-      sessionStorage.setItem('nf-human', '1');
-      setTimeout(function() { gate.classList.add('hidden'); }, 700);
-    } else {
-      // reset position
-      node.style.left = '24px';
-      node.style.top  = '50%';
-      node.style.transform = 'translateY(-50%)';
-      target.classList.remove('active');
-      hint.textContent = 'Tenta outra vez';
-      hint.style.color = '#aba6a1';
-      setTimeout(function() { hint.textContent = ''; }, 1500);
+    function onMove(cx,cy) {
+      if (!drag) return;
+      var pr=area.getBoundingClientRect();
+      node.style.left=Math.max(0,Math.min(nl+cx-sx,pr.width-36))+'px';
+      node.style.top=Math.max(0,Math.min(nt+cy-sy,pr.height-36))+'px';
+      node.style.transform='none';
+      var p=sp(cx,cy); trail.setAttribute('x2',p.x); trail.setAttribute('y2',p.y);
+      var d=Math.hypot(gc(node).x-gc(tgt).x,gc(node).y-gc(tgt).y);
+      if (d<40) { tgt.style.borderColor='#00c896'; tgt.style.boxShadow='0 0 0 6px rgba(0,200,150,.2)'; hint.textContent='Soltar para confirmar'; hint.style.color='#00c896'; }
+      else      { tgt.style.borderColor='rgba(245,244,240,.35)'; tgt.style.boxShadow=''; hint.textContent=''; }
     }
+    function onEnd(cx,cy) {
+      if (!drag) return; drag=false; trail.setAttribute('opacity','0');
+      var d=Math.hypot(gc(node).x-gc(tgt).x,gc(node).y-gc(tgt).y);
+      if (d<40) { succeed(); }
+      else { node.style.left='24px'; node.style.top='50%'; node.style.transform='translateY(-50%)'; node.style.animation='nodepulse 2s infinite'; node.style.cursor='grab'; tgt.style.borderColor='rgba(245,244,240,.35)'; tgt.style.boxShadow=''; fail('Tenta outra vez'); }
+    }
+
+    node.addEventListener('mousedown',function(e){e.preventDefault();onStart(e.clientX,e.clientY);});
+    document.addEventListener('mousemove',function(e){onMove(e.clientX,e.clientY);});
+    document.addEventListener('mouseup',function(e){onEnd(e.clientX,e.clientY);});
+    node.addEventListener('touchstart',function(e){e.preventDefault();var t=e.touches[0];onStart(t.clientX,t.clientY);},{passive:false});
+    document.addEventListener('touchmove',function(e){if(drag){e.preventDefault();var t=e.touches[0];onMove(t.clientX,t.clientY);}},{passive:false});
+    document.addEventListener('touchend',function(e){var t=e.changedTouches[0];onEnd(t.clientX,t.clientY);});
   }
 
-  // mouse
-  node.addEventListener('mousedown', function(e) { e.preventDefault(); startDrag(e.clientX, e.clientY); });
-  document.addEventListener('mousemove', function(e) { moveDrag(e.clientX, e.clientY); });
-  document.addEventListener('mouseup',   function(e) { endDrag(e.clientX, e.clientY); });
+  /* ── CHALLENGE B: deslizar para activar o flow ── */
+  function challengeB() {
+    instr.innerHTML = 'Desliza o <span style="color:#00c896;">◀</span> até ao fim para activar o flow.';
+    area.style.height = '70px';
+    area.innerHTML = `
+      <div id="hgb-track" style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:22px;overflow:hidden;">
+        <div id="hgb-fill" style="position:absolute;left:0;top:0;bottom:0;width:44px;background:rgba(0,200,150,.15);border-radius:22px;transition:width .05s;"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <span style="font-family:'DM Mono',monospace;font-size:.58rem;color:rgba(245,244,240,.25);letter-spacing:.1em;">DESLIZA</span>
+        </div>
+        <div id="hgb-thumb" style="position:absolute;left:4px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:#00c896;cursor:grab;display:flex;align-items:center;justify-content:center;animation:nodepulse 2s infinite;z-index:2;">
+          <svg width="14" height="14" fill="none" stroke="#0e0e0e" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </div>`;
 
-  // touch
-  node.addEventListener('touchstart', function(e) { e.preventDefault(); var t = e.touches[0]; startDrag(t.clientX, t.clientY); }, { passive: false });
-  document.addEventListener('touchmove',  function(e) { if (dragging) { e.preventDefault(); var t = e.touches[0]; moveDrag(t.clientX, t.clientY); } }, { passive: false });
-  document.addEventListener('touchend',   function(e) { var t = e.changedTouches[0]; endDrag(t.clientX, t.clientY); });
+    var thumb  = document.getElementById('hgb-thumb');
+    var track  = document.getElementById('hgb-track');
+    var fill   = document.getElementById('hgb-fill');
+    var drag   = false, sx, sl;
+    var maxL   = track.offsetWidth - 44;
+
+    function onStart(cx) {
+      drag=true; sx=cx;
+      var tr=thumb.getBoundingClientRect(), pr=track.getBoundingClientRect();
+      sl=tr.left-pr.left;
+      thumb.style.animation='none'; thumb.style.cursor='grabbing';
+    }
+    function onMove(cx) {
+      if (!drag) return;
+      var pr=track.getBoundingClientRect();
+      maxL=pr.width-44;
+      var nl=Math.max(4,Math.min(sl+cx-sx, maxL));
+      thumb.style.left=nl+'px';
+      var pct=((nl-4)/Math.max(1,maxL-4));
+      fill.style.width=(nl+40)+'px';
+      fill.style.background='rgba(0,200,150,'+(0.15+pct*0.25)+')';
+      if (nl >= maxL-4) { thumb.style.background='#00c896'; succeed(); drag=false; }
+    }
+    function onEnd() {
+      if (!drag) return; drag=false;
+      var cur=parseFloat(thumb.style.left||4);
+      if (cur < maxL-4) {
+        thumb.style.left='4px'; fill.style.width='44px'; fill.style.background='rgba(0,200,150,.15)';
+        thumb.style.animation='nodepulse 2s infinite'; thumb.style.cursor='grab';
+        fail('Desliza até ao fim');
+      }
+    }
+
+    thumb.addEventListener('mousedown',function(e){e.preventDefault();onStart(e.clientX);});
+    document.addEventListener('mousemove',function(e){onMove(e.clientX);});
+    document.addEventListener('mouseup',onEnd);
+    thumb.addEventListener('touchstart',function(e){e.preventDefault();onStart(e.touches[0].clientX);},{passive:false});
+    document.addEventListener('touchmove',function(e){if(drag){e.preventDefault();onMove(e.touches[0].clientX);}},{passive:false});
+    document.addEventListener('touchend',onEnd);
+  }
+
+  /* ── CHALLENGE C: memorizar e clicar a sequência de nós ── */
+  function challengeC() {
+    instr.innerHTML = 'Observa a sequência de nós que acende e <span style="color:#00c896;">repete a ordem</span> a clicar.';
+    area.style.height = '110px';
+
+    var N = 4, seq = [], input = [], showing = false;
+    var positions = [
+      {left:'18%',top:'15%'},{left:'62%',top:'15%'},
+      {left:'40%',top:'50%'},
+      {left:'18%',top:'78%'},{left:'62%',top:'78%'}
+    ];
+    // pick N random positions
+    var idxs = [0,1,2,3,4].sort(function(){return Math.random()-.5;}).slice(0,N);
+
+    area.innerHTML = '<svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" id="hgc-lines"></svg>';
+    var dots = [];
+    idxs.forEach(function(pi, i) {
+      var p = positions[pi];
+      var d = document.createElement('div');
+      d.style.cssText = 'position:absolute;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(245,244,240,.25);background:rgba(245,244,240,.04);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s,box-shadow .15s;transform:translate(-50%,-50%);';
+      d.style.left = p.left; d.style.top = p.top;
+      d.innerHTML = '<div style="width:9px;height:9px;border-radius:50%;background:rgba(245,244,240,.3);"></div>';
+      d.dataset.idx = i;
+      area.appendChild(d);
+      dots.push(d);
+    });
+
+    function flash(i, cb) {
+      var d = dots[i];
+      d.style.background = 'rgba(0,200,150,.9)';
+      d.style.borderColor = '#00c896';
+      d.style.boxShadow = '0 0 0 8px rgba(0,200,150,.25)';
+      setTimeout(function() {
+        d.style.background = 'rgba(245,244,240,.04)';
+        d.style.borderColor = 'rgba(245,244,240,.25)';
+        d.style.boxShadow = '';
+        if (cb) setTimeout(cb, 250);
+      }, 550);
+    }
+
+    function showSeq() {
+      showing = true; hint.textContent = 'Observa...'; hint.style.color = '#aba6a1';
+      seq = []; input = [];
+      var len = Math.min(3, N);
+      for (var i=0;i<len;i++) seq.push(Math.floor(Math.random()*N));
+      var step = 0;
+      function next() {
+        if (step >= seq.length) { showing = false; hint.textContent = 'A tua vez!'; hint.style.color = '#00c896'; return; }
+        flash(seq[step], function() { step++; next(); });
+      }
+      setTimeout(next, 600);
+    }
+
+    dots.forEach(function(d) {
+      function onClick() {
+        if (showing) return;
+        var i = parseInt(d.dataset.idx);
+        input.push(i);
+        d.style.background = 'rgba(0,200,150,.4)';
+        d.style.borderColor = '#00c896';
+        setTimeout(function() { d.style.background='rgba(245,244,240,.04)'; d.style.borderColor='rgba(245,244,240,.25)'; }, 300);
+
+        if (input[input.length-1] !== seq[input.length-1]) {
+          hint.textContent=''; input=[];
+          fail('Sequência errada — a repetir...');
+          setTimeout(showSeq, 1800);
+          return;
+        }
+        if (input.length === seq.length) { succeed(); }
+      }
+      d.addEventListener('click', onClick);
+      d.addEventListener('touchend', function(e){ e.preventDefault(); onClick(); });
+    });
+
+    showSeq();
+  }
+
+  // pick random challenge and render
+  var challenges = [challengeA, challengeB, challengeC];
+  var pick = Math.floor(Math.random() * challenges.length);
+  challenges[pick]();
 })();
 </script>
 
