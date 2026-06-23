@@ -214,6 +214,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Hierarquia visual:** `.strategic` (cards 02, 03, 04, 05, 19) com borda Signal subtil; `.featured` (cards 16 e 17) com glow máximo
 - **Total:** 19 cards + 1 CTA card verde no final
 - **Regra de copy:** nunca mencionar marcas de terceiros (Mailchimp, etc.) — usar "serviços externos", "serviços pagos" ou similar
+- **Cards expansíveis:** tagline (desafio/resultado) sempre visível; "Para quem", stack tags e "Fale connosco" colapsados por defeito atrás de botão "Ver mais ↓" / "Ver menos ↑". Implementado via JS que cria `.card-details` wrapper + `.card-toggle` button após a tagline. O contact wrap (`card-contact-wrap`) é injectado para dentro do `.card-details` em vez do card raiz. Excluí `.audinate-card` (tem fluxo próprio de beta access).
 
 ### PT/EN Bilingue
 - **Switcher:** botões PT/EN no nav e no footer de ambos os sites
@@ -306,6 +307,9 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Card 07 substituído — Automagic Mail com rastreio UTM, Google Sheets, Flask portal; landing page em `https://nankov-ai.github.io/Envio-de-emails-com-registo/`
 - [x] Stats actualizados para 19 apps · 12 com IA · 7 só automação · 5 sectores
 - [x] Verificação humana (Human Gate) — 3 desafios sequenciais sem dependências externas (sequência de nós → arrastar → deslizar)
+- [x] Cards expansíveis — tagline sempre visível, "Para quem" + stack tags + contacto colapsados com "Ver mais ↓"
+- [x] H1 hero aumentado no mobile (≤480px): `3.4rem` (era `2.6rem`)
+- [x] Contadores animados na secção stats — IntersectionObserver, easing cúbico, 1200ms
 
 ### Fase 2 · Em aberto
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
