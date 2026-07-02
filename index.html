@@ -1138,7 +1138,7 @@
       retryBtn.style.cssText = 'margin-top:.9rem;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.08em;background:none;border:1px solid rgba(0,200,150,.5);color:#00c896;padding:.4rem 1rem;cursor:pointer;transition:border-color .2s;';
       retryBtn.onmouseenter = function(){ retryBtn.style.borderColor='#00c896'; };
       retryBtn.onclick = retryBtn.ontouchend = function(e){ if(e) e.preventDefault(); removeRetryBtn(); showSeq(); };
-      area.appendChild(retryBtn);
+      hint.after(retryBtn);
     }
 
     function flash(i, cb) {
