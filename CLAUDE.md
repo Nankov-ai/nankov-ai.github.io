@@ -16,6 +16,8 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 **Stack do site:** HTML + CSS + JS · single-file (`index.html`)  
 **Domínio:** `nodeflow.pt` registado no PTisp (2026-07-02, expira 2027-07-02) — DNS gerido via PTisp Parqueamento (Gestor de DNS). HTTPS activo via GitHub Pages (Let's Encrypt).
 
+**Nota deploy:** GitHub Pages Actions mostra "deploy timeout" desde que o custom domain foi configurado — o site funciona correctamente em `nodeflow.pt`. Problema cosmético nos logs, esperado resolver-se sozinho em 24-48h após estabilização do domínio.
+
 ---
 
 ## Identidade da marca Nodeflow
