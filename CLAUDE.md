@@ -273,6 +273,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
   3. **B — Deslizar:** slide do thumb até ao fim do track. Reset se soltar a meio.
 - **Progresso:** 3 dots no card acendem progressivamente
 - **Zero dependências externas** — sem reCAPTCHA, hCaptcha, Cloudflare
+- **Botão "Repetir →"** inserido via `hint.after(retryBtn)` — fora do `hg-area` (que tem `position:relative` com nós `position:absolute`). Não usar `area.appendChild` ou o botão sobrepõe os nós.
 
 ### Secções do site
 1. Hero (duas colunas: slogan/CTAs + painel métricas)
