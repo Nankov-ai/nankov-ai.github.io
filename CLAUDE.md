@@ -10,10 +10,11 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ## Estado actual do projecto
 
-**Site live:** `https://nankov-ai.github.io`  
+**Site live:** `https://nodeflow.pt` (custom domain — antigo: `https://nankov-ai.github.io`, redireccionado automaticamente)  
 **Repositório:** `https://github.com/Nankov-ai/nankov-ai.github.io`  
 **Branch:** `main` — deploy automático via GitHub Pages  
-**Stack do site:** HTML + CSS + JS · single-file (`index.html`)
+**Stack do site:** HTML + CSS + JS · single-file (`index.html`)  
+**Domínio:** `nodeflow.pt` registado no PTisp (2026-07-02, expira 2027-07-02) — DNS gerido via PTisp Parqueamento (Gestor de DNS). HTTPS activo via GitHub Pages (Let's Encrypt).
 
 ---
 
@@ -326,6 +327,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Contadores animados na secção stats — IntersectionObserver, easing cúbico, 1200ms
 - [x] OG image (`og-image.png`) e meta tags Open Graph/Twitter Card — preview rico no LinkedIn
 - [x] Cloudflare Web Analytics — cookie-free, GDPR-compliant, gratuito
+- [x] Domínio próprio `nodeflow.pt` — registado PTisp, DNS configurado, HTTPS activo via GitHub Pages
 
 ### Fase 2 · Em aberto
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
