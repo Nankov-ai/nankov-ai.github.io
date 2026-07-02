@@ -233,6 +233,20 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Pilar "Privacidade & Segurança"** na secção Sobre (substituiu "Publicação imediata")
 - **Parágrafo de privacidade** no texto da secção Sobre
 
+### Open Graph & LinkedIn
+- **Ficheiro:** `og-image.png` (1200×630, gerada a @2x via Puppeteer) — committed com `git add -f` (está no `.gitignore`)
+- **Conteúdo:** fundo Ink, lado esq logótipo grid 2×2 + "NODEFLOW" em DM Mono, lado dir slogan em Fraunces Italic + linha Stone + "19 SOLUÇÕES OPERACIONAIS · IA APLICADA · NANKOV-AI.GITHUB.IO"
+- **Meta tags no `<head>`:** `og:type`, `og:url`, `og:title`, `og:description`, `og:image` (1200×630), `twitter:card`, `twitter:image`
+- **URL da imagem:** `https://nankov-ai.github.io/og-image.png`
+- **Regenerar:** usar Puppeteer com HTML template no scratchpad (DM Mono + Fraunces carregadas de `fonts/`)
+
+### Cloudflare Web Analytics
+- **Script** adicionado antes de `</body>` no `index.html`
+- **Token:** `6cd3ccdf96774611bb3e1f52aff7e023`
+- **Dashboard:** dash.cloudflare.com → Analytics → Web Analytics
+- **GDPR-compliant:** sem cookies, sem rastreio individual de visitantes
+- **Custo:** gratuito, sem limites de pageviews
+
 ### Favicon & Ícone Mobile
 - **Ficheiro:** `favicon.svg` — logótipo Nodeflow (grid 2×2: topo-esq Paper, topo-dir outline, baixo-esq outline, baixo-dir Signal green), fundo `#0e0e0e`
 - **`<head>`:** `<link rel="icon" type="image/svg+xml" href="favicon.svg">` + `<link rel="apple-touch-icon" href="favicon.svg">`
@@ -310,6 +324,8 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Cards expansíveis — tagline sempre visível, "Para quem" + stack tags + contacto colapsados com "Ver mais ↓"
 - [x] H1 hero aumentado no mobile (≤480px): `3.4rem` (era `2.6rem`)
 - [x] Contadores animados na secção stats — IntersectionObserver, easing cúbico, 1200ms
+- [x] OG image (`og-image.png`) e meta tags Open Graph/Twitter Card — preview rico no LinkedIn
+- [x] Cloudflare Web Analytics — cookie-free, GDPR-compliant, gratuito
 
 ### Fase 2 · Em aberto
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
