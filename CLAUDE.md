@@ -214,10 +214,13 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 ### Cards do portfolio
 - **Formato:** Desafio → Resultado (não só features técnicas)
 - **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar) — gerado em JS, excluindo `.audinate-card`
-- **Hierarquia visual:** `.strategic` (cards 02, 03, 04, 05, 19) com borda Signal subtil; `.featured` (cards 16 e 17) com glow máximo
+- **Hierarquia visual:** `.strategic` (cards 01, 02, 03, 04, 09, 19) com borda Signal subtil; `.featured` (cards 05 AudiNote e 06 Voz Afiada) com glow máximo
 - **Total:** 19 cards + 1 CTA card verde no final
 - **Regra de copy:** nunca mencionar marcas de terceiros (Mailchimp, etc.) — usar "serviços externos", "serviços pagos" ou similar
-- **Cards expansíveis:** tagline (desafio/resultado) sempre visível; "Para quem", stack tags e "Fale connosco" colapsados por defeito atrás de botão "Ver mais ↓" / "Ver menos ↑". Implementado via JS que cria `.card-details` wrapper + `.card-toggle` button após a tagline. O contact wrap (`card-contact-wrap`) é injectado para dentro do `.card-details` em vez do card raiz. Excluí `.audinate-card` (tem fluxo próprio de beta access).
+- **Cards expansíveis:** tagline (desafio/resultado) sempre visível; "Para quem", stack tags e "Fale connosco" colapsados por defeito atrás de botão "Ver mais ↓" / "Ver menos ↑". Implementado via JS que cria `.card-details` wrapper + `.card-toggle` button após a tagline. O contact wrap (`card-contact-wrap`) é injectado para dentro do `.card-details`. `.audinate-card` incluído (card-note movido para dentro de card-bottom para ficar dentro do card-details). Excluído apenas do contact-wrap JS (tem fluxo próprio de beta access via `audinate-open-btn`).
+- **Expansão sincronizada por linha (desktop):** clicar "Ver mais ↓" num card expande todos os cards da mesma linha em simultâneo (detectado via `getBoundingClientRect().top` com tolerância de 10px). Em mobile (< 700px) cada card expande independentemente.
+- **"Para quem:" em Signal green:** `.card-client strong { color: var(--signal) }` — destaca o label em todos os cards expandidos.
+- **Voz Afiada — caixa de feedback:** `.voz-afiada-card` tem class própria; excluído do contact-wrap automático; injected via JS dentro de `.card-details` com botão "Já testaste? Diz-nos o que achaste →" que abre email picker (Gmail / Outlook / Copiar) com assunto pré-preenchido "Feedback Voz Afiada". Status: "Gemini Gem · Em testes".
 
 ### PT/EN Bilingue
 - **Switcher:** botões PT/EN no nav e no footer de ambos os sites
@@ -326,6 +329,11 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Stats actualizados para 19 apps · 12 com IA · 7 só automação · 5 sectores
 - [x] Verificação humana (Human Gate) — 3 desafios sequenciais sem dependências externas (sequência de nós → arrastar → deslizar)
 - [x] Cards expansíveis — tagline sempre visível, "Para quem" + stack tags + contacto colapsados com "Ver mais ↓"
+- [x] Expansão sincronizada por linha — clicar "Ver mais" expande todos os cards da mesma linha (desktop); independente em mobile
+- [x] "Para quem:" em Signal green em todos os cards
+- [x] Voz Afiada — status "Gemini Gem · Em testes" + caixa de feedback "Já testaste?" com email picker
+- [x] Reordenação do portfolio por impacto empresarial decrescente (IA primeiro, automação depois)
+- [x] AudiNote incluído na estrutura expansível "Ver mais ↓" (igual aos outros cards)
 - [x] H1 hero aumentado no mobile (≤480px): `3.4rem` (era `2.6rem`)
 - [x] Contadores animados na secção stats — IntersectionObserver, easing cúbico, 1200ms
 - [x] OG image (`og-image.png`) e meta tags Open Graph/Twitter Card — preview rico no LinkedIn

@@ -470,10 +470,10 @@
     .card-toggle {
       background: none; border: 1px solid var(--border2); color: var(--stone);
       font-family: inherit; font-size: .62rem; letter-spacing: .07em;
-      padding: .28rem .65rem; cursor: pointer; margin-bottom: 1.25rem; display: block;
-      transition: color .2s, border-color .2s;
+      padding: .4rem 1rem; cursor: pointer; margin-top: auto; margin-bottom: 1.25rem; display: block;
+      width: 100%; transition: color .2s, border-color .2s, background .2s;
     }
-    .card-toggle:hover { color: var(--signal); border-color: var(--signal); }
+    .card-toggle:hover { color: var(--signal); border-color: var(--signal); background: rgba(0,200,150,.06); }
     .card-details { display: none; }
     .app-card.expanded .card-details { display: block; }
     .card-tagline {
@@ -547,6 +547,20 @@
     }
     .cta-card-btn:hover { background: #1a1a1a; color: #00e0a8; }
 
+    .voz-feedback {
+      margin: 1rem 0 .75rem;
+      padding: .6rem .9rem;
+      border: 1px solid rgba(0,200,150,.25);
+      background: rgba(0,200,150,.05);
+      font-size: .72rem; color: var(--stone); letter-spacing: .02em;
+      border-radius: 2px;
+    }
+    .voz-feedback-link {
+      background: none; border: none; padding: 0; cursor: pointer;
+      color: var(--signal); font-family: inherit; font-size: inherit;
+      font-weight: 500; letter-spacing: inherit; transition: opacity .2s;
+    }
+    .voz-feedback-link:hover { opacity: .75; }
     .card-arrow {
       display: inline-flex; align-items: center; gap: .4rem;
       padding: .45rem 1.1rem;
@@ -1454,39 +1468,19 @@
       </div>
     </div>
 
-    <!-- Card 05 — Análise de Crédito Habitação -->
-    <div class="app-card strategic" data-cats="financas">
-      <div class="card-top">
-        <span class="card-num">05</span>
-        <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional</span><span class="lang-en">Live</span></span>
-      </div>
-      <div class="card-icon">🏠</div>
-      <div class="card-name">Análise de Crédito Habitação</div>
-      <p class="card-tagline"><span class="lang-pt lang-blk"><strong>Desafio:</strong> Comparar propostas de crédito habitação de vários bancos é confuso, demorado e propenso a erros de interpretação. <strong>Resultado:</strong> Ferramenta que lê os PDFs dos bancos, compara TAN, TAEG, seguros e custos totais num único ecrã e exporta um relatório PDF pronto a apresentar ao cliente.</span><span class="lang-en lang-blk"><strong>Challenge:</strong> Comparing mortgage proposals from multiple banks is confusing, time-consuming and prone to misinterpretation. <strong>Result:</strong> Tool that reads bank PDFs, compares TAN, APR, insurance and total costs on a single screen and exports a PDF report ready to present to the client.</span></p>
-      <div class="card-client"><span class="lang-pt lang-blk"><strong>Para quem:</strong> Famílias, brokers imobiliários e consultores financeiros</span><span class="lang-en lang-blk"><strong>For:</strong> Families, real estate brokers and financial advisors</span></div>
-      <div class="card-date"><span class="lang-pt">Abr 2026</span><span class="lang-en">Apr 2026</span></div>
-      <div class="card-bottom">
-        <div class="stack-tags">
-          <span class="tag">React</span><span class="tag">Recharts</span><span class="tag">Gemini API</span><span class="tag">jsPDF</span>
-          <span class="tag cat"><span class="lang-pt">Finanças</span><span class="lang-en">Finance</span></span>
-        </div>
-        <a class="card-arrow" href="https://nankov-ai.github.io/Analise-Credito-Habitacao/" target="_blank" rel="noopener noreferrer"><span class="lang-pt">Ver app →</span><span class="lang-en">View app →</span></a>
-      </div>
-    </div>
-
-    <!-- Card 06 — AudiNote -->
+    <!-- Card 05 — AudiNote -->
     <div class="app-card featured audinate-card" data-cats="produtividade">
       <div class="card-top">
-        <span class="card-num">06</span>
+        <span class="card-num">05</span>
         <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Beta · Acesso antecipado</span><span class="lang-en">Beta · Early access</span></span>
       </div>
       <div class="card-icon">🎙️</div>
       <div class="card-name">AudiNote</div>
       <p class="card-tagline"><span class="lang-pt lang-blk"><strong>Desafio:</strong> Sais de palestras e reuniões com notas incompletas e as perguntas certas por fazer? <strong>Resolução:</strong> Grava o áudio, a IA transcreve com tradução automática para PT, extrai tópicos-chave, verifica factos e gera perguntas inteligentes por orador. Pastas de projeto, auto-split e partilha de áudio incluídos.</span><span class="lang-en lang-blk"><strong>Challenge:</strong> Do you leave talks and meetings with incomplete notes and the right questions unasked? <strong>Solution:</strong> Record, AI transcribes with auto-translation, extracts key topics, fact-checks and generates smart questions per speaker. Folders, auto-split and audio sharing included.</span></p>
       <div class="card-client"><span class="lang-pt lang-blk"><strong>Para quem:</strong> Profissionais, founders e estudantes que não podem perder o que ouvem</span><span class="lang-en lang-blk"><strong>For:</strong> Professionals, founders and students who can't afford to miss what they hear</span></div>
-      <div class="card-note" style="font-size:.72rem;color:var(--stone);margin-top:.5rem;"><span class="lang-pt">🤖 App com IA generativa (Gemini) — conteúdo produzido por IA. (AI Act Art. 50)</span><span class="lang-en">🤖 App with generative AI (Gemini) — AI-produced content. (AI Act Art. 50)</span></div>
       <div class="card-date"><span class="lang-pt">Jun 2026</span><span class="lang-en">Jun 2026</span></div>
       <div class="card-bottom">
+        <div class="card-note" style="font-size:.72rem;color:var(--stone);margin-bottom:.75rem;"><span class="lang-pt">🤖 App com IA generativa (Gemini) — conteúdo produzido por IA. (AI Act Art. 50)</span><span class="lang-en">🤖 App with generative AI (Gemini) — AI-produced content. (AI Act Art. 50)</span></div>
         <div class="stack-tags">
           <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Gemini API</span><span class="tag">Android</span>
           <span class="tag cat"><span class="lang-pt">Produtividade</span><span class="lang-en">Productivity</span></span>
@@ -1498,11 +1492,11 @@
       </div>
     </div>
 
-    <!-- Card 07 — Voz Afiada -->
-    <div class="app-card featured" data-cats="produtividade b2b">
+    <!-- Card 06 — Voz Afiada -->
+    <div class="app-card featured voz-afiada-card" data-cats="produtividade b2b">
       <div class="card-top">
-        <span class="card-num">07</span>
-        <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Em desenvolvimento · Lançamento em breve</span><span class="lang-en">In development · Launching soon</span></span>
+        <span class="card-num">06</span>
+        <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Gemini Gem · Em testes</span><span class="lang-en">Gemini Gem · In testing</span></span>
       </div>
       <div class="card-icon">🗡️</div>
       <div class="card-name">Voz Afiada</div>
@@ -1518,10 +1512,10 @@
       </div>
     </div>
 
-    <!-- Card 08 — NeoOtto -->
+    <!-- Card 07 — NeoOtto -->
     <div class="app-card" data-cats="b2b produtividade">
       <div class="card-top">
-        <span class="card-num">08</span>
+        <span class="card-num">07</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · ChatGPT</span><span class="lang-en">Live · ChatGPT</span></span>
       </div>
       <div class="card-icon">🔮</div>
@@ -1538,10 +1532,10 @@
       </div>
     </div>
 
-    <!-- Card 09 — OutOfBox -->
+    <!-- Card 08 — OutOfBox -->
     <div class="app-card" data-cats="produtividade">
       <div class="card-top">
-        <span class="card-num">09</span>
+        <span class="card-num">08</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional</span><span class="lang-en">Live</span></span>
       </div>
       <div class="card-icon">🧠</div>
@@ -1556,6 +1550,26 @@
           <span class="tag cat"><span class="lang-pt">Produtividade</span><span class="lang-en">Productivity</span></span>
         </div>
         <a class="card-arrow" href="https://outofbox.onrender.com" target="_blank" rel="noopener noreferrer"><span class="lang-pt">Ver app →</span><span class="lang-en">View app →</span></a>
+      </div>
+    </div>
+
+    <!-- Card 09 — Análise de Crédito Habitação -->
+    <div class="app-card strategic" data-cats="financas">
+      <div class="card-top">
+        <span class="card-num">09</span>
+        <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional</span><span class="lang-en">Live</span></span>
+      </div>
+      <div class="card-icon">🏠</div>
+      <div class="card-name">Análise de Crédito Habitação</div>
+      <p class="card-tagline"><span class="lang-pt lang-blk"><strong>Desafio:</strong> Comparar propostas de crédito habitação de vários bancos é confuso, demorado e propenso a erros de interpretação. <strong>Resultado:</strong> Ferramenta que lê os PDFs dos bancos, compara TAN, TAEG, seguros e custos totais num único ecrã e exporta um relatório PDF pronto a apresentar ao cliente.</span><span class="lang-en lang-blk"><strong>Challenge:</strong> Comparing mortgage proposals from multiple banks is confusing, time-consuming and prone to misinterpretation. <strong>Result:</strong> Tool that reads bank PDFs, compares TAN, APR, insurance and total costs on a single screen and exports a PDF report ready to present to the client.</span></p>
+      <div class="card-client"><span class="lang-pt lang-blk"><strong>Para quem:</strong> Famílias, brokers imobiliários e consultores financeiros</span><span class="lang-en lang-blk"><strong>For:</strong> Families, real estate brokers and financial advisors</span></div>
+      <div class="card-date"><span class="lang-pt">Abr 2026</span><span class="lang-en">Apr 2026</span></div>
+      <div class="card-bottom">
+        <div class="stack-tags">
+          <span class="tag">React</span><span class="tag">Recharts</span><span class="tag">Gemini API</span><span class="tag">jsPDF</span>
+          <span class="tag cat"><span class="lang-pt">Finanças</span><span class="lang-en">Finance</span></span>
+        </div>
+        <a class="card-arrow" href="https://nankov-ai.github.io/Analise-Credito-Habitacao/" target="_blank" rel="noopener noreferrer"><span class="lang-pt">Ver app →</span><span class="lang-en">View app →</span></a>
       </div>
     </div>
 
@@ -2119,7 +2133,7 @@
   });
 
   // Expandable cards — resumo por defeito, "Ver mais ↓" para expandir
-  document.querySelectorAll('.app-card:not(.audinate-card)').forEach(card => {
+  document.querySelectorAll('.app-card').forEach(card => {
     const tagline = card.querySelector('.card-tagline');
     if (!tagline) return;
     const client = card.querySelector('.card-client');
@@ -2139,15 +2153,33 @@
     (tagline || card.querySelector('.card-name')).after(toggle);
     toggle.addEventListener('click', e => {
       e.stopPropagation();
-      const expanded = card.classList.toggle('expanded');
-      toggle.innerHTML = expanded
-        ? '<span class="lang-pt">Ver menos ↑</span><span class="lang-en">See less ↑</span>'
-        : '<span class="lang-pt">Ver mais ↓</span><span class="lang-en">See more ↓</span>';
+      const expanding = !card.classList.contains('expanded');
+      // Em desktop (>= 2 colunas), expande/colapsa toda a linha
+      const allCards = [...document.querySelectorAll('.app-card')];
+      const isMobile = window.innerWidth < 700;
+      if (!isMobile) {
+        const clickedTop = card.getBoundingClientRect().top;
+        allCards.forEach(c => {
+          const ct = c.getBoundingClientRect().top;
+          if (Math.abs(ct - clickedTop) < 10) {
+            c.classList.toggle('expanded', expanding);
+            const t = c.querySelector('.card-toggle');
+            if (t) t.innerHTML = expanding
+              ? '<span class="lang-pt">Ver menos ↑</span><span class="lang-en">See less ↑</span>'
+              : '<span class="lang-pt">Ver mais ↓</span><span class="lang-en">See more ↓</span>';
+          }
+        });
+      } else {
+        card.classList.toggle('expanded', expanding);
+        toggle.innerHTML = expanding
+          ? '<span class="lang-pt">Ver menos ↑</span><span class="lang-en">See less ↑</span>'
+          : '<span class="lang-pt">Ver mais ↓</span><span class="lang-en">See more ↓</span>';
+      }
     });
   });
 
   // Botão "Fale connosco" contextual por card com picker de email
-  document.querySelectorAll('.app-card:not(.audinate-card)').forEach(card => {
+  document.querySelectorAll('.app-card:not(.audinate-card):not(.voz-afiada-card)').forEach(card => {
     const name = card.querySelector('.card-name').textContent.trim();
     const subject = encodeURIComponent(`Interesse em ${name} — Nodeflow`);
     const body = encodeURIComponent(
@@ -2197,6 +2229,58 @@
     wrap.appendChild(btn);
     (card.querySelector('.card-details') || card).appendChild(wrap);
   });
+
+  // Caixa de feedback Voz Afiada — injectada dentro do card-details
+  (function() {
+    const vozCard = document.querySelector('.voz-afiada-card');
+    if (!vozCard) return;
+    const details = vozCard.querySelector('.card-details');
+    if (!details) return;
+    const fb = document.createElement('div');
+    fb.className = 'voz-feedback';
+    fb.style.position = 'relative';
+    fb.innerHTML = `<span class="lang-pt">🎙️ Já testaste? <button class="voz-feedback-link" id="voz-feedback-btn">Diz-nos o que achaste →</button></span><span class="lang-en">🎙️ Already tried it? <button class="voz-feedback-link" id="voz-feedback-btn-en">Tell us what you thought →</button></span><div class="email-picker" id="voz-feedback-picker"></div>`;
+    details.appendChild(fb);
+  })();
+
+  // Picker do card Voz Afiada (feedback)
+  (function() {
+    const to = 'nodeflow.pt@gmail.com';
+    const subject = encodeURIComponent('Feedback Voz Afiada — Nodeflow');
+    const body = encodeURIComponent('Olá Nodeflow,\n\nTestei a Voz Afiada e aqui está o meu feedback:\n\n[escreve aqui]\n\nObrigado');
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${to}&su=${subject}&body=${body}`;
+    const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${subject}&body=${body}`;
+    const picker = document.getElementById('voz-feedback-picker');
+    if (!picker) return;
+    picker.innerHTML = `
+      <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Gmail
+      </a>
+      <a href="${outlookUrl}" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Outlook
+      </a>
+      <button class="copy-email" data-email="${to}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Copiar email
+      </button>`;
+    picker.querySelector('.copy-email').addEventListener('click', () => {
+      navigator.clipboard.writeText(to).then(() => {
+        picker.querySelector('.copy-email').textContent = '✓ Copiado!';
+        setTimeout(() => picker.classList.remove('open'), 1200);
+      });
+    });
+    ['voz-feedback-btn', 'voz-feedback-btn-en'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
+        picker.classList.toggle('open');
+      });
+    });
+  })();
 
   // Picker para botões de modelos de colaboração
   document.querySelectorAll('.global-collab-btn').forEach(btn => {
