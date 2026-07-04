@@ -304,6 +304,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Progresso:** 3 dots no card acendem progressivamente
 - **Zero dependências externas** — sem reCAPTCHA, hCaptcha, Cloudflare
 - **Botão "Repetir →"** inserido via `hint.after(retryBtn)` — fora do `hg-area` (que tem `position:relative` com nós `position:absolute`). Não usar `area.appendChild` ou o botão sobrepõe os nós.
+- **PT/EN bilingue:** botões PT/EN no topo do card (canto direito). Idioma detectado via `localStorage('nf-lang')` — mesma chave do switcher do site. Função global `hgSetLang(l)` e `hgT(pt, en)` antes do IIFE. Todos os textos (instruções, hints, botões, footer) respondem ao idioma em tempo real. `hgRefreshInstr` actualiza o `instr.innerHTML` sem reiniciar o desafio.
 
 ### Secções do site
 1. Hero (duas colunas: slogan/CTAs + painel métricas)
@@ -353,6 +354,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Card 07 substituído — Automagic Mail com rastreio UTM, Google Sheets, Flask portal; landing page em `https://nankov-ai.github.io/Envio-de-emails-com-registo/`
 - [x] Stats actualizados para 19 apps · 12 com IA · 7 só automação · 5 sectores
 - [x] Verificação humana (Human Gate) — 3 desafios sequenciais sem dependências externas (sequência de nós → arrastar → deslizar)
+- [x] Human Gate PT/EN bilingue — botões PT/EN dentro do card, textos de todos os desafios e hints traduzidos; sincronizado com `localStorage('nf-lang')`
 - [x] Cards expansíveis — tagline sempre visível, "Para quem" + stack tags + contacto colapsados com "Ver mais ↓"
 - [x] Expansão sincronizada por linha — clicar "Ver mais" expande todos os cards da mesma linha (desktop); independente em mobile
 - [x] "Para quem:" em Signal green em todos os cards

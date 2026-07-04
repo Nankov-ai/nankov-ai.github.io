@@ -164,7 +164,7 @@
       font-size: .58rem; color: var(--stone); letter-spacing: .1em;
       text-transform: uppercase; margin-top: .15rem;
     }
-    /* Vibrant layered background */
+    /* Blob background */
     .hero::before {
       content: '';
       position: absolute; inset: 0;
@@ -173,6 +173,25 @@
         radial-gradient(ellipse 30% 30% at 20% 70%, rgba(26,26,255,.1) 0%, transparent 60%),
         radial-gradient(ellipse 30% 30% at 80% 60%, rgba(0,200,150,.06) 0%, transparent 60%);
       pointer-events: none;
+    }
+    .hero-blob {
+      position: absolute; pointer-events: none; border-radius: 50%;
+      filter: blur(80px); opacity: .35;
+    }
+    .hero-blob-1 {
+      width: 480px; height: 380px;
+      background: radial-gradient(circle, rgba(99,60,255,1) 0%, rgba(26,26,255,.6) 60%, transparent 100%);
+      top: -80px; left: -60px;
+    }
+    .hero-blob-2 {
+      width: 420px; height: 340px;
+      background: radial-gradient(circle, rgba(0,200,150,.9) 0%, rgba(0,150,120,.4) 60%, transparent 100%);
+      bottom: -60px; right: 5%;
+    }
+    .hero-blob-3 {
+      width: 300px; height: 260px;
+      background: radial-gradient(circle, rgba(120,40,255,.8) 0%, transparent 70%);
+      top: 40%; left: 40%; transform: translate(-50%,-50%);
     }
     /* Fade bottom of hero into stats */
     .hero-fade {
@@ -954,8 +973,12 @@
     <span style="font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.14em;color:#f5f4f0;">NODEFLOW</span>
   </div>
   <div style="border:1px solid rgba(255,255,255,.1);padding:2.5rem 2rem;text-align:center;max-width:340px;width:90%;position:relative;">
-    <p style="font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:#aba6a1;margin-bottom:.6rem;">VERIFICAÇÃO</p>
-    <p style="font-family:'DM Mono',monospace;font-size:.82rem;color:#f5f4f0;margin-bottom:.35rem;">És humano?</p>
+    <div style="display:flex;justify-content:flex-end;gap:.35rem;margin-bottom:2.2rem;">
+      <button id="hg-pt" onclick="hgSetLang('pt')" style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;background:none;border:1px solid rgba(255,255,255,.5);color:#f5f4f0;padding:.2rem .5rem;cursor:pointer;transition:border-color .2s,color .2s;">PT</button>
+      <button id="hg-en" onclick="hgSetLang('en')" style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;background:none;border:1px solid rgba(255,255,255,.2);color:#aba6a1;padding:.2rem .5rem;cursor:pointer;transition:border-color .2s,color .2s;">EN</button>
+    </div>
+    <p style="font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:#aba6a1;margin-bottom:.6rem;" id="hg-label">VERIFICAÇÃO</p>
+    <p style="font-family:'DM Mono',monospace;font-size:.82rem;color:#f5f4f0;margin-bottom:.35rem;" id="hg-title">És humano?</p>
     <div id="hg-progress" style="display:flex;justify-content:center;gap:.5rem;margin-bottom:1.25rem;">
       <span class="hg-dot" style="width:7px;height:7px;border-radius:50%;background:rgba(245,244,240,.15);transition:background .3s;"></span>
       <span class="hg-dot" style="width:7px;height:7px;border-radius:50%;background:rgba(245,244,240,.15);transition:background .3s;"></span>
@@ -965,7 +988,7 @@
     <div id="hg-area" style="position:relative;user-select:none;touch-action:none;"></div>
     <p id="hg-hint" style="font-family:'DM Mono',monospace;font-size:.58rem;color:#aba6a1;margin-top:1.25rem;min-height:1em;transition:color .2s;"></p>
   </div>
-  <p style="font-family:'DM Mono',monospace;font-size:.55rem;color:rgba(171,166,161,.35);letter-spacing:.08em;">Sem cookies. Sem dados recolhidos.</p>
+  <p style="font-family:'DM Mono',monospace;font-size:.55rem;color:rgba(171,166,161,.85);letter-spacing:.08em;" id="hg-footer"><span class="hg-pt">Sem cookies. Sem dados recolhidos.</span><span class="hg-en" style="display:none;">No cookies. No data collected.</span></p>
 </div>
 
 <style>
@@ -975,6 +998,30 @@
 </style>
 
 <script>
+// Human Gate language helpers — must run before IIFE
+var hgLang = localStorage.getItem('nf-lang') || 'pt';
+function hgT(pt, en) { return hgLang === 'en' ? en : pt; }
+function hgSetLang(l) {
+  hgLang = l;
+  localStorage.setItem('nf-lang', l);
+  // update static texts
+  var label = document.getElementById('hg-label');
+  var title = document.getElementById('hg-title');
+  if (label) label.textContent = hgT('VERIFICAÇÃO', 'VERIFICATION');
+  if (title) title.textContent = hgT('És humano?', 'Are you human?');
+  document.querySelectorAll('.hg-pt').forEach(function(el) { el.style.display = l === 'en' ? 'none' : ''; });
+  document.querySelectorAll('.hg-en').forEach(function(el) { el.style.display = l === 'en' ? '' : 'none'; });
+  // update lang buttons
+  var btnPt = document.getElementById('hg-pt');
+  var btnEn = document.getElementById('hg-en');
+  if (btnPt) { btnPt.style.color = l === 'pt' ? '#f5f4f0' : '#aba6a1'; btnPt.style.borderColor = l === 'pt' ? 'rgba(255,255,255,.5)' : 'rgba(255,255,255,.2)'; }
+  if (btnEn) { btnEn.style.color = l === 'en' ? '#f5f4f0' : '#aba6a1'; btnEn.style.borderColor = l === 'en' ? 'rgba(255,255,255,.5)' : 'rgba(255,255,255,.2)'; }
+  // update instruction text if gate is active
+  if (typeof hgRefreshInstr === 'function') hgRefreshInstr();
+}
+// Apply initial language state
+hgSetLang(hgLang);
+
 (function() {
   if (sessionStorage.getItem('nf-human') === '1') {
     document.getElementById('hgate').classList.add('hidden');
@@ -987,21 +1034,22 @@
   var hint  = document.getElementById('hg-hint');
 
   function succeed() {
-    hint.textContent = '✓ Verificado';
+    hint.textContent = hgT('✓ Verificado', '✓ Verified');
     hint.style.color = '#00c896';
     sessionStorage.setItem('nf-human', '1');
     setTimeout(function() { gate.classList.add('hidden'); }, 700);
   }
 
   function fail(msg) {
-    hint.textContent = msg || 'Tenta outra vez';
+    hint.textContent = msg || hgT('Tenta outra vez', 'Try again');
     hint.style.color = '#aba6a1';
     setTimeout(function() { hint.textContent = ''; }, 1600);
   }
 
   /* ── CHALLENGE A: arrastar nó até ao alvo ── */
   function challengeA() {
-    instr.innerHTML = 'Arrasta o nó <span style="color:#00c896;">●</span> até à ligação <span style="color:#f5f4f0;">○</span> para continuar.';
+    hgInstrFn = function() { instr.innerHTML = hgT('Arrasta o nó <span style="color:#00c896;">●</span> até à ligação <span style="color:#f5f4f0;">○</span> para continuar.', 'Drag the node <span style="color:#00c896;">●</span> to the link <span style="color:#f5f4f0;">○</span> to continue.'); };
+    hgInstrFn();
     area.style.height = '90px';
     area.innerHTML = `
       <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;" id="hga-svg">
@@ -1058,7 +1106,8 @@
 
   /* ── CHALLENGE B: deslizar para activar o flow ── */
   function challengeB() {
-    instr.innerHTML = 'Desliza o <span style="color:#00c896;">◀</span> até ao fim para activar o flow.';
+    hgInstrFn = function() { instr.innerHTML = hgT('Desliza o <span style="color:#00c896;">◀</span> até ao fim para activar o flow.', 'Slide the <span style="color:#00c896;">◀</span> to the end to activate the flow.'); };
+    hgInstrFn();
     area.style.height = '70px';
     area.innerHTML = `
       <div id="hgb-track" style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:22px;overflow:hidden;">
@@ -1100,7 +1149,7 @@
       if (cur < maxL-4) {
         thumb.style.left='4px'; fill.style.width='44px'; fill.style.background='rgba(0,200,150,.15)';
         thumb.style.animation='nodepulse 2s infinite'; thumb.style.cursor='grab';
-        fail('Desliza até ao fim');
+        fail(hgT('Desliza até ao fim', 'Slide all the way'));
       }
     }
 
@@ -1114,7 +1163,8 @@
 
   /* ── CHALLENGE C: memorizar e clicar a sequência de nós ── */
   function challengeC() {
-    instr.innerHTML = 'Observa a sequência de nós que acende e <span style="color:#00c896;">repete a ordem</span> a clicar.';
+    hgInstrFn = function() { instr.innerHTML = hgT('Observa a sequência de nós que acende e <span style="color:#00c896;">repete a ordem</span> a clicar.', 'Watch the node sequence light up and <span style="color:#00c896;">repeat the order</span> by clicking.'); };
+    hgInstrFn();
     area.style.height = '130px';
 
     var N = 4, seq = [], input = [], showing = false, started = false;
@@ -1148,7 +1198,7 @@
     function showRetryBtn() {
       removeRetryBtn();
       retryBtn = document.createElement('button');
-      retryBtn.textContent = 'Repetir →';
+      retryBtn.textContent = hgT('Repetir →', 'Retry →');
       retryBtn.style.cssText = 'margin-top:.9rem;font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.08em;background:none;border:1px solid rgba(0,200,150,.5);color:#00c896;padding:.4rem 1rem;cursor:pointer;transition:border-color .2s;';
       retryBtn.onmouseenter = function(){ retryBtn.style.borderColor='#00c896'; };
       retryBtn.onclick = retryBtn.ontouchend = function(e){ if(e) e.preventDefault(); removeRetryBtn(); showSeq(); };
@@ -1181,7 +1231,7 @@
       function next() {
         if (s >= seq.length) {
           showing = false;
-          hint.textContent = 'A tua vez!'; hint.style.color = '#00c896';
+          hint.textContent = hgT('A tua vez!', 'Your turn!'); hint.style.color = '#00c896';
           // auto-replay if idle for 4s
           idleTimer = setTimeout(function() {
             if (!started) { hint.textContent = ''; showSeq(); }
@@ -1221,6 +1271,10 @@
     setTimeout(showSeq, 1200);
   }
 
+  // expose instr refresh for lang switcher
+  var hgInstrFn = null;
+  window.hgRefreshInstr = function() { if (hgInstrFn) hgInstrFn(); };
+
   // run all 3 in sequence: C → A → B (hardest → easiest for AI)
   var order = [challengeC, challengeA, challengeB];
   var step = 0;
@@ -1232,7 +1286,7 @@
     step++;
     if (step >= order.length) { _finalSucceed(); return; }
     // brief pause then next
-    hint.textContent = '✓ Continua...';
+    hint.textContent = hgT('✓ Continua...', '✓ Continue...');
     hint.style.color = '#00c896';
     setTimeout(function() {
       hint.textContent = '';
@@ -1283,6 +1337,9 @@
 
 <!-- ── HERO ── -->
 <section class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-badge"><span class="badge-dot"></span><span class="lang-pt">19 apps em produção</span><span class="lang-en">19 apps in production</span></div>
