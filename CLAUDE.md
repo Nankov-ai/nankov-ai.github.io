@@ -212,6 +212,31 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Keyword highlight:** "Mais impacto." em Signal green
 
 ### Cards do portfolio
+
+**Ordem actual dos cards (por impacto empresarial decrescente):**
+```
+01 · Faturix (strategic)
+02 · VisionAI+ Demo (strategic)
+03 · Nodeflow O2C Reader (strategic)
+04 · NVisionAI+ (strategic)
+05 · AudiNote (featured, audinate-card)
+06 · Voz Afiada (featured, voz-afiada-card)
+07 · NeoOtto
+08 · OutOfBox
+09 · Análise de Crédito Habitação (strategic)
+10 · Gestor de Quotas
+11 · Alpha2026
+12 · Logic Gate Trainer
+13 · Automagic Mail
+14 · Portal de Notas de Despesa
+15 · Vocaliz
+16 · HealHour
+17 · Treino e Diagnóstico Ocular
+18 · English Adventure
+19 · LipRead (coming soon)
+```
+*Nota: os títulos das secções de detalhe acima mantêm a numeração original — a ordem de apresentação no site é a desta lista.*
+
 - **Formato:** Desafio → Resultado (não só features técnicas)
 - **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar) — gerado em JS, excluindo `.audinate-card`
 - **Hierarquia visual:** `.strategic` (cards 01, 02, 03, 04, 09, 19) com borda Signal subtil; `.featured` (cards 05 AudiNote e 06 Voz Afiada) com glow máximo
