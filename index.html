@@ -788,6 +788,106 @@
     }
     .privacy-close:hover { color: var(--signal); }
 
+    /* ── TERMOS MODAL ── */
+    .termos-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(14,14,14,.85); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .termos-overlay.open { display: flex; }
+    .termos-modal {
+      background: #161616; border: 1px solid var(--border);
+      border-radius: 6px; max-width: 520px; width: 100%;
+      position: relative; overflow: hidden;
+    }
+    .termos-modal-header {
+      padding: 1.75rem 2rem 0;
+      display: flex; flex-direction: column; align-items: center; gap: .75rem;
+      text-align: center;
+    }
+    .termos-modal-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: rgba(0,200,150,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .termos-modal h2 {
+      font-family: 'DM Mono', monospace; font-weight: 500;
+      font-size: .82rem; letter-spacing: .1em; color: var(--paper);
+      text-transform: uppercase; margin: 0;
+    }
+    .termos-modal-body {
+      padding: 1.25rem 2rem; display: flex; flex-direction: column; gap: .85rem;
+    }
+    .termos-ponto {
+      display: flex; align-items: flex-start; gap: .75rem;
+      font-size: .78rem; color: var(--stone); line-height: 1.65;
+    }
+    .termos-ponto-icon {
+      color: var(--signal); font-size: .9rem; margin-top: .05rem; flex-shrink: 0;
+    }
+    .termos-ponto strong { color: var(--paper); }
+    .termos-modal-footer {
+      padding: 0 2rem 1.75rem; display: flex; flex-direction: column; gap: .75rem;
+    }
+    .termos-accept-btn {
+      width: 100%; padding: .75rem; border-radius: 5px; border: none;
+      background: var(--signal); color: #0e0e0e;
+      font-family: 'DM Mono', monospace; font-size: .75rem;
+      font-weight: 500; letter-spacing: .06em; cursor: pointer;
+      transition: opacity .2s;
+    }
+    .termos-accept-btn:hover { opacity: .88; }
+    .termos-full-link {
+      text-align: center; font-size: .68rem; color: var(--stone);
+      cursor: pointer; transition: color .2s; background: none;
+      border: none; width: 100%; font-family: 'DM Mono', monospace;
+      letter-spacing: .06em;
+    }
+    .termos-full-link:hover { color: var(--signal); }
+
+    /* ── TERMOS COMPLETOS MODAL ── */
+    .termos-full-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1001;
+      background: rgba(14,14,14,.9); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .termos-full-overlay.open { display: flex; }
+    .termos-full-modal {
+      background: #161616; border: 1px solid var(--border);
+      border-radius: 6px; max-width: 640px; width: 100%;
+      max-height: 85vh; display: flex; flex-direction: column;
+      position: relative;
+    }
+    .termos-full-modal-header {
+      padding: 1.25rem 2rem; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+    }
+    .termos-full-modal-header h2 {
+      font-family: 'DM Mono', monospace; font-weight: 500;
+      font-size: .78rem; letter-spacing: .1em; color: var(--paper);
+      text-transform: uppercase; margin: 0;
+    }
+    .termos-full-modal-body {
+      padding: 1.5rem 2rem; overflow-y: auto; flex: 1;
+      font-size: .75rem; color: var(--stone); line-height: 1.75;
+    }
+    .termos-full-modal-body h3 {
+      font-family: 'DM Mono', monospace; font-size: .7rem;
+      letter-spacing: .08em; color: var(--paper); text-transform: uppercase;
+      margin: 1.5rem 0 .5rem;
+    }
+    .termos-full-modal-body h3:first-child { margin-top: 0; }
+    .termos-full-modal-body p { margin-bottom: .75rem; }
+    .termos-full-modal-body ul { padding-left: 1.2rem; margin-bottom: .75rem; }
+    .termos-full-modal-body li { margin-bottom: .35rem; }
+    .termos-full-modal-body strong { color: var(--paper); }
+    .termos-full-modal-body a { color: var(--signal); }
+    .termos-full-modal-footer {
+      padding: 1rem 2rem; border-top: 1px solid var(--border);
+      font-size: .65rem; color: rgba(171,166,161,.5); text-align: center; flex-shrink: 0;
+    }
+
     /* ── BACK TO TOP ── */
     .back-to-top {
       position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 99;
@@ -1025,6 +1125,12 @@ hgSetLang(hgLang);
 (function() {
   if (sessionStorage.getItem('nf-human') === '1') {
     document.getElementById('hgate').classList.add('hidden');
+    if (localStorage.getItem('nf-terms') !== '1') {
+      document.addEventListener('DOMContentLoaded', function() {
+        var tg = document.getElementById('termosGate');
+        if (tg) tg.classList.add('open');
+      });
+    }
     return;
   }
 
@@ -1037,7 +1143,12 @@ hgSetLang(hgLang);
     hint.textContent = hgT('✓ Verificado', '✓ Verified');
     hint.style.color = '#00c896';
     sessionStorage.setItem('nf-human', '1');
-    setTimeout(function() { gate.classList.add('hidden'); }, 700);
+    setTimeout(function() {
+      gate.classList.add('hidden');
+      if (localStorage.getItem('nf-terms') !== '1') {
+        document.getElementById('termosGate').classList.add('open');
+      }
+    }, 700);
   }
 
   function fail(msg) {
@@ -2010,10 +2121,53 @@ hgSetLang(hgLang);
     <a href="#portfolio">Portfolio</a>
     <a href="#sobre"><span class="lang-pt">Sobre</span><span class="lang-en">About</span></a>
     <a href="#" id="privacyLink"><span class="lang-pt">Privacidade</span><span class="lang-en">Privacy</span></a>
+    <a href="#" id="termosLink"><span class="lang-pt">Termos</span><span class="lang-en">Terms</span></a>
     <a href="mailto:nodeflow.pt@gmail.com">Email</a>
   </div>
 </div>
 </footer>
+
+<!-- ── TERMOS GATE (ecrã obrigatório, aceite único via localStorage) ── -->
+<div class="termos-overlay" id="termosGate" style="z-index:99998;">
+  <div class="termos-modal" role="dialog" aria-modal="true" aria-labelledby="termosGateTitle">
+    <div style="display:flex;justify-content:flex-end;padding:.75rem 1.25rem 0;">
+      <div style="display:flex;gap:.35rem;">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+    <div class="termos-modal-header">
+      <div class="termos-modal-icon">⚖️</div>
+      <h2 id="termosGateTitle"><span class="lang-pt">Termos e Condições</span><span class="lang-en">Terms and Conditions</span></h2>
+    </div>
+    <div class="termos-modal-body">
+      <div class="termos-ponto">
+        <span class="termos-ponto-icon">✓</span>
+        <span><strong><span class="lang-pt">Verificação obrigatória:</span><span class="lang-en">Mandatory verification:</span></strong> <span class="lang-pt">O conteúdo gerado por IA pode conter imprecisões. És responsável por rever e validar qualquer output antes de o utilizar ou partilhar.</span><span class="lang-en">AI-generated content may contain inaccuracies. You are responsible for reviewing and validating any output before using or sharing it.</span></span>
+      </div>
+      <div class="termos-ponto">
+        <span class="termos-ponto-icon">✓</span>
+        <span><strong><span class="lang-pt">Apoio à decisão:</span><span class="lang-en">Decision support:</span></strong> <span class="lang-pt">As apps Nodeflow são ferramentas de apoio — não substitutos de aconselhamento profissional, jurídico ou financeiro.</span><span class="lang-en">Nodeflow apps are support tools — not substitutes for professional, legal or financial advice.</span></span>
+      </div>
+      <div class="termos-ponto">
+        <span class="termos-ponto-icon">✓</span>
+        <span><strong>EU AI Act Art. 50 (UE 2024/1689):</strong> <span class="lang-pt">As apps com IA generativa utilizam modelos da Google (Gemini) e OpenAI (ChatGPT). O conteúdo produzido é de natureza auxiliar e não constitui decisão autónoma.</span><span class="lang-en">Apps with generative AI use models from Google (Gemini) and OpenAI (ChatGPT). Content produced is auxiliary and does not constitute autonomous decision-making.</span></span>
+      </div>
+      <div class="termos-ponto">
+        <span class="termos-ponto-icon" style="color:var(--stone);">ℹ</span>
+        <span><strong><span class="lang-pt">Portfolio de protótipos:</span><span class="lang-en">Prototype portfolio:</span></strong> <span class="lang-pt">As aplicações disponíveis são protótipos e provas de conceito desenvolvidas a título individual. Não foram sujeitas a testes extensivos em ambientes de produção. A Nodeflow não assume responsabilidade pelo uso que delas seja feito.</span><span class="lang-en">The applications available are prototypes and proof-of-concept tools developed individually. They have not been extensively tested in production environments. Nodeflow assumes no liability for any use made of them.</span></span>
+      </div>
+    </div>
+    <div class="termos-modal-footer">
+      <button class="termos-accept-btn" id="termosGateAccept">
+        <span class="lang-pt">Compreendo e aceito</span><span class="lang-en">I understand and accept</span>
+      </button>
+      <button class="termos-full-link" id="termosGateFullLink">
+        <span class="lang-pt">Ver termos completos →</span><span class="lang-en">View full terms →</span>
+      </button>
+    </div>
+  </div>
+</div>
 
 <!-- ── PRIVACY MODAL ── -->
 <div class="privacy-overlay" id="privacyOverlay">
@@ -2025,6 +2179,95 @@ hgSetLang(hgLang);
     <p><strong><span class="lang-pt">Contacto voluntário.</span><span class="lang-en">Voluntary contact.</span></strong> <span class="lang-pt">Se clicares em "Fale connosco", és redirecionado para o teu cliente de email (Gmail ou Outlook). Nenhum dado é processado pelo nosso servidor — a mensagem vai directamente da tua caixa de saída.</span><span class="lang-en">If you click "Talk to us", you are redirected to your email client (Gmail or Outlook). No data is processed by our server — the message goes directly from your outbox.</span></p>
     <p><strong><span class="lang-pt">Links externos.</span><span class="lang-en">External links.</span></strong> <span class="lang-pt">O site contém ligações para apps de terceiros (GitHub Pages, Google Gemini, Render). A partir do momento em que sais deste domínio, aplicam-se as políticas de privacidade desses serviços.</span><span class="lang-en">The site contains links to third-party apps (GitHub Pages, Google Gemini, Render). Once you leave this domain, the privacy policies of those services apply.</span></p>
     <p style="margin-bottom:0; font-size:.72rem;"><span class="lang-pt">Dúvidas:</span><span class="lang-en">Questions:</span> <a href="mailto:nodeflow.pt@gmail.com" style="color:var(--signal);">nodeflow.pt@gmail.com</a> · <span class="lang-pt">Última actualização: Abril 2026</span><span class="lang-en">Last updated: April 2026</span></p>
+  </div>
+</div>
+
+<!-- ── TERMOS MODAL (resumo) ── -->
+<div class="termos-overlay" id="termosOverlay">
+  <div class="termos-modal" role="dialog" aria-modal="true" aria-labelledby="termosTitle">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem 1.25rem 0;">
+      <div style="display:flex;gap:.35rem;">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="privacy-close" id="termosClose" aria-label="Fechar" style="position:static;">✕</button>
+    </div>
+    <div class="termos-modal-header">
+      <div class="termos-modal-icon">⚖️</div>
+      <h2 id="termosTitle"><span class="lang-pt">Termos e Condições</span><span class="lang-en">Terms and Conditions</span></h2>
+    </div>
+    <div class="termos-modal-body">
+      <div class="termos-ponto">
+        <span class="termos-ponto-icon">✓</span>
+        <span><strong><span class="lang-pt">Verificação obrigatória:</span><span class="lang-en">Mandatory verification:</span></strong> <span class="lang-pt">O conteúdo gerado por IA pode conter imprecisões. És responsável por rever e validar qualquer output antes de o utilizar ou partilhar.</span><span class="lang-en">AI-generated content may contain inaccuracies. You are responsible for reviewing and validating any output before using or sharing it.</span></span>
+      </div>
+      <div class="termos-ponto">
+        <span class="termos-ponto-icon">✓</span>
+        <span><strong><span class="lang-pt">Apoio à decisão:</span><span class="lang-en">Decision support:</span></strong> <span class="lang-pt">As apps Nodeflow são ferramentas de apoio — não substitutos de aconselhamento profissional, jurídico ou financeiro.</span><span class="lang-en">Nodeflow apps are support tools — not substitutes for professional, legal or financial advice.</span></span>
+      </div>
+      <div class="termos-ponto">
+        <span class="termos-ponto-icon">✓</span>
+        <span><strong>EU AI Act Art. 50 (UE 2024/1689):</strong> <span class="lang-pt">As apps com IA generativa utilizam modelos da Google (Gemini) e OpenAI (ChatGPT). O conteúdo produzido é de natureza auxiliar e não constitui decisão autónoma.</span><span class="lang-en">Apps with generative AI use models from Google (Gemini) and OpenAI (ChatGPT). Content produced is auxiliary and does not constitute autonomous decision-making.</span></span>
+      </div>
+    </div>
+    <div class="termos-modal-footer">
+      <button class="termos-accept-btn" id="termosAcceptBtn">
+        <span class="lang-pt">Compreendo e aceito</span><span class="lang-en">I understand and accept</span>
+      </button>
+      <button class="termos-full-link" id="termosFullLink">
+        <span class="lang-pt">Ver termos completos →</span><span class="lang-en">View full terms →</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── TERMOS COMPLETOS MODAL ── -->
+<div class="termos-full-overlay" id="termosFullOverlay">
+  <div class="termos-full-modal" role="dialog" aria-modal="true">
+    <div class="termos-full-modal-header">
+      <h2><span class="lang-pt">Termos e Condições · v2026-07-05</span><span class="lang-en">Terms and Conditions · v2026-07-05</span></h2>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <div style="display:flex;gap:.25rem;">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="privacy-close" id="termosFullClose" aria-label="Fechar">✕</button>
+      </div>
+    </div>
+    <div class="termos-full-modal-body">
+      <p><span class="lang-pt">Ao acederes e utilizares o site nodeflow.pt e qualquer aplicação disponibilizada pela Nodeflow, aceitas integralmente estes Termos e Condições.</span><span class="lang-en">By accessing and using nodeflow.pt and any application made available by Nodeflow, you fully accept these Terms and Conditions.</span></p>
+
+      <h3><span class="lang-pt">1. Conta e Elegibilidade</span><span class="lang-en">1. Account and Eligibility</span></h3>
+      <p><span class="lang-pt">O acesso às aplicações Nodeflow está reservado a utilizadores com <strong>idade mínima de 18 anos</strong>. Quando uma aplicação requer credenciais (chaves de API, PIN), és inteiramente responsável pela sua confidencialidade. A Nodeflow não armazena nem acede a chaves de API fornecidas pelo utilizador.</span><span class="lang-en">Access to Nodeflow applications is reserved for users aged <strong>18 or over</strong>. When an application requires credentials (API keys, PIN), you are entirely responsible for their confidentiality. Nodeflow does not store or access API keys provided by users.</span></p>
+
+      <h3><span class="lang-pt">2. Uso Aceitável</span><span class="lang-en">2. Acceptable Use</span></h3>
+      <p><span class="lang-pt">São expressamente proibidas as seguintes utilizações:</span><span class="lang-en">The following uses are expressly prohibited:</span></p>
+      <ul>
+        <li><span class="lang-pt">Fins ilegais, fraudulentos ou contrários à ordem pública</span><span class="lang-en">Illegal, fraudulent or public-order-violating purposes</span></li>
+        <li><span class="lang-pt">Conteúdo difamatório, discriminatório, explícito ou violento</span><span class="lang-en">Defamatory, discriminatory, explicit or violent content</span></li>
+        <li><span class="lang-pt">Engenharia inversa, bots ou scripts não autorizados</span><span class="lang-en">Reverse engineering, bots or unauthorised scripts</span></li>
+        <li><span class="lang-pt">Violação de direitos de propriedade intelectual de terceiros</span><span class="lang-en">Infringement of third-party intellectual property rights</span></li>
+        <li><span class="lang-pt">Utilização das apps para treinar modelos de IA sem autorização escrita</span><span class="lang-en">Using apps to train AI models without written authorisation</span></li>
+      </ul>
+
+      <h3><span class="lang-pt">3. Inteligência Artificial ⚠️ AI Act Art. 50</span><span class="lang-en">3. Artificial Intelligence ⚠️ AI Act Art. 50</span></h3>
+      <p><span class="lang-pt">As aplicações Nodeflow utilizam modelos de IA de terceiros — <strong>Gemini (Google)</strong> e <strong>ChatGPT (OpenAI)</strong>. O conteúdo gerado pode conter imprecisões, factos incorrectos ou enviesamentos. <strong>És responsável por rever e validar qualquer output antes de o utilizar publicamente.</strong> A Nodeflow não garante exactidão, originalidade ou aptidão para uso específico.</span><span class="lang-en">Nodeflow applications use third-party AI models — <strong>Gemini (Google)</strong> and <strong>ChatGPT (OpenAI)</strong>. Generated content may contain inaccuracies, incorrect facts or bias. <strong>You are responsible for reviewing and validating any output before using it publicly.</strong> Nodeflow does not guarantee accuracy, originality or fitness for specific use.</span></p>
+
+      <h3><span class="lang-pt">4. Dados Pessoais e Documentos Sensíveis</span><span class="lang-en">4. Personal Data and Sensitive Documents</span></h3>
+      <p><span class="lang-pt">Ao carregares documentos com dados pessoais, garantes que tens o direito legal de os submeter e, quando incluam dados de terceiros, que dispões da autorização necessária. Os dados são processados pelos modelos de IA indicados, sujeitos às suas políticas de privacidade.</span><span class="lang-en">When uploading documents containing personal data, you confirm you have the legal right to submit them and, where they include third-party data, that you have the necessary authorisation. Data is processed by the indicated AI models, subject to their privacy policies.</span></p>
+
+      <h3><span class="lang-pt">5. Limitação de Responsabilidade</span><span class="lang-en">5. Limitation of Liability</span></h3>
+      <p><span class="lang-pt">As aplicações são fornecidas "tal como estão". A Nodeflow não é responsável por imprecisões no conteúdo gerado por IA, indisponibilidade técnica, nem por acções de fornecedores de IA ou plataformas terceiras.</span><span class="lang-en">Applications are provided "as is". Nodeflow is not responsible for inaccuracies in AI-generated content, technical unavailability, or actions by AI providers or third-party platforms.</span></p>
+
+      <h3><span class="lang-pt">6. Lei Aplicável</span><span class="lang-en">6. Applicable Law</span></h3>
+      <p><span class="lang-pt">Estes Termos são regidos pela lei portuguesa. Para resolução alternativa de conflitos de consumo: <a href="https://www.consumidor.gov.pt" target="_blank" rel="noopener noreferrer">consumidor.gov.pt</a> (Lei n.º 144/2015).</span><span class="lang-en">These Terms are governed by Portuguese law. For alternative consumer dispute resolution: <a href="https://www.consumidor.gov.pt" target="_blank" rel="noopener noreferrer">consumidor.gov.pt</a> (Law no. 144/2015).</span></p>
+
+      <h3><span class="lang-pt">7. Contacto</span><span class="lang-en">7. Contact</span></h3>
+      <p><strong>Nodeflow</strong> · <a href="mailto:nodeflow.pt@gmail.com">nodeflow.pt@gmail.com</a></p>
+    </div>
+    <div class="termos-full-modal-footer">
+      <span class="lang-pt">Em conformidade com RGPD (UE 2016/679) e AI Act (UE 2024/1689) · v2026-07-05</span><span class="lang-en">In compliance with GDPR (EU 2016/679) and AI Act (EU 2024/1689) · v2026-07-05</span>
+    </div>
   </div>
 </div>
 
@@ -2132,7 +2375,42 @@ hgSetLang(hgLang);
   privacyLink.addEventListener('click', e => { e.preventDefault(); privacyOverlay.classList.add('open'); });
   privacyClose.addEventListener('click', () => privacyOverlay.classList.remove('open'));
   privacyOverlay.addEventListener('click', e => { if (e.target === privacyOverlay) privacyOverlay.classList.remove('open'); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') privacyOverlay.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { privacyOverlay.classList.remove('open'); termosOverlay.classList.remove('open'); } });
+
+  // Ecrã obrigatório de Termos (termosGate) — só fecha com "Compreendo e aceito"
+  const termosGate = document.getElementById('termosGate');
+  document.getElementById('termosGateAccept').addEventListener('click', () => {
+    localStorage.setItem('nf-terms', '1');
+    termosGate.classList.remove('open');
+  });
+  document.getElementById('termosGateFullLink').addEventListener('click', () => {
+    termosGate.classList.remove('open');
+    document.getElementById('termosFullOverlay').classList.add('open');
+    document.getElementById('termosFullOverlay').dataset.fromGate = '1';
+  });
+
+  // Modal de Termos
+  const termosLink = document.getElementById('termosLink');
+  const termosOverlay = document.getElementById('termosOverlay');
+  const termosClose = document.getElementById('termosClose');
+  const termosAcceptBtn = document.getElementById('termosAcceptBtn');
+  const termosFullLink = document.getElementById('termosFullLink');
+  const termosFullOverlay = document.getElementById('termosFullOverlay');
+  const termosFullClose = document.getElementById('termosFullClose');
+
+  termosLink.addEventListener('click', e => { e.preventDefault(); termosOverlay.classList.add('open'); });
+  termosClose.addEventListener('click', () => termosOverlay.classList.remove('open'));
+  termosOverlay.addEventListener('click', e => { if (e.target === termosOverlay) termosOverlay.classList.remove('open'); });
+  termosAcceptBtn.addEventListener('click', () => termosOverlay.classList.remove('open'));
+  termosFullLink.addEventListener('click', () => { termosOverlay.classList.remove('open'); termosFullOverlay.classList.add('open'); });
+  function closeTermosFull() {
+    const fromGate = termosFullOverlay.dataset.fromGate === '1';
+    termosFullOverlay.classList.remove('open');
+    termosFullOverlay.dataset.fromGate = '';
+    if (fromGate) termosGate.classList.add('open');
+  }
+  termosFullClose.addEventListener('click', closeTermosFull);
+  termosFullOverlay.addEventListener('click', e => { if (e.target === termosFullOverlay) closeTermosFull(); });
 
   // ── AudiNote Beta Modal ──
   const audinateOverlay = document.getElementById('audinateOverlay');

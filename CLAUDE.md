@@ -306,6 +306,15 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Botão "Repetir →"** inserido via `hint.after(retryBtn)` — fora do `hg-area` (que tem `position:relative` com nós `position:absolute`). Não usar `area.appendChild` ou o botão sobrepõe os nós.
 - **PT/EN bilingue:** botões PT/EN no topo do card (canto direito). Idioma detectado via `localStorage('nf-lang')` — mesma chave do switcher do site. Função global `hgSetLang(l)` e `hgT(pt, en)` antes do IIFE. Todos os textos (instruções, hints, botões, footer) respondem ao idioma em tempo real. `hgRefreshInstr` actualiza o `instr.innerHTML` sem reiniciar o desafio.
 
+### Termos e Condições
+- **Ficheiro fonte:** `termos-condicoes.md` — versão v2026-07-05, 12 artigos
+- **Ecrã obrigatório (`termosGate`):** aparece após Human Gate, antes do site. Guarda aceitação em `localStorage('nf-terms')` — persiste entre sessões (aceite uma vez, não volta a aparecer). Não fecha com Escape nem clique fora — única saída é "Compreendo e aceito".
+- **4 pontos no resumo:** Verificação obrigatória · Apoio à decisão · EU AI Act Art. 50 · Portfolio de protótipos (disclaimer de responsabilidade)
+- **"Ver termos completos →":** abre modal secundário com termos condensados (7 secções, bilingue PT/EN). Ao fechar, volta ao termosGate — não permite entrar no site sem aceitar.
+- **Link no footer:** "Termos" ao lado de "Privacidade" — abre modal de resumo voluntário (pode fechar livremente, aceitação já registada).
+- **Mecanismo `fromGate`:** `termosFullOverlay.dataset.fromGate` — flag para saber se o modal completo foi aberto a partir do gate obrigatório ou do footer.
+- **Inspiração UX:** PolicyModal do VisionAI+ (`c:/projetos/Visionai+/src/components/PolicyModal.tsx`)
+
 ### Secções do site
 1. Hero (duas colunas: slogan/CTAs + painel métricas)
 2. Stats (19 apps / 12 com IA / 7 só automação / 5 sectores)
@@ -340,7 +349,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Secção de modelos de colaboração
 - [x] Self-host Google Fonts (GDPR)
 - [x] Política de privacidade (modal no footer)
-- [x] Aviso AI Act Art. 50 em todas as apps com IA
+- [x] Aviso AI Act Art. 50 em muitas apps com IA — confirmado nas apps: Análise de Crédito, Logic Gate Trainer, Gestor de Quotas (barra no topo). A verificar nas apps: NeoOtto, OutOfBox, Alpha2026, Faturix. Apps SEM IA (não precisam): Notas de Despesa, Automagic Mail, Vocaliz, HealHour, English Adventure, Treino Ocular
 - [x] Hero duas colunas com painel de métricas
 - [x] Hierarquia visual no portfolio (strategic / featured)
 - [x] Contraste WCAG AA nos textos secundários
@@ -369,6 +378,9 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ### Fase 2 · Em aberto
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
+- [x] T&C implementados — ecrã obrigatório entre Human Gate e site (`termosGate`), modal de resumo com 4 pontos + modal de termos completos. Link "Termos" no footer para consulta posterior.
+- [ ] Verificar e adicionar aviso AI Act nas apps que ainda não têm: NeoOtto, OutOfBox, Alpha2026, Faturix
+- [ ] Decidir se os cards do portfolio mostram etiqueta `🤖 IA` para apps com IA generativa
 
 ### Fase 3 · Futuro
 - [ ] Dashboard de leads (lead → proposta → cliente)
@@ -378,6 +390,24 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 ### Fase 4 · Novo produto
 - [ ] Agente de marketing/folhetos para retalho
 - [ ] Voz Afiada — produto standalone com waitlist (quando lançar)
+
+---
+
+## Skills relevantes para este projecto
+
+| Skill | Quando usar |
+|---|---|
+| `nando-global` | Activar no início de cada sessão — QA Rules P1/P2/P3 (aplicar só em decisões com peso, não em ajustes triviais) |
+| `termos-condicoes-pt` | Actualizar ou expandir os T&C do site |
+| `aiact` | Verificar compliance AI Act em apps com IA |
+| `faturix` | Trabalhar no projecto Faturix (card 01) |
+| `b2b-outbound-automation` | Quando escalar prospecção de clientes B2B |
+| `agent-prompt-builder` | Melhorar system prompts da Voz Afiada, NeoOtto e outros agentes |
+| `stop-slop` | Rever copy do site — remove padrões de escrita IA (travessões, advérbios, estruturas formulaicas) |
+
+**Repositório das skills:** `https://github.com/Nankov-ai/anthropics-skills`  
+**Localização local:** `C:\Users\Utilizador\.claude\skills\`  
+**Nota:** skills locais não têm git remote — sincronizar manualmente com o repositório GitHub se necessário.
 
 ---
 
