@@ -18,6 +18,8 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 **Nota deploy:** GitHub Pages Actions mostra "deploy timeout" desde que o custom domain foi configurado — o site funciona correctamente em `nodeflow.pt`. Problema cosmético nos logs, esperado resolver-se sozinho em 24-48h após estabilização do domínio.
 
+**Último deploy:** 2026-07-07 — T&C gate + PT/EN modais + fix refresh bypass + separador PT/EN·✕
+
 ---
 
 ## Identidade da marca Nodeflow
@@ -383,6 +385,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] T&C implementados — ecrã obrigatório entre Human Gate e site (`termosGate`), modal de resumo com 4 pontos + modal de termos completos. Link "Termos" no footer para consulta posterior.
 - [ ] Verificar e adicionar aviso AI Act nas apps que ainda não têm: NeoOtto, OutOfBox, Alpha2026, Faturix
 - [ ] Decidir se os cards do portfolio mostram etiqueta `🤖 IA` para apps com IA generativa
+- [ ] `.gitignore` — `Termos e Condições IA.pdf` está na pasta local mas não commitado (correcto — ficheiro interno)
 
 ### Fase 3 · Futuro
 - [ ] Dashboard de leads (lead → proposta → cliente)
