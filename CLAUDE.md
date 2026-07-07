@@ -313,6 +313,8 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **"Ver termos completos →":** abre modal secundário com termos condensados (7 secções, bilingue PT/EN). Ao fechar, volta ao termosGate — não permite entrar no site sem aceitar.
 - **Link no footer:** "Termos" ao lado de "Privacidade" — abre modal de resumo voluntário (pode fechar livremente, aceitação já registada).
 - **Mecanismo `fromGate`:** `termosFullOverlay.dataset.fromGate` — flag para saber se o modal completo foi aberto a partir do gate obrigatório ou do footer.
+- **Header do modal completo:** título à esquerda; à direita — PT/EN + separador vertical `1px` + botão ✕ (não usar `position:absolute` no close — fica `position:static` dentro do flex).
+- **Bypass por refresh corrigido:** verificação de `nf-terms` dentro de `DOMContentLoaded` — o elemento `termosGate` ainda não existe quando o script do Human Gate corre.
 - **Inspiração UX:** PolicyModal do VisionAI+ (`c:/projetos/Visionai+/src/components/PolicyModal.tsx`)
 
 ### Secções do site
