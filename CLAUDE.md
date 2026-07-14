@@ -18,7 +18,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 **Nota deploy:** GitHub Pages Actions mostra "deploy timeout" desde que o custom domain foi configurado — o site funciona correctamente em `nodeflow.pt`. Problema cosmético nos logs, esperado resolver-se sozinho em 24-48h após estabilização do domínio.
 
-**Último deploy:** 2026-07-07 — fix card Alpha2026: nome corrigido de "Sistema de Gestão de Projetos" para "Alpha2026"
+**Último deploy:** 2026-07-12 — fix modal privacidade: texto actualizado para mencionar Cloudflare Web Analytics com precisão RGPD
 
 ---
 
