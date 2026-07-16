@@ -18,7 +18,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 **Nota deploy:** GitHub Pages Actions mostra "deploy timeout" desde que o custom domain foi configurado — o site funciona correctamente em `nodeflow.pt`. Problema cosmético nos logs, esperado resolver-se sozinho em 24-48h após estabilização do domínio.
 
-**Último deploy:** 2026-07-12 — fix modal privacidade: texto actualizado para mencionar Cloudflare Web Analytics com precisão RGPD
+**Último deploy:** 2026-07-16 — aviso AI Act Art. 50 adicionado aos cards Faturix, NeoOtto, OutOfBox, Alpha2026
 
 ---
 
@@ -383,7 +383,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 ### Fase 2 · Em aberto
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
 - [x] T&C implementados — ecrã obrigatório entre Human Gate e site (`termosGate`), modal de resumo com 4 pontos + modal de termos completos. Link "Termos" no footer para consulta posterior.
-- [ ] Verificar e adicionar aviso AI Act nas apps que ainda não têm: NeoOtto, OutOfBox, Alpha2026, Faturix
+- [x] Verificar e adicionar aviso AI Act nas apps que ainda não tinham: NeoOtto, OutOfBox, Alpha2026, Faturix — concluído 2026-07-16
 - [ ] Decidir se os cards do portfolio mostram etiqueta `🤖 IA` para apps com IA generativa
 - [ ] `.gitignore` — `Termos e Condições IA.pdf` está na pasta local mas não commitado (correcto — ficheiro interno)
 
