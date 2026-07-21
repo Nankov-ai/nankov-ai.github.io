@@ -18,7 +18,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 **Nota deploy:** GitHub Pages Actions mostra "deploy timeout" desde que o custom domain foi configurado — o site funciona correctamente em `nodeflow.pt`. Problema cosmético nos logs, esperado resolver-se sozinho em 24-48h após estabilização do domínio.
 
-**Último deploy:** 2026-07-16 — aviso AI Act Art. 50 adicionado aos cards Faturix, NeoOtto, OutOfBox, Alpha2026
+**Último deploy:** 2026-07-21 — nav Faturix/AudiNote alinhados (estrutura idêntica), fix light mode painel de métricas hero, mobile breakpoints corrigidos
 
 ---
 
@@ -249,6 +249,17 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **"Para quem:" em Signal green:** `.card-client strong { color: var(--signal) }` — destaca o label em todos os cards expandidos.
 - **Voz Afiada — caixa de feedback:** `.voz-afiada-card` tem class própria; excluído do contact-wrap automático; injected via JS dentro de `.card-details` com botão "Já testaste? Diz-nos o que achaste →" que abre email picker (Gmail / Outlook / Copiar) com assunto pré-preenchido "Feedback Voz Afiada". Status: "Gemini Gem · Em testes".
 
+### Nav das Landing Pages (Faturix + AudiNote)
+
+**Padrão idêntico** nos dois sites — qualquer alteração futura deve replicar em ambos:
+- **Estrutura HTML:** `<nav> > <div class="nav-inner"> > <div class="nav-brand"> + <div class="nav-right">`
+- **nav-brand:** `.nav-logo` (wordmark em DM Mono 1rem, `<span>` em signal green) + `.nav-by` ("by Nodeflow" com `border-left`)
+- **nav-right:** `.lang-switch` (PT/EN) + `.nav-cta` (botão verde, `global-contact-btn` no Faturix / `open-modal` no AudiNote)
+- **CSS nav:** `position: sticky`, `height: 56px`, `background: rgba(14,14,14,.92)`, `blur(12px)`
+- **Mobile breakpoints:** `≤520px` → `.nav-by { display:none }` · `≤380px` → botão compacto
+- **Nunca** usar `position: fixed` (exige padding-top compensatório no hero) — usar sempre `sticky`
+- **Locais:** `c:/projetos/Agente/index.html` (Faturix) · `c:/projetos/Ouvinte/index.html` (AudiNote)
+
 ### PT/EN Bilingue
 - **Switcher:** botões PT/EN no nav e no footer de ambos os sites
 - **Mecanismo:** `html[data-lang="en"]` no elemento `<html>` via `setAttribute`
@@ -384,6 +395,9 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [ ] Gráficos dinâmicos — crescimento de apps ao longo do tempo (stand-by — complexidade backend)
 - [x] T&C implementados — ecrã obrigatório entre Human Gate e site (`termosGate`), modal de resumo com 4 pontos + modal de termos completos. Link "Termos" no footer para consulta posterior.
 - [x] Verificar e adicionar aviso AI Act nas apps que ainda não tinham: NeoOtto, OutOfBox, Alpha2026, Faturix — concluído 2026-07-16
+- [x] Nav Faturix/AudiNote alinhados — mesma estrutura HTML/CSS, breakpoints mobile corrigidos (2026-07-21)
+- [x] Fix light mode — painel de métricas hero: texto sempre legível (fundo do painel sempre escuro, texto fixo em claro) (2026-07-21)
+- [x] AudiNote — Google Fonts removido, fontes self-hosted em `fonts/` (GDPR) (2026-07-21)
 - [ ] Decidir se os cards do portfolio mostram etiqueta `🤖 IA` para apps com IA generativa
 - [ ] `.gitignore` — `Termos e Condições IA.pdf` está na pasta local mas não commitado (correcto — ficheiro interno)
 
