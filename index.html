@@ -1290,7 +1290,7 @@ hgSetLang(hgLang);
       node.style.transform='none';
       var p=sp(cx,cy); trail.setAttribute('x2',p.x); trail.setAttribute('y2',p.y);
       var d=Math.hypot(gc(node).x-gc(tgt).x,gc(node).y-gc(tgt).y);
-      if (d<40) { tgt.style.borderColor='#00c896'; tgt.style.boxShadow='0 0 0 6px rgba(0,200,150,.2)'; hint.textContent='Soltar para confirmar'; hint.style.color='#00c896'; }
+      if (d<40) { tgt.style.borderColor='#00c896'; tgt.style.boxShadow='0 0 0 6px rgba(0,200,150,.2)'; hint.textContent=hgT('Soltar para confirmar','Release to confirm'); hint.style.color='#00c896'; }
       else      { tgt.style.borderColor='rgba(245,244,240,.35)'; tgt.style.boxShadow=''; hint.textContent=''; }
     }
     function onEnd(cx,cy) {
@@ -1317,7 +1317,7 @@ hgSetLang(hgLang);
       <div id="hgb-track" style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:22px;overflow:hidden;">
         <div id="hgb-fill" style="position:absolute;left:0;top:0;bottom:0;width:44px;background:rgba(0,200,150,.15);border-radius:22px;transition:width .05s;"></div>
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
-          <span style="font-family:'DM Mono',monospace;font-size:.58rem;color:rgba(245,244,240,.25);letter-spacing:.1em;">DESLIZA</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.58rem;color:rgba(245,244,240,.25);letter-spacing:.1em;"><span class="lang-pt">DESLIZA</span><span class="lang-en">SLIDE</span></span>
         </div>
         <div id="hgb-thumb" style="position:absolute;left:4px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:#00c896;cursor:grab;display:flex;align-items:center;justify-content:center;animation:nodepulse 2s infinite;z-index:2;">
           <svg width="14" height="14" fill="none" stroke="#0e0e0e" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -1602,7 +1602,7 @@ hgSetLang(hgLang);
           </div>
           <div class="flow-stat">
             <div class="flow-stat-num">19</div>
-            <div class="flow-stat-label">Apps live</div>
+            <div class="flow-stat-label"><span class="lang-pt">Apps live</span><span class="lang-en">Live apps</span></div>
           </div>
         </div>
       </div>
@@ -1703,9 +1703,9 @@ hgSetLang(hgLang);
       <div class="card-name">Nodeflow O2C Reader</div>
       <p class="card-tagline"><span class="lang-pt lang-blk"><strong>Desafio:</strong> Técnicos perdem horas a consultar manuais e catálogos para abrir ordens de trabalho. <strong>Resultado:</strong> O agente lê o PDF da encomenda, cruza com catálogo e SLA locais, sugere peças e gera a OT automaticamente. Integra com ERP PHC.</span><span class="lang-en lang-blk"><strong>Challenge:</strong> Technicians spend hours consulting manuals and catalogues to open work orders. <strong>Result:</strong> The agent reads the order PDF, cross-references local catalogue and SLAs, suggests parts and auto-generates the work order. Integrates with PHC ERP.</span></p>
       <div class="card-client"><span class="lang-pt lang-blk"><strong>Para quem:</strong> Empresas de distribuição com processo O2C manual</span><span class="lang-en lang-blk"><strong>For:</strong> Distribution companies with manual O2C processes</span></div>
-      <div class="card-note" style="font-size:.72rem;color:var(--stone);margin-top:.4rem;"><span class="lang-pt">⚠ Servidor free tier — pode demorar ~30s a arrancar</span><span class="lang-en">⚠ Free tier server — may take ~30s to start</span></div>
       <div class="card-date"><span class="lang-pt">Abr 2026</span><span class="lang-en">Apr 2026</span></div>
       <div class="card-bottom">
+        <div class="card-note" style="font-size:.72rem;color:var(--stone);margin-bottom:.75rem;"><span class="lang-pt">⚠ Servidor free tier — pode demorar ~30s a arrancar</span><span class="lang-en">⚠ Free tier server — may take ~30s to start</span></div>
         <div class="stack-tags">
           <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Gemini API</span><span class="tag">RAG</span>
           <span class="tag cat">B2B</span>
@@ -1809,9 +1809,9 @@ hgSetLang(hgLang);
       <div class="card-name">OutOfBox</div>
       <p class="card-tagline"><span class="lang-pt">Coach de mentalidade com IA. Transforma pensamentos limitantes em perguntas de crescimento. Cada desafio é ressignificado como oportunidade, não como obstáculo.</span><span class="lang-en">AI mindset coach. Transforms limiting thoughts into growth questions. Every challenge is reframed as an opportunity, not an obstacle.</span></p>
       <div class="card-client"><span class="lang-pt lang-blk"><strong>Para quem:</strong> Profissionais e líderes que querem desenvolver uma mentalidade de crescimento no dia-a-dia</span><span class="lang-en lang-blk"><strong>For:</strong> Professionals and leaders who want to develop a growth mindset in their daily lives</span></div>
-      <div class="card-note" style="font-size:.72rem;color:var(--stone);margin-top:.4rem;"><span class="lang-pt">⚠ Servidor free tier — pode demorar ~30s a arrancar</span><span class="lang-en">⚠ Free tier server — may take ~30s to start</span></div>
       <div class="card-date"><span class="lang-pt">Jun 2026</span><span class="lang-en">Jun 2026</span></div>
       <div class="card-bottom">
+        <div class="card-note" style="font-size:.72rem;color:var(--stone);margin-bottom:.75rem;"><span class="lang-pt">⚠ Servidor free tier — pode demorar ~30s a arrancar</span><span class="lang-en">⚠ Free tier server — may take ~30s to start</span></div>
         <div class="card-note" style="font-size:.72rem;color:var(--stone);margin-bottom:.75rem;"><span class="lang-pt">🤖 App com IA generativa — conteúdo produzido por IA. (AI Act Art. 50)</span><span class="lang-en">🤖 App with generative AI — AI-produced content. (AI Act Art. 50)</span></div>
         <div class="stack-tags">
           <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Prisma</span><span class="tag">IA</span>
@@ -2174,7 +2174,7 @@ hgSetLang(hgLang);
       </div>
       <div class="pillar">
         <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00c896" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="pillar-title">Privacidade &amp; Segurança</div>
+        <div class="pillar-title"><span class="lang-pt">Privacidade &amp; Segurança</span><span class="lang-en">Privacy &amp; Security</span></div>
         <p class="pillar-desc"><span class="lang-pt">Os dados dos teus clientes não saem para servidores de terceiros sem necessidade — as soluções correm <strong>no ambiente da empresa ou em infraestrutura controlada</strong>.</span><span class="lang-en">Your clients' data doesn't go to third-party servers without necessity — solutions run <strong>in the company's environment or in controlled infrastructure</strong>.</span></p>
       </div>
       <div class="pillar">
@@ -2206,9 +2206,9 @@ hgSetLang(hgLang);
 <div class="footer-inner">
   <div class="footer-brand">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <rect x="2" y="2" width="9" height="9" rx="1.5" fill="#f5f4f0"/>
-      <rect x="13" y="2" width="9" height="9" rx="1.5" fill="none" stroke="#f5f4f0" stroke-width="1.2"/>
-      <rect x="2" y="13" width="9" height="9" rx="1.5" fill="none" stroke="#f5f4f0" stroke-width="1.2"/>
+      <rect x="2" y="2" width="9" height="9" rx="1.5" fill="currentColor"/>
+      <rect x="13" y="2" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="2" y="13" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
       <rect x="13" y="13" width="9" height="9" rx="1.5" fill="#00c896"/>
     </svg>
     <span class="footer-copy"><span class="lang-pt">© 2026 Nodeflow · Menos atrito. Mais impacto.</span><span class="lang-en">© 2026 Nodeflow · Less friction. More impact.</span></span>
@@ -2655,7 +2655,7 @@ hgSetLang(hgLang);
 
     picker.querySelector('.copy-email').addEventListener('click', () => {
       navigator.clipboard.writeText(to).then(() => {
-        picker.querySelector('.copy-email').textContent = '✓ Copiado!';
+        picker.querySelector('.copy-email').textContent = document.documentElement.getAttribute('data-lang')==='en' ? '✓ Copied!' : '✓ Copiado!';
         setTimeout(() => picker.classList.remove('open'), 1200);
       });
     });
@@ -2713,7 +2713,7 @@ hgSetLang(hgLang);
       </button>`;
     picker.querySelector('.copy-email').addEventListener('click', () => {
       navigator.clipboard.writeText(to).then(() => {
-        picker.querySelector('.copy-email').textContent = '✓ Copiado!';
+        picker.querySelector('.copy-email').textContent = document.documentElement.getAttribute('data-lang')==='en' ? '✓ Copied!' : '✓ Copiado!';
         setTimeout(() => picker.classList.remove('open'), 1200);
       });
     });
@@ -2759,7 +2759,7 @@ hgSetLang(hgLang);
     });
     picker.querySelector('.copy-email').addEventListener('click', () => {
       navigator.clipboard.writeText(toAddr).then(() => {
-        picker.querySelector('.copy-email').textContent = '✓ Copiado!';
+        picker.querySelector('.copy-email').textContent = document.documentElement.getAttribute('data-lang')==='en' ? '✓ Copied!' : '✓ Copiado!';
         setTimeout(() => picker.classList.remove('open'), 1200);
       });
     });
@@ -2796,7 +2796,7 @@ hgSetLang(hgLang);
     });
     picker.querySelector('.copy-email').addEventListener('click', () => {
       navigator.clipboard.writeText(to).then(() => {
-        picker.querySelector('.copy-email').textContent = '✓ Copiado!';
+        picker.querySelector('.copy-email').textContent = document.documentElement.getAttribute('data-lang')==='en' ? '✓ Copied!' : '✓ Copiado!';
         setTimeout(() => picker.classList.remove('open'), 1200);
       });
     });
