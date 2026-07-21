@@ -758,11 +758,11 @@
     .footer-brand { display: flex; align-items: center; gap: .65rem; }
     .footer-copy { font-size: .68rem; color: var(--stone); letter-spacing: .06em; }
     .footer-links { display: flex; gap: 1rem 1.5rem; flex-wrap: wrap; }
-    .footer-links a {
+    .footer-links a, .footer-links .footer-email-btn {
       font-size: .68rem; letter-spacing: .08em; color: var(--stone);
       text-decoration: none; transition: color .2s;
     }
-    .footer-links a:hover { color: var(--signal); }
+    .footer-links a:hover, .footer-links .footer-email-btn:hover { color: var(--signal); }
 
     /* ── PRIVACY MODAL ── */
     .privacy-overlay {
@@ -2220,7 +2220,7 @@ hgSetLang(hgLang);
     <a href="#sobre"><span class="lang-pt">Sobre</span><span class="lang-en">About</span></a>
     <a href="#" id="privacyLink"><span class="lang-pt">Privacidade</span><span class="lang-en">Privacy</span></a>
     <a href="#" id="termosLink"><span class="lang-pt">Termos</span><span class="lang-en">Terms</span></a>
-    <span style="position:relative;display:inline-block;"><button class="global-contact-btn" id="footerEmailLink" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:inherit;color:inherit;padding:0;letter-spacing:inherit;">Email</button><div class="email-picker footer-picker" style="bottom:calc(100% + 6px);top:auto;right:0;left:auto;"></div></span>
+    <span style="position:relative;display:inline-flex;align-items:center;"><button class="global-contact-btn footer-email-btn" id="footerEmailLink" style="background:none;border:none;cursor:pointer;font-family:inherit;padding:0;">Email</button><div class="email-picker footer-picker" style="bottom:calc(100% + 6px);top:auto;right:0;left:auto;"></div></span>
   </div>
 </div>
 </footer>
