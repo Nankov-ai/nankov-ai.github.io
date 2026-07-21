@@ -933,8 +933,6 @@
       .stat:nth-child(2) { border-right: none; }
       .about-content { grid-template-columns: 1fr; gap: 3rem; }
       .pillars { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-left { align-items: center; text-align: center; }
       .hero-desc { text-align: center; }
@@ -2448,7 +2446,7 @@ hgSetLang(hgLang);
       btn.classList.add('active');
       const filter = btn.dataset.filter;
       cards.forEach(card => {
-        const show = filter === 'all' || card.dataset.cats.includes(filter);
+        const show = filter === 'all' || card.dataset.cats.split(',').map(s=>s.trim()).includes(filter);
         card.classList.toggle('hidden', !show);
       });
     });
