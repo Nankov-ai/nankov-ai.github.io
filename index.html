@@ -805,6 +805,7 @@
       background: #161616; border: 1px solid var(--border);
       border-radius: 6px; max-width: 520px; width: 100%;
       position: relative; overflow: hidden;
+      max-height: 90vh; display: flex; flex-direction: column;
     }
     .termos-modal-header {
       padding: 1.75rem 2rem 0;
@@ -824,6 +825,7 @@
     }
     .termos-modal-body {
       padding: 1.25rem 2rem; display: flex; flex-direction: column; gap: .85rem;
+      overflow-y: auto; flex: 1;
     }
     .termos-ponto {
       display: flex; align-items: flex-start; gap: .75rem;
