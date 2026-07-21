@@ -14,6 +14,14 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://nankov-ai.github.io/og-image.png" />
+  <script>
+    (function(){
+      var s=localStorage.getItem('nf-theme');
+      var sys=window.matchMedia('(prefers-color-scheme: light)').matches;
+      if(s==='light'||(s===null&&sys)) document.documentElement.classList.add('theme-light');
+      document.documentElement.setAttribute('data-theme-set',s||'auto');
+    })();
+  </script>
   <link rel="stylesheet" href="fonts/fonts.css" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="favicon.svg" />
@@ -33,11 +41,11 @@
       --bg-hero:      #0e0e0e;
       --bg-portfolio: #0e2240;
       --bg-card:      #0a1a30;
+      --bg-alt:       #111111;
       --bg-about:     #f5f4f0;
       --bg-contact:   #021a0e;
       --bg-footer:    #0e0e0e;
     }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -196,7 +204,7 @@
     /* Fade bottom of hero into stats */
     .hero-fade {
       position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
-      background: linear-gradient(to bottom, transparent, var(--bg-stats));
+      background: linear-gradient(to bottom, transparent, var(--bg-hero));
       pointer-events: none;
     }
     /* Grid overlay for tech feel */
@@ -370,12 +378,9 @@
 
     /* ── FILTERS ── */
     .filters {
-      display: flex; gap: .4rem; flex-wrap: nowrap;
-      overflow-x: auto; -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; margin-bottom: 2.5rem;
-      padding-bottom: .25rem;
+      display: flex; gap: .4rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
     }
-    .filters::-webkit-scrollbar { display: none; }
     .filter-btn {
       padding: .4rem 1.1rem; flex-shrink: 0;
       font-family: 'DM Mono', monospace; font-size: .68rem;
@@ -403,7 +408,6 @@
       padding: 2rem; position: relative;
       display: flex; flex-direction: column;
       transition: background .25s;
-      overflow: hidden;
     }
     .app-card::before {
       content: '';
@@ -487,7 +491,7 @@
       margin-bottom: .5rem; color: var(--paper); line-height: 1.25;
     }
     .card-toggle {
-      background: none; border: 1px solid var(--border2); color: var(--stone);
+      background: none; border: 1px solid var(--border2); color: var(--paper);
       font-family: inherit; font-size: .62rem; letter-spacing: .07em;
       padding: .4rem 1rem; cursor: pointer; margin-top: auto; margin-bottom: 1.25rem; display: block;
       width: 100%; transition: color .2s, border-color .2s, background .2s;
@@ -584,15 +588,16 @@
       display: inline-flex; align-items: center; gap: .4rem;
       padding: .45rem 1.1rem;
       font-size: .68rem; letter-spacing: .09em; text-transform: uppercase;
-      border: 1px solid rgba(0,200,150,.3);
+      border: 1px solid var(--signal);
+      background: rgba(0,200,150,.1);
       color: var(--signal); text-decoration: none; flex-shrink: 0;
-      transition: background .2s, border-color .2s;
+      transition: background .2s, border-color .2s, color .2s;
     }
-    .card-arrow:hover { background: rgba(0,200,150,.1); border-color: var(--signal); }
+    .card-arrow:hover { background: rgba(0,200,150,.2); border-color: var(--signal2); color: var(--signal2); }
     .card-contact-wrap {
       position: relative;
       margin-top: .75rem;
-      border-top: 1px solid rgba(255,255,255,.06);
+      border-top: 1px solid var(--border);
       padding-top: .75rem;
     }
     .card-contact-link {
@@ -706,7 +711,7 @@
     /* ── CONTACT ── */
     .contact {
       background: var(--bg-contact);
-      text-align: center; position: relative; overflow: hidden;
+      text-align: center; position: relative;
       border-bottom: 1px solid rgba(0,200,150,.1);
     }
     .contact::before {
@@ -733,7 +738,8 @@
     .contact-email {
       display: inline-block; font-size: .85rem; letter-spacing: .06em;
       color: var(--signal); text-decoration: none;
-      border-bottom: 1px solid rgba(0,200,150,.3); padding-bottom: 2px;
+      border: none; border-bottom: 1px solid rgba(0,200,150,.3); padding-bottom: 2px;
+      background: none; outline: none;
       transition: border-color .2s, color .2s;
     }
     .contact-email:hover { border-color: var(--signal); color: var(--signal2); }
@@ -751,7 +757,7 @@
     }
     .footer-brand { display: flex; align-items: center; gap: .65rem; }
     .footer-copy { font-size: .68rem; color: var(--stone); letter-spacing: .06em; }
-    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links { display: flex; gap: 1rem 1.5rem; flex-wrap: wrap; }
     .footer-links a {
       font-size: .68rem; letter-spacing: .08em; color: var(--stone);
       text-decoration: none; transition: color .2s;
@@ -946,6 +952,8 @@
       .hero-actions { flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-ghost { text-align: center; }
       .pillars { grid-template-columns: 1fr; }
+      .lang-switch { gap: .2rem; margin-left: .4rem; }
+      .nav-wordmark { display: none; }
     }
 
     /* ── AUDINATE BETA MODAL ── */
@@ -1052,6 +1060,91 @@
     .lang-btn:hover:not(.active) { border-color: var(--paper); color: var(--paper); }
     /* ── CARD DATE ── */
     .card-date { font-size: .58rem; color: var(--stone); letter-spacing: .06em; opacity: .72; font-family: 'DM Mono', monospace; white-space: nowrap; }
+
+    /* ── THEME TOGGLE BUTTON ── */
+    .theme-btn {
+      background: none; border: 1px solid rgba(255,255,255,.18);
+      color: var(--stone); cursor: pointer; padding: .22rem .45rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s, color .2s; line-height: 1;
+      margin-left: .3rem;
+    }
+    .theme-btn:hover { border-color: var(--paper); color: var(--paper); }
+
+    /* ── LIGHT MODE — activado por classe JS ou por preferência do sistema ── */
+    html.theme-light {
+      --ink:      #f5f4f0;
+      --ink2:     #e8e7e3;
+      --paper:    #0e0e0e;
+      --stone:    #5a5652;
+      --border:   #d0cec9;
+      --border2:  #bfbdb8;
+      --bg-hero:      #f5f4f0;
+      --bg-portfolio: #e4eef8;
+      --bg-card:      #ddeaf6;
+      --bg-alt:       #ece9e3;
+      --bg-about:     #e8e7e3;
+      --bg-contact:   #eef7f2;
+      --bg-footer:    #f5f4f0;
+    }
+    html.theme-light nav {
+      background: rgba(245,244,240,.95);
+      border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+    html.theme-light .theme-btn { border-color: rgba(0,0,0,.18); }
+    html.theme-light .theme-btn:hover { border-color: #0e0e0e; color: #0e0e0e; }
+    html.theme-light .lang-btn:not(.active) { border-color: rgba(0,0,0,.18); }
+    html.theme-light .nav-links a { color: #5a5652; }
+    html.theme-light .nav-links a:hover { color: #0e0e0e; }
+    html.theme-light .about .section-title { color: #0e0e0e; }
+    html.theme-light .about-text p { color: #3a3836; }
+    html.theme-light .section-label { color: #009970; }
+    html.theme-light .section-label::after { background: #009970; }
+    html.theme-light .about .section-label { color: #009970; }
+    html.theme-light .about .section-label::after { background: #009970; }
+    html.theme-light .hero-badge { color: #006b50; border-color: rgba(0,107,80,.3); }
+    html.theme-light .hero-slogan { color: #3a3836; }
+    html.theme-light .apps-grid { background: var(--border); border-color: var(--border); }
+    html.theme-light .app-card:hover { background: #c8daf0; }
+    html.theme-light .cta-card-btn:hover { background: #e8e7e3; color: var(--signal); }
+    html.theme-light .card-arrow { color: #006b50; border-color: #006b50; background: rgba(0,107,80,.08); }
+    html.theme-light .card-arrow:hover { background: rgba(0,107,80,.16); border-color: #004d3a; color: #004d3a; }
+    html.theme-light .card-toggle { color: #3a3836; border-color: var(--border2); }
+    html.theme-light .card-toggle:hover { color: #006b50; border-color: #006b50; }
+    html.theme-light .hero-scroll { color: #5a5652; }
+    html.theme-light .app-card[data-cats~="b2b"] .tag.cat           { background: rgba(67,56,202,.12); color: #3730a3; border-color: rgba(67,56,202,.25); }
+    html.theme-light .app-card[data-cats~="financas"] .tag.cat       { background: rgba(146,64,14,.1);  color: #92400e; border-color: rgba(146,64,14,.2); }
+    html.theme-light .app-card[data-cats~="produtividade"] .tag.cat  { background: rgba(0,107,80,.1);   color: #006b50; border-color: rgba(0,107,80,.2); }
+    html.theme-light .app-card[data-cats~="educacao"] .tag.cat       { background: rgba(126,34,206,.1); color: #7e22ce; border-color: rgba(126,34,206,.2); }
+    html.theme-light .app-card[data-cats~="saude"] .tag.cat          { background: rgba(185,28,28,.1);  color: #b91c1c; border-color: rgba(185,28,28,.2); }
+    html.theme-light .audinate-modal,
+    html.theme-light .termos-modal,
+    html.theme-light .termos-full-modal,
+    html.theme-light .privacy-modal { background: #ffffff; border-color: #d0cec9; }
+    html.theme-light .about-text p strong { color: #0e0e0e; }
+    html.theme-light .example-box { background: #f0eeea; }
+    html.theme-light .example-box-label { color: #009970; }
+    html.theme-light .example-box p strong { color: #006b50; }
+    html.theme-light .pillar { background: #ffffff; }
+    html.theme-light .pillar:hover { background: #f0eeea; }
+    html.theme-light .pillar-title { color: #0e0e0e; }
+    html.theme-light .contact-title .highlight { color: #006b50; }
+    html.theme-light .contact-email { color: #006b50; border-bottom-color: rgba(0,107,80,.3); }
+    html.theme-light .contact-email:hover { color: #004d3a; border-bottom-color: rgba(0,77,58,.5); }
+    html.theme-light .contact::before { opacity: 0.4; }
+    html.theme-light .email-picker { background: #ffffff; border: 1px solid #d0cec9; box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    html.theme-light .email-picker a, html.theme-light .email-picker button { color: #0e0e0e; background: none; }
+    html.theme-light .email-picker a:hover, html.theme-light .email-picker button:hover { background: rgba(0,0,0,.05); color: var(--signal); }
+
+    /* Fallback: sistema em light mode sem preferência guardada */
+    @media (prefers-color-scheme: light) {
+      html:not([data-theme-set]) {
+        --ink:      #f5f4f0; --ink2: #e8e7e3; --paper: #0e0e0e; --stone: #5a5652;
+        --border:   #d0cec9; --border2: #bfbdb8;
+        --bg-hero: #f5f4f0; --bg-portfolio: #e4eef8; --bg-card: #ddeaf6;
+        --bg-alt: #ece9e3; --bg-about: #e8e7e3; --bg-contact: #eef7f2; --bg-footer: #f5f4f0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1423,9 +1516,9 @@ hgSetLang(hgLang);
 <div class="nav-inner">
   <a href="#" class="nav-logo">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <rect x="2" y="2" width="9" height="9" rx="1.5" fill="#f5f4f0"/>
-      <rect x="13" y="2" width="9" height="9" rx="1.5" fill="none" stroke="#f5f4f0" stroke-width="1.2"/>
-      <rect x="2" y="13" width="9" height="9" rx="1.5" fill="none" stroke="#f5f4f0" stroke-width="1.2"/>
+      <rect x="2" y="2" width="9" height="9" rx="1.5" fill="currentColor"/>
+      <rect x="13" y="2" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="2" y="13" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
       <rect x="13" y="13" width="9" height="9" rx="1.5" fill="#00c896"/>
     </svg>
     <span class="nav-wordmark">Nodeflow</span>
@@ -1438,6 +1531,10 @@ hgSetLang(hgLang);
   <div class="lang-switch">
     <button class="lang-btn active" data-lang="pt">PT</button>
     <button class="lang-btn" data-lang="en">EN</button>
+    <button class="theme-btn" id="theme-toggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">
+      <svg id="theme-icon-moon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="theme-icon-sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
   </div>
   <div class="nav-cta-wrap" style="position:relative;">
     <button class="nav-cta global-contact-btn"><span class="lang-pt">Fale connosco</span><span class="lang-en">Talk to us</span></button>
@@ -1974,22 +2071,22 @@ hgSetLang(hgLang);
 
 <!-- ── SOBRE — secção clara ── -->
 <!-- ── COMO TRABALHAMOS ── -->
-<section style="background:var(--ink);border-top:1px solid rgba(255,255,255,.06);">
+<section style="background:var(--ink);border-top:1px solid var(--border);">
   <div style="max-width:1280px;margin:0 auto;padding:5rem clamp(1.5rem,5vw,4rem);">
     <p class="section-label"><span class="lang-pt">Processo</span><span class="lang-en">Process</span></p>
     <h2 class="section-title" style="margin-bottom:3rem;"><span class="lang-pt">Como trabalhamos</span><span class="lang-en">How we work</span></h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;">
-      <div style="border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:2rem;">
+      <div style="border:1px solid var(--border);border-radius:8px;padding:2rem;">
         <div style="font-size:1.8rem;font-weight:300;color:var(--signal);font-family:'DM Mono',monospace;margin-bottom:1rem;">01</div>
         <div style="font-size:1rem;font-weight:500;color:var(--paper);margin-bottom:.75rem;"><span class="lang-pt">Diagnóstico</span><span class="lang-en">Diagnosis</span></div>
         <p style="font-size:.85rem;color:var(--stone);line-height:1.6;"><span class="lang-pt">Identificamos o processo, o atrito e o impacto real. Percebemos o que vale automatizar e o que não vale.</span><span class="lang-en">We identify the process, the friction and the real impact. We understand what's worth automating and what isn't.</span></p>
       </div>
-      <div style="border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:2rem;">
+      <div style="border:1px solid var(--border);border-radius:8px;padding:2rem;">
         <div style="font-size:1.8rem;font-weight:300;color:var(--signal);font-family:'DM Mono',monospace;margin-bottom:1rem;">02</div>
         <div style="font-size:1rem;font-weight:500;color:var(--paper);margin-bottom:.75rem;"><span class="lang-pt">Construção</span><span class="lang-en">Build</span></div>
         <p style="font-size:.85rem;color:var(--stone);line-height:1.6;"><span class="lang-pt">Desenvolvemos a solução com foco em funcionar, não em impressionar. Iteramos rápido com feedback real.</span><span class="lang-en">We build the solution focused on working, not impressing. We iterate fast with real feedback.</span></p>
       </div>
-      <div style="border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:2rem;">
+      <div style="border:1px solid var(--border);border-radius:8px;padding:2rem;">
         <div style="font-size:1.8rem;font-weight:300;color:var(--signal);font-family:'DM Mono',monospace;margin-bottom:1rem;">03</div>
         <div style="font-size:1rem;font-weight:500;color:var(--paper);margin-bottom:.75rem;"><span class="lang-pt">Entrega</span><span class="lang-en">Delivery</span></div>
         <p style="font-size:.85rem;color:var(--stone);line-height:1.6;"><span class="lang-pt">Publicamos, testamos em produção e acompanhamos. A solução fica a funcionar sem dependências de nós.</span><span class="lang-en">We deploy, test in production and monitor. The solution keeps running without depending on us.</span></p>
@@ -1999,7 +2096,7 @@ hgSetLang(hgLang);
 </section>
 
 <!-- ── MODELOS DE COLABORAÇÃO ── -->
-<section style="background:var(--bg-alt);border-top:1px solid rgba(255,255,255,.06);">
+<section style="background:var(--bg-alt);border-top:1px solid var(--border);">
   <div style="max-width:1280px;margin:0 auto;padding:5rem clamp(1.5rem,5vw,4rem);">
     <p class="section-label"><span class="lang-pt">Colaboração</span><span class="lang-en">Collaboration</span></p>
     <h2 class="section-title" style="margin-bottom:.75rem;"><span class="lang-pt">Como podemos trabalhar juntos</span><span class="lang-en">How we can work together</span></h2>
@@ -2013,20 +2110,19 @@ hgSetLang(hgLang);
         <p style="font-size:.85rem;color:var(--stone);line-height:1.6;flex:1;"><span class="lang-pt">Tens um processo manual que queres automatizar. Definimos o escopo, construímos e entregamos. Sem reuniões intermináveis.</span><span class="lang-en">You have a manual process you want to automate. We define the scope, build and deliver. No endless meetings.</span></p>
         <div style="font-size:.78rem;color:var(--stone);border-top:1px solid var(--border);padding-top:.75rem;margin-top:auto;"><span class="lang-pt">Ideal para: PMEs · Provas de conceito · Processos internos</span><span class="lang-en">Ideal for: SMEs · Proof of concept · Internal processes</span></div>
         <div style="position:relative;">
-          <button class="collab-contact-btn global-collab-btn" data-modelo="MVP Rápido" style="width:100%;padding:.6rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:5px;color:var(--stone);font-size:.78rem;font-family:inherit;cursor:pointer;transition:all .2s;text-align:center;">✉ <span class="lang-pt">Fale connosco</span><span class="lang-en">Talk to us</span></button>
+          <button class="collab-contact-btn global-collab-btn" data-modelo="MVP Rápido" style="width:100%;padding:.6rem;background:none;border:1px solid var(--border);border-radius:5px;color:var(--stone);font-size:.78rem;font-family:inherit;cursor:pointer;transition:all .2s;text-align:center;">✉ <span class="lang-pt">Fale connosco</span><span class="lang-en">Talk to us</span></button>
           <div class="email-picker cta-picker collab-picker"></div>
         </div>
       </div>
 
       <div style="background:var(--bg-card);border:1px solid rgba(0,200,150,.3);border-radius:8px;padding:2rem;display:flex;flex-direction:column;gap:1rem;position:relative;">
-        <div style="position:absolute;top:1rem;right:1rem;font-size:.65rem;letter-spacing:.1em;background:var(--signal);color:var(--ink);padding:.2rem .5rem;border-radius:3px;font-weight:600;"><span class="lang-pt">MAIS PEDIDO</span><span class="lang-en">MOST REQUESTED</span></div>
-        <div style="font-size:1.5rem;">🔧</div>
+<div style="font-size:1.5rem;">🔧</div>
         <div style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--signal);text-transform:uppercase;"><span class="lang-pt">Projecto à Medida</span><span class="lang-en">Custom Project</span></div>
         <p style="font-size:1rem;font-weight:500;color:var(--paper);line-height:1.4;"><span class="lang-pt">Solução construída do zero para o teu processo.</span><span class="lang-en">Solution built from scratch for your process.</span></p>
         <p style="font-size:.85rem;color:var(--stone);line-height:1.6;flex:1;"><span class="lang-pt">Diagnóstico completo, desenvolvimento iterativo com feedback real e entrega em produção. A solução fica tua, sem dependências.</span><span class="lang-en">Full diagnosis, iterative development with real feedback and production delivery. The solution is yours, with no dependencies.</span></p>
         <div style="font-size:.78rem;color:var(--stone);border-top:1px solid var(--border);padding-top:.75rem;margin-top:auto;"><span class="lang-pt">Ideal para: Processos complexos · Integrações · B2B</span><span class="lang-en">Ideal for: Complex processes · Integrations · B2B</span></div>
         <div style="position:relative;">
-          <button class="collab-contact-btn global-collab-btn" data-modelo="Projecto à Medida" style="width:100%;padding:.6rem;background:rgba(0,200,150,.08);border:1px solid rgba(0,200,150,.3);border-radius:5px;color:var(--signal);font-size:.78rem;font-family:inherit;cursor:pointer;transition:all .2s;text-align:center;">✉ <span class="lang-pt">Fale connosco</span><span class="lang-en">Talk to us</span></button>
+          <button class="collab-contact-btn global-collab-btn" data-modelo="Projecto à Medida" style="width:100%;padding:.6rem;background:none;border:1px solid var(--border);border-radius:5px;color:var(--stone);font-size:.78rem;font-family:inherit;cursor:pointer;transition:all .2s;text-align:center;">✉ <span class="lang-pt">Fale connosco</span><span class="lang-en">Talk to us</span></button>
           <div class="email-picker cta-picker collab-picker"></div>
         </div>
       </div>
@@ -2038,7 +2134,7 @@ hgSetLang(hgLang);
         <p style="font-size:.85rem;color:var(--stone);line-height:1.6;flex:1;"><span class="lang-pt">Já construímos algo parecido com o que precisas. Adaptamos a identidade visual, o contexto e as integrações, sem começar do zero.</span><span class="lang-en">We've already built something similar to what you need. We adapt the visual identity, context and integrations, without starting from scratch.</span></p>
         <div style="font-size:.78rem;color:var(--stone);border-top:1px solid var(--border);padding-top:.75rem;margin-top:auto;"><span class="lang-pt">Ideal para: Retalho · Associações · Multinacionais</span><span class="lang-en">Ideal for: Retail · Associations · Multinationals</span></div>
         <div style="position:relative;">
-          <button class="collab-contact-btn global-collab-btn" data-modelo="White-label" style="width:100%;padding:.6rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:5px;color:var(--stone);font-size:.78rem;font-family:inherit;cursor:pointer;transition:all .2s;text-align:center;">✉ <span class="lang-pt">Fale connosco</span><span class="lang-en">Talk to us</span></button>
+          <button class="collab-contact-btn global-collab-btn" data-modelo="White-label" style="width:100%;padding:.6rem;background:none;border:1px solid var(--border);border-radius:5px;color:var(--stone);font-size:.78rem;font-family:inherit;cursor:pointer;transition:all .2s;text-align:center;">✉ <span class="lang-pt">Fale connosco</span><span class="lang-en">Talk to us</span></button>
           <div class="email-picker cta-picker collab-picker"></div>
         </div>
       </div>
@@ -2126,7 +2222,7 @@ hgSetLang(hgLang);
     <a href="#sobre"><span class="lang-pt">Sobre</span><span class="lang-en">About</span></a>
     <a href="#" id="privacyLink"><span class="lang-pt">Privacidade</span><span class="lang-en">Privacy</span></a>
     <a href="#" id="termosLink"><span class="lang-pt">Termos</span><span class="lang-en">Terms</span></a>
-    <a href="mailto:nodeflow.pt@gmail.com">Email</a>
+    <span style="position:relative;display:inline-block;"><button class="global-contact-btn" id="footerEmailLink" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:inherit;color:inherit;padding:0;letter-spacing:inherit;">Email</button><div class="email-picker footer-picker" style="bottom:calc(100% + 6px);top:auto;right:0;left:auto;"></div></span>
   </div>
 </div>
 </footer>
@@ -2554,6 +2650,7 @@ hgSetLang(hgLang);
       e.stopPropagation();
       document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
       picker.classList.toggle('open');
+      if (picker.classList.contains('open')) adjustPickerPos(picker);
     });
 
     picker.querySelector('.copy-email').addEventListener('click', () => {
@@ -2567,6 +2664,17 @@ hgSetLang(hgLang);
     wrap.appendChild(btn);
     (card.querySelector('.card-details') || card).appendChild(wrap);
   });
+
+  // Reposiciona picker para cima se ultrapassar o viewport
+  function adjustPickerPos(picker) {
+    picker.style.top = '';
+    picker.style.bottom = '';
+    var rect = picker.getBoundingClientRect();
+    if (rect.bottom > window.innerHeight - 8) {
+      picker.style.top = 'auto';
+      picker.style.bottom = 'calc(100% + 6px)';
+    }
+  }
 
   // Caixa de feedback Voz Afiada — injectada dentro do card-details
   (function() {
@@ -2616,6 +2724,7 @@ hgSetLang(hgLang);
         e.stopPropagation();
         document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
         picker.classList.toggle('open');
+        if (picker.classList.contains('open')) adjustPickerPos(picker);
       });
     });
   })();
@@ -2646,6 +2755,7 @@ hgSetLang(hgLang);
       e.stopPropagation();
       document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
       picker.classList.toggle('open');
+      if (picker.classList.contains('open')) adjustPickerPos(picker);
     });
     picker.querySelector('.copy-email').addEventListener('click', () => {
       navigator.clipboard.writeText(toAddr).then(() => {
@@ -2682,6 +2792,7 @@ hgSetLang(hgLang);
       e.stopPropagation();
       document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
       picker.classList.toggle('open');
+      if (picker.classList.contains('open')) adjustPickerPos(picker);
     });
     picker.querySelector('.copy-email').addEventListener('click', () => {
       navigator.clipboard.writeText(to).then(() => {
@@ -2703,6 +2814,44 @@ hgSetLang(hgLang);
       document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+  // ── Theme toggle ──
+  (function() {
+    var html = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    var iconSun = document.getElementById('theme-icon-sun');
+    var iconMoon = document.getElementById('theme-icon-moon');
+    var mq = window.matchMedia('(prefers-color-scheme: light)');
+
+    function isSystemLight() { return mq.matches; }
+
+    function applyTheme(stored) {
+      var light = stored === 'light' || (stored === null && isSystemLight());
+      html.classList.toggle('theme-light', light);
+      html.setAttribute('data-theme-set', stored || 'auto');
+      // sun = actualmente dark → clica para ir a light
+      // moon = actualmente light → clica para ir a dark
+      if (iconSun) iconSun.style.display = light ? 'none' : 'block';
+      if (iconMoon) iconMoon.style.display = light ? 'block' : 'none';
+    }
+
+    var stored = localStorage.getItem('nf-theme');
+    applyTheme(stored);
+
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var isLight = html.classList.contains('theme-light');
+        var next = isLight ? 'dark' : 'light';
+        localStorage.setItem('nf-theme', next);
+        applyTheme(next);
+      });
+    }
+
+    // seguir preferência do sistema quando o utilizador não escolheu manualmente
+    mq.addEventListener('change', function() {
+      if (!localStorage.getItem('nf-theme')) applyTheme(null);
+    });
+  })();
 
   // ── Language switch ──
   (function() {
