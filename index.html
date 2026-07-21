@@ -2643,14 +2643,14 @@ hgSetLang(hgLang);
       </a>
       <button class="copy-email" data-email="${to}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copiar email
+        <span class="lang-pt">Copiar email</span><span class="lang-en">Copy email</span>
       </button>`;
 
     btn.addEventListener('click', e => {
       e.stopPropagation();
       document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
       picker.classList.toggle('open');
-      if (picker.classList.contains('open')) adjustPickerPos(picker);
+      if (picker.classList.contains('open')) { adjustPickerPos(picker); syncPickerLang(picker); }
     });
 
     picker.querySelector('.copy-email').addEventListener('click', () => {
@@ -2664,6 +2664,16 @@ hgSetLang(hgLang);
     wrap.appendChild(btn);
     (card.querySelector('.card-details') || card).appendChild(wrap);
   });
+
+  // Actualiza texto do botão copiar conforme idioma actual
+  function syncPickerLang(picker) {
+    const isEn = document.documentElement.getAttribute('data-lang') === 'en';
+    const copyBtn = picker.querySelector('.copy-email');
+    if (!copyBtn) return;
+    const svg = copyBtn.querySelector('svg');
+    copyBtn.textContent = isEn ? 'Copy email' : 'Copiar email';
+    if (svg) copyBtn.prepend(svg);
+  }
 
   // Reposiciona picker para cima se ultrapassar o viewport
   function adjustPickerPos(picker) {
@@ -2709,7 +2719,7 @@ hgSetLang(hgLang);
       </a>
       <button class="copy-email" data-email="${to}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copiar email
+        <span class="lang-pt">Copiar email</span><span class="lang-en">Copy email</span>
       </button>`;
     picker.querySelector('.copy-email').addEventListener('click', () => {
       navigator.clipboard.writeText(to).then(() => {
@@ -2724,7 +2734,7 @@ hgSetLang(hgLang);
         e.stopPropagation();
         document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
         picker.classList.toggle('open');
-        if (picker.classList.contains('open')) adjustPickerPos(picker);
+        if (picker.classList.contains('open')) { adjustPickerPos(picker); syncPickerLang(picker); }
       });
     });
   })();
@@ -2749,13 +2759,13 @@ hgSetLang(hgLang);
       </a>
       <button class="copy-email" data-email="${toAddr}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copiar email
+        <span class="lang-pt">Copiar email</span><span class="lang-en">Copy email</span>
       </button>`;
     btn.addEventListener('click', e => {
       e.stopPropagation();
       document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
       picker.classList.toggle('open');
-      if (picker.classList.contains('open')) adjustPickerPos(picker);
+      if (picker.classList.contains('open')) { adjustPickerPos(picker); syncPickerLang(picker); }
     });
     picker.querySelector('.copy-email').addEventListener('click', () => {
       navigator.clipboard.writeText(toAddr).then(() => {
@@ -2792,7 +2802,7 @@ hgSetLang(hgLang);
       e.stopPropagation();
       document.querySelectorAll('.email-picker.open').forEach(p => p !== picker && p.classList.remove('open'));
       picker.classList.toggle('open');
-      if (picker.classList.contains('open')) adjustPickerPos(picker);
+      if (picker.classList.contains('open')) { adjustPickerPos(picker); syncPickerLang(picker); }
     });
     picker.querySelector('.copy-email').addEventListener('click', () => {
       navigator.clipboard.writeText(to).then(() => {
