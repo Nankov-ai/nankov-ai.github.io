@@ -401,6 +401,30 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [ ] Decidir se os cards do portfolio mostram etiqueta `🤖 IA` para apps com IA generativa
 - [ ] `.gitignore` — `Termos e Condições IA.pdf` está na pasta local mas não commitado (correcto — ficheiro interno)
 
+---
+
+## Estratégia · Riscos e Visão (2026-07-21)
+
+### 10 Riscos Identificados
+1. **Portfolio sem conversão** — 19 apps, zero pipeline activo de vendas
+2. **Sem nicho definido** — 5 sectores diluem a mensagem; o cliente não percebe "isto é para mim"
+3. **Burnout** — part-time Norauto + construir + vender + entregar, sozinho
+4. **Dependência de tier gratuito** — Render, GitHub Pages, Gemini free — frágil a mudanças de política
+5. **Vender tempo em vez de produto** — projectos à medida não escalam; o modelo tem de ser licença/SaaS
+6. **Beta eterno** — Faturix e AudiNote sem data de lançamento real = sem pressão comercial = sem receita
+7. **Distribuição nula** — sem LinkedIn activo, SEO, ou parcerias, o tráfego orgânico é zero
+8. **Velocidade do mercado** — o que hoje é diferenciador, amanhã é commodity; iteração tem de ser constante
+9. **Sem feedback de utilizadores pagantes** — apps que ninguém paga não validam valor de mercado
+10. **Identidade indefinida** — agência? SaaS? consultora? cada modelo exige estratégia diferente; os três em simultâneo = nenhum
+
+### Visão de Sucesso (horizonte 2027)
+Faturix com receita recorrente (MRR mensurável), AudiNote com utilizadores pagantes em acesso antecipado, a Nodeflow com dois produtos vivos — não 19 demos. A Norauto como primeiro cliente enterprise do Faturix. Uma equipa de duas pessoas. O site que hoje é portfolio passa a ser página de produto.
+
+### Decisão Estratégica Central
+**O Faturix é o produto prioritário.** Volume de dor, ROI mensurável para o cliente, mercado claro. Tudo o resto é portfolio de credibilidade — não produto a desenvolver activamente.
+
+---
+
 ### Fase 3 · Futuro
 - [ ] Dashboard de leads (lead → proposta → cliente)
 - [ ] Login + demos privadas para clientes específicos
