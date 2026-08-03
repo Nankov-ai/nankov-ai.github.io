@@ -514,6 +514,17 @@
       flex-wrap: wrap; gap: .75rem;
     }
     .stack-tags { display: flex; flex-wrap: wrap; gap: .3rem; }
+    /* ── EU AI ACT BADGE (Art. 50) ── */
+    .eu-ai-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 17px; height: 17px; border-radius: 50%;
+      background: var(--paper); color: var(--ink);
+      font-size: 6.5px; font-weight: 700; font-family: 'DM Mono', monospace;
+      letter-spacing: .03em; cursor: help; flex-shrink: 0;
+      text-decoration: none; border: none; outline: none;
+      transition: opacity .2s;
+    }
+    .eu-ai-badge:hover { opacity: .75; }
     .tag {
       font-size: .58rem; letter-spacing: .05em;
       padding: .2rem .55rem; border: 1px solid var(--border2); color: var(--stone);
@@ -1657,7 +1668,7 @@ hgSetLang(hgLang);
   <div class="apps-grid">
 
     <!-- Card 01 — Faturix -->
-    <div class="app-card strategic" data-cats="b2b financas">
+    <div class="app-card strategic" data-cats="b2b financas" data-ai="generated">
       <div class="card-top">
         <span class="card-num">01</span>
         <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Em desenvolvimento · Early access</span><span class="lang-en">In development · Early access</span></span>
@@ -1678,7 +1689,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 02 — VisionAI+ Demo -->
-    <div class="app-card strategic" data-cats="b2b">
+    <div class="app-card strategic" data-cats="b2b" data-ai="generated">
       <div class="card-top">
         <span class="card-num">02</span>
         <span class="card-status"><span class="status-dot active"></span>Demo online</span>
@@ -1698,7 +1709,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 03 — O2C Reader -->
-    <div class="app-card strategic" data-cats="b2b">
+    <div class="app-card strategic" data-cats="b2b" data-ai="generated">
       <div class="card-top">
         <span class="card-num">03</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">v2.1 · Pronto a publicar</span><span class="lang-en">v2.1 · Ready to publish</span></span>
@@ -1719,7 +1730,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 04 — NVisionAI+ -->
-    <div class="app-card strategic" data-cats="b2b">
+    <div class="app-card strategic" data-cats="b2b" data-ai="generated">
       <div class="card-top">
         <span class="card-num">04</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">v2.9.5 · White-label em curso</span><span class="lang-en">v2.9.5 · White-label in progress</span></span>
@@ -1739,7 +1750,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 05 — AudiNote -->
-    <div class="app-card featured audinate-card" data-cats="produtividade">
+    <div class="app-card featured audinate-card" data-cats="produtividade" data-ai="generated">
       <div class="card-top">
         <span class="card-num">05</span>
         <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Beta · Acesso antecipado</span><span class="lang-en">Beta · Early access</span></span>
@@ -1763,7 +1774,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 06 — Voz Afiada -->
-    <div class="app-card featured voz-afiada-card" data-cats="produtividade b2b">
+    <div class="app-card featured voz-afiada-card" data-cats="produtividade b2b" data-ai="generated">
       <div class="card-top">
         <span class="card-num">06</span>
         <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Gemini Gem · Em testes</span><span class="lang-en">Gemini Gem · In testing</span></span>
@@ -1783,7 +1794,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 07 — NeoOtto -->
-    <div class="app-card" data-cats="b2b produtividade">
+    <div class="app-card" data-cats="b2b produtividade" data-ai="generated">
       <div class="card-top">
         <span class="card-num">07</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · ChatGPT</span><span class="lang-en">Live · ChatGPT</span></span>
@@ -1804,7 +1815,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 08 — OutOfBox -->
-    <div class="app-card" data-cats="produtividade">
+    <div class="app-card" data-cats="produtividade" data-ai="generated">
       <div class="card-top">
         <span class="card-num">08</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional</span><span class="lang-en">Live</span></span>
@@ -1826,7 +1837,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 09 — Análise de Crédito Habitação -->
-    <div class="app-card strategic" data-cats="financas">
+    <div class="app-card strategic" data-cats="financas" data-ai="generated">
       <div class="card-top">
         <span class="card-num">09</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional</span><span class="lang-en">Live</span></span>
@@ -1846,7 +1857,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 10 — Gestor de Quotas -->
-    <div class="app-card" data-cats="b2b">
+    <div class="app-card" data-cats="b2b" data-ai="generated">
       <div class="card-top">
         <span class="card-num">10</span>
         <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Em desenvolvimento</span><span class="lang-en">In development</span></span>
@@ -1866,7 +1877,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 11 — Alpha2026 / Sistema de Gestão -->
-    <div class="app-card" data-cats="produtividade">
+    <div class="app-card" data-cats="produtividade" data-ai="generated">
       <div class="card-top">
         <span class="card-num">11</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · uso activo</span><span class="lang-en">Live · actively used</span></span>
@@ -1887,7 +1898,7 @@ hgSetLang(hgLang);
     </div>
 
     <!-- Card 12 — Logic Gate Trainer -->
-    <div class="app-card" data-cats="educacao">
+    <div class="app-card" data-cats="educacao" data-ai="generated">
       <div class="card-top">
         <span class="card-num">12</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · GitHub Pages</span><span class="lang-en">Live · GitHub Pages</span></span>
@@ -2614,6 +2625,21 @@ hgSetLang(hgLang);
           : '<span class="lang-pt">Ver mais ↓</span><span class="lang-en">See more ↓</span>';
       }
     });
+  });
+
+  // EU AI Act Art. 50 — badge circular nos cards com IA generativa
+  document.querySelectorAll('.app-card[data-ai]').forEach(function(card) {
+    var status = card.querySelector('.card-status');
+    if (!status) return;
+    var badge = document.createElement('a');
+    badge.className = 'eu-ai-badge';
+    badge.href = 'https://digital-strategy.ec.europa.eu/pt/policies/eu-icons-labelling-ai-generated-content';
+    badge.target = '_blank';
+    badge.rel = 'noopener noreferrer';
+    badge.title = 'EU AI Act Art. 50 — Conteúdo gerado por IA / AI-generated content';
+    badge.setAttribute('aria-label', 'AI Generated — EU AI Act Art. 50');
+    badge.textContent = 'AI';
+    status.appendChild(badge);
   });
 
   // Botão "Fale connosco" contextual por card com picker de email
