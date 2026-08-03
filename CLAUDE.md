@@ -284,6 +284,17 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **URL da imagem:** `https://nankov-ai.github.io/og-image.png`
 - **Regenerar:** usar Puppeteer com HTML template no scratchpad (DM Mono + Fraunces carregadas de `fonts/`)
 
+### EU AI Act Art. 50 — Badges Visuais
+
+- **Ícones oficiais:** Comissão Europeia — [página oficial](https://digital-strategy.ec.europa.eu/pt/policies/eu-icons-labelling-ai-generated-content)
+- **3 variantes:** círculo "AI" (basic) · píula "AI GENERATED" · píula "AI MODIFIED"
+- **Cards do portfolio (nodeflow.pt):** badge circular "AI" injectado por JS em todos os cards com `data-ai="generated"` (12 cards: 01–12). Adicionado ao `.card-status`, sempre visível. Clicável → página EU oficial
+- **Faturix landing (`c:/projetos/Agente/index.html`):** píula "AI GENERATED" no hero, acima do badge de status
+- **AudiNote landing (`c:/projetos/Ouvinte/index.html`):** píula "AI GENERATED" no hero, acima do eyebrow
+- **OutOfBox (`c:/projetos/OutOfBox/`):** aviso Art. 50 adicionado na interface de chat (Next.js)
+- **CSS:** `.eu-ai-badge` (círculo, adapta via `var(--paper)`/`var(--ink)`) · `.eu-ai-pill` (píula, mesmo sistema)
+- **Apps sem badge** (sem IA generativa): Automagic Mail, Vocaliz, HealHour, Notas de Despesa, English Adventure, Treino Ocular
+
 ### Cloudflare Web Analytics
 - **Script** adicionado antes de `</body>` no `index.html`
 - **Token:** `6cd3ccdf96774611bb3e1f52aff7e023`
@@ -398,7 +409,9 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Nav Faturix/AudiNote alinhados — mesma estrutura HTML/CSS, breakpoints mobile corrigidos (2026-07-21)
 - [x] Fix light mode — painel de métricas hero: texto sempre legível (fundo do painel sempre escuro, texto fixo em claro) (2026-07-21)
 - [x] AudiNote — Google Fonts removido, fontes self-hosted em `fonts/` (GDPR) (2026-07-21)
-- [ ] Decidir se os cards do portfolio mostram etiqueta `🤖 IA` para apps com IA generativa
+- [x] EU AI Act Art. 50 — badges visuais implementados: círculo "AI" nos 12 cards com IA generativa do portfolio (via `data-ai="generated"` + JS injection); píula "AI GENERATED" no hero do Faturix e AudiNote landing pages; clicável para página oficial EU (2026-07-21)
+- [x] OutOfBox — aviso Art. 50 adicionado na interface de chat (`c:/projetos/OutOfBox/`) (2026-07-21)
+- [x] Decidir etiqueta IA nos cards — resolvido com badges EU oficiais (círculo "AI")
 - [ ] `.gitignore` — `Termos e Condições IA.pdf` está na pasta local mas não commitado (correcto — ficheiro interno)
 
 ---
