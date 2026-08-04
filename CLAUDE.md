@@ -18,7 +18,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 **Nota deploy:** GitHub Pages Actions mostra "deploy timeout" desde que o custom domain foi configurado — o site funciona correctamente em `nodeflow.pt`. Problema cosmético nos logs, esperado resolver-se sozinho em 24-48h após estabilização do domínio.
 
-**Último deploy:** 2026-08-04 — Task.Talk adicionado ao portfolio (card 06, 20 apps total); landing page criada em `c:/projetos/Task.Talk/index.html`
+**Último deploy:** 2026-08-04 — Task.Talk: card 06 publicado no portfolio, landing page em `https://nankov-ai.github.io/task-talk/`, botões "Quero testar" + "Saber mais" com layout homogéneo (igual ao AudiNote), AI Act Art. 50 compliant (badge, card-note, modal, footer, hero pill)
 
 ---
 
@@ -190,7 +190,9 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **O que faz:** Assistente de voz Android para ler e actualizar notas do Notion por comando de voz. STT nativo, Gemini reescreve o conteúdo, Notion actualizado automaticamente. CRUD completo por voz. Dois widgets nativos na home screen (1×1 e 4×2). Exportação PDF/DOCX/CSV/TXT com partilha nativa. Fuzzy match inteligente de títulos de notas.
 - **Cliente-alvo:** Founders, gestores e profissionais que pensam mais depressa do que conseguem escrever
 - **Status:** Beta · Acesso antecipado (APK distribuído manualmente via email)
-- **AI Act:** Art. 50 aplicável — aviso incluído no card e no modal
+- **AI Act:** Art. 50 compliant — badge circular no card (JS, `data-ai="generated"`), card-note, hero pill na landing, aviso completo no modal de beta access, nota no footer da landing
+- **Card portfolio:** botões "Quero testar →" (verde, abre modal RGPD) + "Saber mais →" (outline, abre landing) — igual ao padrão AudiNote
+- **Repositório landing:** `https://github.com/Nankov-ai/task-talk` (público)
 
 ### 19 · AudiNote
 - **Stack:** Kotlin + Jetpack Compose + Gemini API (`gemini-3.5-flash`) + Room v3 + Hilt + Android (Min SDK 31)
@@ -425,6 +427,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] Decidir etiqueta IA nos cards — resolvido com badges EU oficiais (círculo "AI")
 - [x] Task.Talk adicionado ao portfolio (card 06, 20 apps total) — landing page em `c:/projetos/Task.Talk/index.html`, modal beta RGPD-compliant, EU AI Act Art. 50 (2026-08-04)
 - [x] Task.Talk landing page — repo público `Nankov-ai/task-talk`, GitHub Pages activo em `https://nankov-ai.github.io/task-talk/` (2026-08-04)
+- [x] Task.Talk card — botões homogéneos com AudiNote (verde preenchido "Quero testar" + outline "Saber mais"), phone mockup com 4 ecrãs reais da app (idle, a ouvir, notas, confirmação), AI Act Art. 50 compliant em todos os pontos (2026-08-04)
 - [ ] `.gitignore` — `Termos e Condições IA.pdf` está na pasta local mas não commitado (correcto — ficheiro interno)
 
 ---
