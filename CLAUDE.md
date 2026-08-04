@@ -184,7 +184,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ### 18 · Task.Talk
 - **Stack:** Flutter + Dart + Gemini Flash + Supabase Edge Functions + Notion API + Android (Min SDK 31)
-- **Landing page:** `https://nankov-ai.github.io/Task.Talk/` (a publicar — repositório GitHub já existe)
+- **Landing page:** `https://nankov-ai.github.io/task-talk/` (publicada — repo público, GitHub Pages activo)
 - **Local:** `c:/projetos/Task.Talk/` (landing: `index.html`)
 - **APK:** debug APK em `mobile/build/app/outputs/apk/debug/app-debug.apk`
 - **O que faz:** Assistente de voz Android para ler e actualizar notas do Notion por comando de voz. STT nativo, Gemini reescreve o conteúdo, Notion actualizado automaticamente. CRUD completo por voz. Dois widgets nativos na home screen (1×1 e 4×2). Exportação PDF/DOCX/CSV/TXT com partilha nativa. Fuzzy match inteligente de títulos de notas.
@@ -424,7 +424,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] OutOfBox — aviso Art. 50 adicionado na interface de chat (`c:/projetos/OutOfBox/`) (2026-07-21)
 - [x] Decidir etiqueta IA nos cards — resolvido com badges EU oficiais (círculo "AI")
 - [x] Task.Talk adicionado ao portfolio (card 06, 20 apps total) — landing page em `c:/projetos/Task.Talk/index.html`, modal beta RGPD-compliant, EU AI Act Art. 50 (2026-08-04)
-- [ ] Task.Talk landing page — criar GitHub repo e publicar via GitHub Pages
+- [x] Task.Talk landing page — repo público `Nankov-ai/task-talk`, GitHub Pages activo em `https://nankov-ai.github.io/task-talk/` (2026-08-04)
 - [ ] `.gitignore` — `Termos e Condições IA.pdf` está na pasta local mas não commitado (correcto — ficheiro interno)
 
 ---
