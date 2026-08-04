@@ -18,7 +18,7 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 **Nota deploy:** GitHub Pages Actions mostra "deploy timeout" desde que o custom domain foi configurado — o site funciona correctamente em `nodeflow.pt`. Problema cosmético nos logs, esperado resolver-se sozinho em 24-48h após estabilização do domínio.
 
-**Último deploy:** 2026-07-21 — nav Faturix/AudiNote alinhados (estrutura idêntica), fix light mode painel de métricas hero, mobile breakpoints corrigidos
+**Último deploy:** 2026-08-04 — Task.Talk adicionado ao portfolio (card 06, 20 apps total); landing page criada em `c:/projetos/Task.Talk/index.html`
 
 ---
 
@@ -182,7 +182,17 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - **Status:** Em desenvolvimento · Lançamento em breve
 - **Nota estratégica:** Potencial para produto standalone com waitlist — posicionamento diferenciador, sem concorrência directa no segmento de crítico de comunicação
 
-### 17 · AudiNote
+### 18 · Task.Talk
+- **Stack:** Flutter + Dart + Gemini Flash + Supabase Edge Functions + Notion API + Android (Min SDK 31)
+- **Landing page:** `https://nankov-ai.github.io/Task.Talk/` (a publicar)
+- **Local:** `c:/projetos/Task.Talk/` (landing: `index.html`)
+- **APK:** debug APK em `mobile/build/app/outputs/apk/debug/app-debug.apk`
+- **O que faz:** Assistente de voz Android para ler e actualizar notas do Notion por comando de voz. STT nativo, Gemini reescreve o conteúdo, Notion actualizado automaticamente. CRUD completo por voz. Dois widgets nativos na home screen (1×1 e 4×2). Exportação PDF/DOCX/CSV/TXT com partilha nativa. Fuzzy match inteligente de títulos de notas.
+- **Cliente-alvo:** Founders, gestores e profissionais que pensam mais depressa do que conseguem escrever
+- **Status:** Beta · Acesso antecipado (APK distribuído manualmente via email)
+- **AI Act:** Art. 50 aplicável — aviso incluído no card e no modal
+
+### 19 · AudiNote
 - **Stack:** Kotlin + Jetpack Compose + Gemini API (`gemini-3.5-flash`) + Room v3 + Hilt + Android (Min SDK 31)
 - **Landing page:** `https://nankov-ai.github.io/Ouvinte---AudiNote/`
 - **Repositório landing:** `https://github.com/Nankov-ai/Ouvinte---AudiNote`
@@ -222,27 +232,28 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 03 · Nodeflow O2C Reader (strategic)
 04 · NVisionAI+ (strategic)
 05 · AudiNote (featured, audinate-card)
-06 · Voz Afiada (featured, voz-afiada-card)
-07 · NeoOtto
-08 · OutOfBox
-09 · Análise de Crédito Habitação (strategic)
-10 · Gestor de Quotas
-11 · Alpha2026
-12 · Logic Gate Trainer
-13 · Automagic Mail
-14 · Portal de Notas de Despesa
-15 · Vocaliz
-16 · HealHour
-17 · Treino e Diagnóstico Ocular
-18 · English Adventure
-19 · LipRead (coming soon)
+06 · Task.Talk (featured, tasktalk-card)
+07 · Voz Afiada (featured, voz-afiada-card)
+08 · NeoOtto
+09 · OutOfBox
+10 · Análise de Crédito Habitação (strategic)
+11 · Gestor de Quotas
+12 · Alpha2026
+13 · Logic Gate Trainer
+14 · Automagic Mail
+15 · Portal de Notas de Despesa
+16 · Vocaliz
+17 · HealHour
+18 · Treino e Diagnóstico Ocular
+19 · English Adventure
+20 · LipRead (coming soon)
 ```
 *Nota: os títulos das secções de detalhe acima mantêm a numeração original — a ordem de apresentação no site é a desta lista.*
 
 - **Formato:** Desafio → Resultado (não só features técnicas)
 - **Botão "Fale connosco":** email picker contextual por card (Gmail / Outlook / Copiar) — gerado em JS, excluindo `.audinate-card`
 - **Hierarquia visual:** `.strategic` (cards 01, 02, 03, 04, 09, 19) com borda Signal subtil; `.featured` (cards 05 AudiNote e 06 Voz Afiada) com glow máximo
-- **Total:** 19 cards + 1 CTA card verde no final
+- **Total:** 20 cards + 1 CTA card verde no final
 - **Regra de copy:** nunca mencionar marcas de terceiros (Mailchimp, etc.) — usar "serviços externos", "serviços pagos" ou similar
 - **Cards expansíveis:** tagline (desafio/resultado) sempre visível; "Para quem", stack tags e "Fale connosco" colapsados por defeito atrás de botão "Ver mais ↓" / "Ver menos ↑". Implementado via JS que cria `.card-details` wrapper + `.card-toggle` button após a tagline. O contact wrap (`card-contact-wrap`) é injectado para dentro do `.card-details`. `.audinate-card` incluído (card-note movido para dentro de card-bottom para ficar dentro do card-details). Excluído apenas do contact-wrap JS (tem fluxo próprio de beta access via `audinate-open-btn`).
 - **Expansão sincronizada por linha (desktop):** clicar "Ver mais ↓" num card expande todos os cards da mesma linha em simultâneo (detectado via `getBoundingClientRect().top` com tolerância de 10px). Em mobile (< 700px) cada card expande independentemente.
@@ -343,8 +354,8 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 
 ### Secções do site
 1. Hero (duas colunas: slogan/CTAs + painel métricas)
-2. Stats (19 apps / 12 com IA / 7 só automação / 5 sectores)
-3. Portfolio (19 cards + CTA card verde)
+2. Stats (20 apps / 13 com IA / 7 só automação / 5 sectores)
+3. Portfolio (20 cards + CTA card verde)
 4. Como trabalhamos (Diagnóstico → Construção → Entrega)
 5. Modelos de colaboração (MVP Rápido · Projecto à Medida · White-label)
 6. Sobre a Nodeflow (texto + 4 pillars: Execução real, IA integrada, Privacidade & Segurança, Código limpo)
@@ -412,6 +423,8 @@ Background: gestão + IA aplicada. Stack habitual: React 18 + TypeScript + Vite 
 - [x] EU AI Act Art. 50 — badges visuais implementados: círculo "AI" nos 12 cards com IA generativa do portfolio (via `data-ai="generated"` + JS injection); píula "AI GENERATED" no hero do Faturix e AudiNote landing pages; clicável para página oficial EU (2026-07-21)
 - [x] OutOfBox — aviso Art. 50 adicionado na interface de chat (`c:/projetos/OutOfBox/`) (2026-07-21)
 - [x] Decidir etiqueta IA nos cards — resolvido com badges EU oficiais (círculo "AI")
+- [x] Task.Talk adicionado ao portfolio (card 06, 20 apps total) — landing page em `c:/projetos/Task.Talk/index.html`, modal beta RGPD-compliant, EU AI Act Art. 50 (2026-08-04)
+- [ ] Task.Talk landing page — criar GitHub repo e publicar via GitHub Pages
 - [ ] `.gitignore` — `Termos e Condições IA.pdf` está na pasta local mas não commitado (correcto — ficheiro interno)
 
 ---

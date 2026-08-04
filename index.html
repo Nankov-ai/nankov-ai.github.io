@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nankov-ai.github.io" />
   <meta property="og:title" content="Nodeflow · Menos atrito. Mais impacto." />
-  <meta property="og:description" content="19 soluções operacionais com IA aplicada. Do processo manual à vantagem competitiva." />
+  <meta property="og:description" content="20 soluções operacionais com IA aplicada. Do processo manual à vantagem competitiva." />
   <meta property="og:image" content="https://nankov-ai.github.io/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -967,6 +967,77 @@
       .nav-wordmark { display: none; }
     }
 
+    /* ── TASKTALK BETA MODAL ── */
+    .tasktalk-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(14,14,14,.88); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .tasktalk-overlay.open { display: flex; }
+    .tasktalk-modal {
+      background: #161616; border: 1px solid var(--border);
+      border-radius: 6px; max-width: 540px; width: 100%;
+      padding: 2rem; position: relative;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .tasktalk-modal h2 {
+      font-family: 'DM Mono', monospace; font-weight: 500;
+      font-size: .85rem; letter-spacing: .1em; color: var(--paper);
+      text-transform: uppercase; margin-bottom: .4rem;
+    }
+    .tasktalk-modal .modal-sub {
+      font-size: .75rem; color: var(--stone); margin-bottom: 1.5rem; line-height: 1.6;
+    }
+    .tasktalk-keys-info {
+      background: #0e1e12; border: 1px solid rgba(0,200,150,.15);
+      border-radius: 4px; padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+    }
+    .tasktalk-keys-info p { font-size: .73rem; color: var(--stone); line-height: 1.65; margin-bottom: .6rem; }
+    .tasktalk-keys-info p:last-child { margin-bottom: 0; }
+    .tasktalk-keys-info a { color: var(--signal); text-decoration: none; }
+    .tasktalk-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .tasktalk-field { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+    .tasktalk-field label { font-size: .7rem; color: var(--stone); letter-spacing: .06em; }
+    .tasktalk-field input, .tasktalk-field select, .tasktalk-field textarea {
+      background: #111; border: 1px solid var(--border);
+      color: var(--paper); font-family: 'DM Mono', monospace; font-size: .78rem;
+      padding: .55rem .75rem; border-radius: 3px; outline: none; transition: border-color .2s;
+    }
+    .tasktalk-field input:focus, .tasktalk-field select:focus, .tasktalk-field textarea:focus { border-color: var(--signal); }
+    .tasktalk-field textarea { resize: vertical; min-height: 80px; }
+    .tasktalk-field select { appearance: none; }
+    .tasktalk-consent { display: flex; gap: .75rem; align-items: flex-start; margin: 1.25rem 0; }
+    .tasktalk-consent input { margin-top: .2rem; flex-shrink: 0; accent-color: var(--signal); }
+    .tasktalk-consent label { font-size: .7rem; color: var(--stone); line-height: 1.55; }
+    .tasktalk-consent a { color: var(--signal); }
+    .tasktalk-age-warn {
+      display: none; font-size: .72rem;
+      background: rgba(245,166,35,.1); color: #f5a623;
+      border: 1px solid rgba(245,166,35,.2); border-radius: 3px;
+      padding: .6rem .75rem; margin-bottom: .75rem; line-height: 1.5;
+    }
+    .tasktalk-age-warn.visible { display: block; }
+    .tasktalk-error { display: none; font-size: .72rem; color: #f87171; margin-bottom: .75rem; }
+    .tasktalk-error.visible { display: block; }
+    .tasktalk-submit {
+      width: 100%; background: var(--signal); color: var(--ink);
+      font-family: 'DM Mono', monospace; font-weight: 500; font-size: .82rem;
+      letter-spacing: .06em; padding: .75rem; border: none; cursor: pointer;
+      transition: opacity .2s; border-radius: 0;
+    }
+    .tasktalk-submit:hover { opacity: .85; }
+    .tasktalk-success { display: none; text-align: center; padding: 1.5rem 0; }
+    .tasktalk-success.visible { display: block; }
+    .tasktalk-success p { color: var(--signal); font-size: .85rem; margin-bottom: .75rem; }
+    .tasktalk-success small { font-size: .72rem; color: var(--stone); line-height: 1.6; }
+    .tasktalk-ai-note {
+      margin-top: 1.5rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: .68rem; color: var(--stone); line-height: 1.6;
+    }
+    html.theme-light .tasktalk-modal { background: var(--paper); }
+    @media (max-width: 560px) { .tasktalk-form-row { grid-template-columns: 1fr; } }
+
     /* ── AUDINATE BETA MODAL ── */
     .audinate-overlay {
       display: none; position: fixed; inset: 0; z-index: 1000;
@@ -1616,7 +1687,7 @@ hgSetLang(hgLang);
             <div class="flow-stat-label"><span class="lang-pt">Erros manuais</span><span class="lang-en">Manual errors</span></div>
           </div>
           <div class="flow-stat">
-            <div class="flow-stat-num">19</div>
+            <div class="flow-stat-num">20</div>
             <div class="flow-stat-label"><span class="lang-pt">Apps live</span><span class="lang-en">Live apps</span></div>
           </div>
         </div>
@@ -1631,11 +1702,11 @@ hgSetLang(hgLang);
 <div class="stats-section">
 <div class="stats">
   <div class="stat">
-    <div class="stat-num">19</div>
+    <div class="stat-num">20</div>
     <div class="stat-label"><span class="lang-pt">Apps em produção</span><span class="lang-en">Apps in production</span></div>
   </div>
   <div class="stat">
-    <div class="stat-num">12</div>
+    <div class="stat-num">13</div>
     <div class="stat-label"><span class="lang-pt">Com IA integrada</span><span class="lang-en">With integrated AI</span></div>
   </div>
   <div class="stat">
@@ -1773,10 +1844,33 @@ hgSetLang(hgLang);
       </div>
     </div>
 
-    <!-- Card 06 — Voz Afiada -->
-    <div class="app-card featured voz-afiada-card" data-cats="produtividade b2b" data-ai="generated">
+
+    <!-- Card 06 — Task.Talk -->
+    <div class="app-card featured tasktalk-card" data-cats="produtividade" data-ai="generated">
       <div class="card-top">
         <span class="card-num">06</span>
+        <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Beta · Acesso antecipado</span><span class="lang-en">Beta · Early access</span></span>
+      </div>
+      <div class="card-icon">🎤</div>
+      <div class="card-name">Task.Talk</div>
+      <p class="card-tagline"><span class="lang-pt lang-blk"><strong>Desafio:</strong> Sais de reuniões com ideias por registar e as mãos ocupadas? <strong>Resolução:</strong> Diz o comando por voz e a IA interpreta, actualiza a nota do Notion e confirma em voz alta. CRUD completo, widgets na home screen e exportação PDF/DOCX sem tocar no telemóvel.</span><span class="lang-en lang-blk"><strong>Challenge:</strong> Do you leave meetings with ideas to capture and hands full? <strong>Solution:</strong> Say the command by voice — AI interprets, updates your Notion note and confirms aloud. Full CRUD, home screen widgets and PDF/DOCX export without touching your phone.</span></p>
+      <div class="card-client"><span class="lang-pt lang-blk"><strong>Para quem:</strong> Founders, gestores e profissionais que pensam mais depressa do que conseguem escrever</span><span class="lang-en lang-blk"><strong>For:</strong> Founders, managers and professionals who think faster than they can type</span></div>
+      <div class="card-date"><span class="lang-pt">Ago 2026</span><span class="lang-en">Aug 2026</span></div>
+      <div class="card-bottom">
+        <div class="card-note" style="font-size:.72rem;color:var(--stone);margin-bottom:.75rem;"><span class="lang-pt">🤖 App com IA generativa (Gemini) — conteúdo produzido por IA. (AI Act Art. 50)</span><span class="lang-en">🤖 App with generative AI (Gemini) — AI-produced content. (AI Act Art. 50)</span></div>
+        <div class="stack-tags">
+          <span class="tag">Flutter</span><span class="tag">Gemini API</span><span class="tag">Notion API</span><span class="tag">Supabase</span><span class="tag">Android</span>
+          <span class="tag cat"><span class="lang-pt">Produtividade</span><span class="lang-en">Productivity</span></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.45rem;width:100%;">
+          <button class="card-arrow tasktalk-open-btn" style="width:100%;justify-content:center;"><span class="lang-pt">Quero testar →</span><span class="lang-en">I want to test →</span></button>
+        </div>
+      </div>
+    </div>
+    <!-- Card 07 — Voz Afiada -->
+    <div class="app-card featured voz-afiada-card" data-cats="produtividade b2b" data-ai="generated">
+      <div class="card-top">
+        <span class="card-num">07</span>
         <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Gemini Gem · Em testes</span><span class="lang-en">Gemini Gem · In testing</span></span>
       </div>
       <div class="card-icon">🗡️</div>
@@ -1796,7 +1890,7 @@ hgSetLang(hgLang);
     <!-- Card 07 — NeoOtto -->
     <div class="app-card" data-cats="b2b produtividade" data-ai="generated">
       <div class="card-top">
-        <span class="card-num">07</span>
+        <span class="card-num">08</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · ChatGPT</span><span class="lang-en">Live · ChatGPT</span></span>
       </div>
       <div class="card-icon">🔮</div>
@@ -1817,7 +1911,7 @@ hgSetLang(hgLang);
     <!-- Card 08 — OutOfBox -->
     <div class="app-card" data-cats="produtividade" data-ai="generated">
       <div class="card-top">
-        <span class="card-num">08</span>
+        <span class="card-num">09</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional</span><span class="lang-en">Live</span></span>
       </div>
       <div class="card-icon">🧠</div>
@@ -1839,7 +1933,7 @@ hgSetLang(hgLang);
     <!-- Card 09 — Análise de Crédito Habitação -->
     <div class="app-card strategic" data-cats="financas" data-ai="generated">
       <div class="card-top">
-        <span class="card-num">09</span>
+        <span class="card-num">10</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional</span><span class="lang-en">Live</span></span>
       </div>
       <div class="card-icon">🏠</div>
@@ -1859,7 +1953,7 @@ hgSetLang(hgLang);
     <!-- Card 10 — Gestor de Quotas -->
     <div class="app-card" data-cats="b2b" data-ai="generated">
       <div class="card-top">
-        <span class="card-num">10</span>
+        <span class="card-num">11</span>
         <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Em desenvolvimento</span><span class="lang-en">In development</span></span>
       </div>
       <div class="card-icon">🏆</div>
@@ -1879,7 +1973,7 @@ hgSetLang(hgLang);
     <!-- Card 11 — Alpha2026 / Sistema de Gestão -->
     <div class="app-card" data-cats="produtividade" data-ai="generated">
       <div class="card-top">
-        <span class="card-num">11</span>
+        <span class="card-num">12</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · uso activo</span><span class="lang-en">Live · actively used</span></span>
       </div>
       <div class="card-icon">🎯</div>
@@ -1900,7 +1994,7 @@ hgSetLang(hgLang);
     <!-- Card 12 — Logic Gate Trainer -->
     <div class="app-card" data-cats="educacao" data-ai="generated">
       <div class="card-top">
-        <span class="card-num">12</span>
+        <span class="card-num">13</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · GitHub Pages</span><span class="lang-en">Live · GitHub Pages</span></span>
       </div>
       <div class="card-icon">⚡</div>
@@ -1920,7 +2014,7 @@ hgSetLang(hgLang);
     <!-- Card 13 — Automagic Mail -->
     <div class="app-card" data-cats="b2b produtividade">
       <div class="card-top">
-        <span class="card-num">13</span>
+        <span class="card-num">14</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional</span><span class="lang-en">Live</span></span>
       </div>
       <div class="card-icon">✉️</div>
@@ -1940,7 +2034,7 @@ hgSetLang(hgLang);
     <!-- Card 14 — Portal de Notas de Despesa -->
     <div class="app-card" data-cats="b2b financas">
       <div class="card-top">
-        <span class="card-num">14</span>
+        <span class="card-num">15</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Pronto · pitch activo</span><span class="lang-en">Ready · active pitch</span></span>
       </div>
       <div class="card-icon">🧾</div>
@@ -1960,7 +2054,7 @@ hgSetLang(hgLang);
     <!-- Card 15 — Vocaliz -->
     <div class="app-card" data-cats="produtividade">
       <div class="card-top">
-        <span class="card-num">15</span>
+        <span class="card-num">16</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional</span><span class="lang-en">Live</span></span>
       </div>
       <div class="card-icon">🔊</div>
@@ -1980,7 +2074,7 @@ hgSetLang(hgLang);
     <!-- Card 16 — HealHour -->
     <div class="app-card" data-cats="saude produtividade">
       <div class="card-top">
-        <span class="card-num">16</span>
+        <span class="card-num">17</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · PWA</span><span class="lang-en">Live · PWA</span></span>
       </div>
       <div class="card-icon">⏱️</div>
@@ -2000,7 +2094,7 @@ hgSetLang(hgLang);
     <!-- Card 17 — Visão+ Treino Ocular -->
     <div class="app-card" data-cats="saude">
       <div class="card-top">
-        <span class="card-num">17</span>
+        <span class="card-num">18</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · GitHub Pages</span><span class="lang-en">Live · GitHub Pages</span></span>
       </div>
       <div class="card-icon">👁️</div>
@@ -2020,7 +2114,7 @@ hgSetLang(hgLang);
     <!-- Card 18 — English Adventure -->
     <div class="app-card" data-cats="educacao">
       <div class="card-top">
-        <span class="card-num">18</span>
+        <span class="card-num">19</span>
         <span class="card-status"><span class="status-dot active"></span><span class="lang-pt">Operacional · GitHub Pages</span><span class="lang-en">Live · GitHub Pages</span></span>
       </div>
       <div class="card-icon">🌟</div>
@@ -2040,7 +2134,7 @@ hgSetLang(hgLang);
     <!-- Card 19 — LipRead -->
     <div class="app-card" data-cats="saude educacao">
       <div class="card-top">
-        <span class="card-num">19</span>
+        <span class="card-num">20</span>
         <span class="card-status"><span class="status-dot dev"></span><span class="lang-pt">Em desenvolvimento</span><span class="lang-en">In development</span></span>
       </div>
       <div class="card-icon">👄</div>
@@ -2451,6 +2545,71 @@ hgSetLang(hgLang);
   </div>
 </div>
 
+<!-- ── TASKTALK BETA MODAL ── -->
+<div class="tasktalk-overlay" id="tasktalkOverlay">
+  <div class="tasktalk-modal" role="dialog" aria-modal="true">
+    <button class="privacy-close" id="tasktalkClose" aria-label="Fechar">✕</button>
+    <h2><span class="lang-pt">Task.Talk · Pedido de Acesso Beta</span><span class="lang-en">Task.Talk · Beta Access Request</span></h2>
+    <p class="modal-sub"><span class="lang-pt">App Android nativa · Gemini + Notion · Acesso limitado aos primeiros beta testers.<br>Preenche o formulário — entraremos em contacto em 48h com o APK e instruções.</span><span class="lang-en">Native Android app · Gemini + Notion · Limited to first beta testers.<br>Fill in the form — we'll contact you within 48h with the APK and instructions.</span></p>
+
+    <div class="tasktalk-keys-info">
+      <p><strong><span class="lang-pt">⚙ A app requer duas integrações gratuitas.</span><span class="lang-en">⚙ The app requires two free integrations.</span></strong></p>
+      <p><strong>Gemini API Key</strong> — <span class="lang-pt">interpretação de comandos e reescrita de conteúdo.</span><span class="lang-en">command interpretation and content rewriting.</span> → <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">aistudio.google.com/apikey</a></p>
+      <p><strong>Notion Integration Token</strong> — <span class="lang-pt">acesso às tuas páginas do Notion.</span><span class="lang-en">access to your Notion pages.</span> → <a href="https://www.notion.so/my-integrations" target="_blank" rel="noopener noreferrer">notion.so/my-integrations</a></p>
+    </div>
+
+    <div id="tasktalkForm">
+      <div class="tasktalk-form-row">
+        <div class="tasktalk-field">
+          <label for="tt-nome"><span class="lang-pt">Nome *</span><span class="lang-en">Name *</span></label>
+          <input type="text" id="tt-nome" autocomplete="name" required />
+        </div>
+        <div class="tasktalk-field">
+          <label for="tt-email">Email *</label>
+          <input type="email" id="tt-email" autocomplete="email" required />
+        </div>
+      </div>
+      <div class="tasktalk-form-row">
+        <div class="tasktalk-field">
+          <label for="tt-idade"><span class="lang-pt">Idade *</span><span class="lang-en">Age *</span></label>
+          <input type="number" id="tt-idade" min="10" max="99" required />
+        </div>
+        <div class="tasktalk-field">
+          <label for="tt-android"><span class="lang-pt">Versão Android *</span><span class="lang-en">Android version *</span></label>
+          <select id="tt-android" required>
+            <option value="">—</option>
+            <option value="Android 12">Android 12</option>
+            <option value="Android 13">Android 13</option>
+            <option value="Android 14">Android 14</option>
+            <option value="Android 15">Android 15</option>
+            <option value="Android 16">Android 16</option>
+          </select>
+        </div>
+      </div>
+      <div class="tasktalk-field">
+        <label for="tt-uso"><span class="lang-pt">Como usarias o Task.Talk? *</span><span class="lang-en">How would you use Task.Talk? *</span></label>
+        <textarea id="tt-uso" placeholder="Ex: actualizar notas de projecto durante reuniões, registar ideias por voz..." required></textarea>
+      </div>
+      <div class="tasktalk-age-warn" id="ttAgeWarn"><span class="lang-pt">Tens menos de 16 anos. De acordo com o RGPD (Art. 8), é necessário o consentimento de um encarregado de educação. Inclui o contacto de um responsável no campo acima.</span><span class="lang-en">You are under 16. Under GDPR (Art. 8), parental consent is required. Include a parent/guardian's contact in the field above.</span></div>
+      <div class="tasktalk-consent">
+        <input type="checkbox" id="tt-consent" />
+        <label for="tt-consent"><span class="lang-pt">Aceito que os dados acima sejam partilhados com a Nodeflow exclusivamente para fins de acesso beta ao Task.Talk. Não serão cedidos a terceiros. Posso solicitar a remoção dos meus dados a qualquer momento via</span><span class="lang-en">I agree that the above data may be shared with Nodeflow solely for Task.Talk beta access purposes. It will not be passed to third parties. I can request removal at any time via</span> <a href="mailto:nodeflow.pt@gmail.com">nodeflow.pt@gmail.com</a></label>
+      </div>
+      <div class="tasktalk-error" id="ttError"></div>
+      <button class="tasktalk-submit" id="ttSubmit"><span class="lang-pt">Enviar pedido de acesso →</span><span class="lang-en">Send access request →</span></button>
+    </div>
+
+    <div class="tasktalk-success" id="tasktalkSuccess">
+      <p><span class="lang-pt">Pedido enviado com sucesso.</span><span class="lang-en">Request sent successfully.</span></p>
+      <small><span class="lang-pt">O teu cliente de email abriu com o pedido pré-preenchido.<br>Confirma o envio e aguarda o nosso contacto em até 48h.<br>Vais receber o APK e as instruções de instalação.</span><span class="lang-en">Your email client opened with the request pre-filled.<br>Confirm the send and wait for our contact within 48h.<br>You will receive the APK and installation instructions.</span></small>
+    </div>
+
+    <div class="tasktalk-ai-note">
+      <span class="lang-pt">🤖 <strong style="color:var(--paper);">AI Act Art. 50 (UE 2024/1689):</strong> O Task.Talk utiliza IA generativa (Google Gemini) para interpretação de comandos de voz e actualização de notas. O conteúdo produzido é de natureza auxiliar e deve ser verificado pelo utilizador. Esta app não toma decisões automatizadas com efeitos jurídicos ou equivalentes.</span><span class="lang-en">🤖 <strong style="color:var(--paper);">AI Act Art. 50 (EU 2024/1689):</strong> Task.Talk uses generative AI (Google Gemini) for voice command interpretation and note updating. The content produced is auxiliary in nature and must be verified by the user. This app does not make automated decisions with legal or equivalent effects.</span>
+    </div>
+  </div>
+</div>
+
 <a href="#" class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</a>
 
 <script>
@@ -2581,6 +2740,61 @@ hgSetLang(hgLang);
     audinateSuccess.classList.add('visible');
   });
 
+  // ── Task.Talk Beta Modal ──
+  const tasktalkOverlay = document.getElementById('tasktalkOverlay');
+  const tasktalkClose = document.getElementById('tasktalkClose');
+  const ttSubmit = document.getElementById('ttSubmit');
+  const ttAgeWarn = document.getElementById('ttAgeWarn');
+  const ttError = document.getElementById('ttError');
+  const tasktalkForm = document.getElementById('tasktalkForm');
+  const tasktalkSuccess = document.getElementById('tasktalkSuccess');
+
+  document.querySelectorAll('.tasktalk-open-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tasktalkOverlay.classList.add('open');
+      tasktalkForm.style.display = '';
+      tasktalkSuccess.classList.remove('visible');
+      ttError.classList.remove('visible');
+    });
+  });
+  tasktalkClose.addEventListener('click', () => tasktalkOverlay.classList.remove('open'));
+  tasktalkOverlay.addEventListener('click', e => { if (e.target === tasktalkOverlay) tasktalkOverlay.classList.remove('open'); });
+
+  document.getElementById('tt-idade').addEventListener('input', function() {
+    ttAgeWarn.classList.toggle('visible', this.value && parseInt(this.value) < 16);
+  });
+
+  ttSubmit.addEventListener('click', () => {
+    const nome = document.getElementById('tt-nome').value.trim();
+    const email = document.getElementById('tt-email').value.trim();
+    const idade = document.getElementById('tt-idade').value.trim();
+    const android = document.getElementById('tt-android').value;
+    const uso = document.getElementById('tt-uso').value.trim();
+    const consent = document.getElementById('tt-consent').checked;
+    const isEN = (localStorage.getItem('nf-lang') || 'pt') === 'en';
+
+    if (!nome || !email || !idade || !android || !uso) {
+      ttError.textContent = isEN ? 'Please fill in all required fields.' : 'Preenche todos os campos obrigatórios.';
+      ttError.classList.add('visible'); return;
+    }
+    if (!consent) {
+      ttError.textContent = isEN ? 'You must accept the consent to continue.' : 'Tens de aceitar o consentimento para continuar.';
+      ttError.classList.add('visible'); return;
+    }
+    ttError.classList.remove('visible');
+
+    const menor = parseInt(idade) < 16;
+    const toAddr = 'nodeflow.pt@gmail.com';
+    const subject = encodeURIComponent(isEN ? 'Task.Talk — Beta Access Request' : 'Task.Talk — Pedido de Acesso Beta');
+    const body = encodeURIComponent(isEN
+      ? `Task.Talk Beta Access Request\n\nName: ${nome}\nEmail: ${email}\nAge: ${idade}${menor ? ' (PARENTAL CONSENT REQUIRED)' : ''}\nAndroid: ${android}\n\nHow they would use it:\n${uso}\n\n---\nSent via nodeflow.pt`
+      : `Pedido de Acesso Beta — Task.Talk\n\nNome: ${nome}\nEmail: ${email}\nIdade: ${idade}${menor ? ' (MENOR DE 16 — CONSENTIMENTO PARENTAL NECESSÁRIO)' : ''}\nAndroid: ${android}\n\nComo usaria o Task.Talk:\n${uso}\n\n---\nEnviado via nodeflow.pt`
+    );
+    window.open(`https://mail.google.com/mail/?view=cm&to=${toAddr}&su=${subject}&body=${body}`, '_blank', 'noopener,noreferrer');
+    tasktalkForm.style.display = 'none';
+    tasktalkSuccess.classList.add('visible');
+  });
+
   // Expandable cards — resumo por defeito, "Ver mais ↓" para expandir
   document.querySelectorAll('.app-card').forEach(card => {
     const tagline = card.querySelector('.card-tagline');
@@ -2643,7 +2857,7 @@ hgSetLang(hgLang);
   });
 
   // Botão "Fale connosco" contextual por card com picker de email
-  document.querySelectorAll('.app-card:not(.audinate-card):not(.voz-afiada-card)').forEach(card => {
+  document.querySelectorAll('.app-card:not(.audinate-card):not(.voz-afiada-card):not(.tasktalk-card)').forEach(card => {
     const name = card.querySelector('.card-name').textContent.trim();
     const subject = encodeURIComponent(`Interesse em ${name} — Nodeflow`);
     const body = encodeURIComponent(
